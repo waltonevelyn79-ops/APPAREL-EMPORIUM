@@ -38,6 +38,12 @@ jobs:
           script: |
             cd /home/${{ secrets.HOSTINGER_USERNAME }}/your-app-directory
             git pull origin main
+            
+            # Ensure .env is created for production
+            echo "DATABASE_URL=\"file:./dev.db\"" > .env
+            echo "NEXTAUTH_SECRET=\"${{ secrets.NEXTAUTH_SECRET }}\"" >> .env
+            echo "NEXTAUTH_URL=\"${{ secrets.NEXTAUTH_URL }}\"" >> .env
+            
             npm ci --production
             npx prisma generate
             npx prisma db push

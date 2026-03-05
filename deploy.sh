@@ -17,6 +17,13 @@ ssh $USER@$HOST << EOF
   echo "=> Pulling latest changes from Git..."
   git pull origin main
   
+  echo "=> Ensuring production .env exists..."
+  if [ -f .env.production ]; then
+    cp .env.production .env
+  else
+    echo "DATABASE_URL=\"file:./dev.db\"" > .env
+  fi
+  
   echo "=> Installing dependencies..."
   npm ci --production
   
