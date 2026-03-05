@@ -8,27 +8,6 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm ci
-      
-      - name: Generate Prisma Client
-        run: npx prisma generate
-      
-      - name: Build
-        run: npm run build
-        env:
-          DATABASE_URL: "mysql://u808072502_aelbd:bnij%3F8nL%2F@localhost:3306/u808072502_Aelbd"
-          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
-          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL }}
-      
       - name: Deploy to Hostinger via SSH
         uses: appleboy/ssh-action@v1
         with:
