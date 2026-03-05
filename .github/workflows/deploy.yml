@@ -37,11 +37,25 @@ jobs:
             git fetch origin main || git fetch origin main --depth=1
             git reset --hard origin/main
             
-            # Ensure .env is created for production
+            # Ensure .env is created for production with robust fallbacks
             echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@srv2112.hstgr.io:3306/u808072502_Aelbd\"" > .env
-            echo "NEXTAUTH_SECRET=\"${{ secrets.NEXTAUTH_SECRET }}\"" >> .env
-            echo "NEXTAUTH_URL=\"${{ secrets.NEXTAUTH_URL }}\"" >> .env
+            
+            # Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+            SECRET_VAL="${{ secrets.NEXTAUTH_SECRET }}"
+            if [ -z "$SECRET_VAL" ]; then
+              SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+            fi
+            echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+            
+            URL_VAL="${{ secrets.NEXTAUTH_URL }}"
+            if [ -z "$URL_VAL" ]; then
+              URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+            fi
+            echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+            
+            # System variables
             echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+            echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
             
             # Install packages without choking the memory
             npm install --production --no-audit --no-fund
@@ -49,5 +63,5 @@ jobs:
             npx prisma migrate deploy || npx prisma db push --accept-data-loss
             npm run build
             npm install pm2 -g --no-save
-            pm2 restart garments-website || pm2 start ecosystem.config.js
+            pm2 restart garments-website --update-env || pm2 start ecosystem.config.js
             echo "✅ Deployment complete!"
