@@ -22,6 +22,7 @@ ssh $USER@$HOST << EOF
     cp .env.production .env
   else
     echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@127.0.0.1:3306/u808072502_Aelbd\"" > .env
+    echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
   fi
   
   echo "=> Installing dependencies..."
