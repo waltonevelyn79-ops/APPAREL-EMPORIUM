@@ -2,6 +2,9 @@ import { prisma } from '@/lib/prisma';
 import { Edit2, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function AdminBlogPage() {
     const posts = await prisma.blogPost.findMany({
         orderBy: { createdAt: 'desc' },

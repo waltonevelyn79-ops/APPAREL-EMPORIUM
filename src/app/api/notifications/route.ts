@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 
+export const dynamic = 'force-dynamic';
+
+
 // Helper for generic session/role parsing internally
 async function getUser() {
     const session = await getServerSession();

@@ -4,6 +4,9 @@ import ProductImageGallery from '@/components/products/ProductImageGallery';
 import Link from 'next/link';
 import { Mail, CheckCircle, Truck, Package, Factory, Info } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function ProductDetailPage({
     params
 }: {

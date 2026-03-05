@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { getServerSession } from 'next-auth';
 
+export const dynamic = 'force-dynamic';
+
+
 async function isAuthorized() {
     const session = await getServerSession();
     if (!session || !session.user || !session.user.email) return false;

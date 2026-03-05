@@ -5,6 +5,9 @@ import { prisma } from '@/lib/prisma';
 import { logActivity } from '@/lib/activity-logger';
 import { hasPermission } from '@/lib/permissions';
 
+export const dynamic = 'force-dynamic';
+
+
 export async function GET(req: Request) {
     try {
         const session = await getServerSession(authOptions);

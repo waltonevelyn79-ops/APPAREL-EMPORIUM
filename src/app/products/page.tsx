@@ -2,7 +2,10 @@ import { prisma } from '@/lib/prisma';
 import ProductGrid from '@/components/products/ProductGrid';
 import ProductFilter from '@/components/products/ProductFilter';
 
-export const revalidate = 60; // Revalidate page every 60 seconds
+export const dynamic = 'force-dynamic';
+
+
+ // Revalidate page every 60 seconds
 
 export default async function ProductsPage({
     searchParams,

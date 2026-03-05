@@ -6,6 +6,9 @@ import path from 'path';
 import { Database, Image as ImageIcon, Users, ShoppingBag, FileText, AlertTriangle, MonitorPlay, MessageSquare } from 'lucide-react';
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
+
 function getFolderSize(folderPath: string): number {
     let size = 0;
     try {

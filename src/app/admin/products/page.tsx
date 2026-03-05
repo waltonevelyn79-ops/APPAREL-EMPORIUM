@@ -2,6 +2,9 @@ import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import { Edit2, Trash2, CheckCircle2, XCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function ProductsManagement({ searchParams }: { searchParams: { page?: string, q?: string } }) {
     const page = parseInt(searchParams.page || '1');
     const limit = 20;

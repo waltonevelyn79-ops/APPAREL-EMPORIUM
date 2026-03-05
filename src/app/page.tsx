@@ -9,13 +9,16 @@ import Certifications from '@/components/home/Certifications';
 import Testimonials from '@/components/home/Testimonials';
 import CTASection from '@/components/home/CTASection';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
     title: 'Garments Buying House | Premium Sourcing & Manufacturing',
     description: 'Leading global sourcing and manufacturing excellence with a commitment to quality, sustainability, and transparency.',
 };
 
 // Revalidate every 60 seconds or on demand
-export const revalidate = 60;
+
 
 export default async function HomePage() {
 

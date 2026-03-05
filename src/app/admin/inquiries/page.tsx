@@ -1,6 +1,9 @@
 import { prisma } from '@/lib/prisma';
 import { Mail, CheckCircle, Clock } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function AdminInquiriesPage() {
     const inquiries = await prisma.contactInquiry.findMany({
         orderBy: { createdAt: 'desc' }

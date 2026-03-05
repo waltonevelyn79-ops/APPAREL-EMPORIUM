@@ -4,6 +4,9 @@ import { getServerSession } from 'next-auth';
 import fs from 'fs';
 import path from 'path';
 
+export const dynamic = 'force-dynamic';
+
+
 export async function GET(req: NextRequest) {
     const session = await getServerSession();
     if (!session || !session.user || !session.user.email) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
