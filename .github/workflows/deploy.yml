@@ -19,7 +19,7 @@ jobs:
             git pull origin main
             
             # Ensure .env is created for production
-            echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@localhost:3306/u808072502_Aelbd\"" > .env
+            echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@127.0.0.1:3306/u808072502_Aelbd\"" > .env
             echo "NEXTAUTH_SECRET=\"${{ secrets.NEXTAUTH_SECRET }}\"" >> .env
             echo "NEXTAUTH_URL=\"${{ secrets.NEXTAUTH_URL }}\"" >> .env
             

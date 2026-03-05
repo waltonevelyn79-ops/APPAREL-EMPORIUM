@@ -58,6 +58,16 @@ export default async function HomePage() {
         visibility = JSON.parse(settingsMap['homepage_sections_visibility'] || '{}');
     } catch (e) { }
 
+    // Safe JSON parse helper
+    const safeParse = (str: string | undefined, fallback: any = {}) => {
+        if (!str) return fallback;
+        try {
+            return JSON.parse(str);
+        } catch (e) {
+            return fallback;
+        }
+    };
+
     // Section Component Map
     const sectionComponentMap: Record<string, JSX.Element | null> = {
         'hero_slider': <HeroSlider data={settingsMap['homepage_hero_slider'] || '[]'} key="hero_slider" />,
@@ -70,13 +80,15 @@ export default async function HomePage() {
         'cta_section': <CTASection data={settingsMap['homepage_cta_section'] || '{}'} key="cta_section" />,
     };
 
+    const announcementSettings = safeParse(settingsMap['homepage_announcement_bar'], null);
+
     return (
         <main className="min-h-screen">
             {/* Announcement Bar (Optional Feature Layer) */}
-            {visibility['announcement_bar'] !== false && settingsMap['homepage_announcement_bar'] && (
-                <div className="w-full text-center py-2 px-4 shadow-sm relative z-50 text-sm font-bold tracking-wide" style={{ backgroundColor: JSON.parse(settingsMap['homepage_announcement_bar']).bgColor || '#1B365D', color: JSON.parse(settingsMap['homepage_announcement_bar']).textColor || '#FFF' }}>
-                    <a href={JSON.parse(settingsMap['homepage_announcement_bar']).link || '#'} className="hover:underline">
-                        {JSON.parse(settingsMap['homepage_announcement_bar']).text}
+            {visibility['announcement_bar'] !== false && announcementSettings && announcementSettings.text && (
+                <div className="w-full text-center py-2 px-4 shadow-sm relative z-50 text-sm font-bold tracking-wide" style={{ backgroundColor: announcementSettings.bgColor || '#1B365D', color: announcementSettings.textColor || '#FFF' }}>
+                    <a href={announcementSettings.link || '#'} className="hover:underline">
+                        {announcementSettings.text}
                     </a>
                 </div>
             )}
