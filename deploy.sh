@@ -21,7 +21,7 @@ ssh $USER@$HOST << EOF
   if [ -f .env.production ]; then
     cp .env.production .env
   else
-    echo "DATABASE_URL=\"file:./dev.db\"" > .env
+    echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@localhost:3306/u808072502_Aelbd\"" > .env
   fi
   
   echo "=> Installing dependencies..."
