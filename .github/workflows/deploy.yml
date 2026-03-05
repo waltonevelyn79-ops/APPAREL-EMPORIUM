@@ -23,12 +23,18 @@ jobs:
 
             cd /home/${{ secrets.HOSTINGER_USERNAME }}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
             
+            # Prevent Hostinger VPS thread & memory crashing
+            export NODE_OPTIONS="--max-old-space-size=512"
+            git config --global pack.threads 1
+            git config --global pack.windowMemory 50m
+            
             if [ ! -d ".git" ]; then
               git init
               git remote add origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
             fi
             
-            git fetch origin main
+            # Fetch safely with fallbacks
+            git fetch origin main || git fetch origin main --depth=1
             git reset --hard origin/main
             
             # Ensure .env is created for production
@@ -37,7 +43,8 @@ jobs:
             echo "NEXTAUTH_URL=\"${{ secrets.NEXTAUTH_URL }}\"" >> .env
             echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
             
-            npm ci --production
+            # Install packages without choking the memory
+            npm install --production --no-audit --no-fund
             npx prisma generate
             npx prisma migrate deploy || npx prisma db push --accept-data-loss
             npm run build
