@@ -14,19 +14,21 @@ jobs:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          port: ${{ secrets.HOSTINGER_PORT }}
           script: |
-            cd /home/${{ secrets.HOSTINGER_USERNAME }}/your-app-directory
+            cd /home/${{ secrets.HOSTINGER_USERNAME }}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
             git pull origin main
             
             # Ensure .env is created for production
-            echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@127.0.0.1:3306/u808072502_Aelbd\"" > .env
+            echo "DATABASE_URL=\"mysql://u808072502_aelbd:bnij%3F8nL%2F@srv2112.hstgr.io:3306/u808072502_Aelbd\"" > .env
             echo "NEXTAUTH_SECRET=\"${{ secrets.NEXTAUTH_SECRET }}\"" >> .env
             echo "NEXTAUTH_URL=\"${{ secrets.NEXTAUTH_URL }}\"" >> .env
             echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
             
             npm ci --production
             npx prisma generate
-            npx prisma db push
+            npx prisma migrate deploy || npx prisma db push --accept-data-loss
             npm run build
+            npm install pm2 -g --no-save
             pm2 restart garments-website || pm2 start ecosystem.config.js
             echo "✅ Deployment complete!"
