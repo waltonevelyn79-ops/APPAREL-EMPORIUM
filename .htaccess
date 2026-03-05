@@ -1,0 +1,17 @@
+# Hostinger Node.js Application Routing
+
+DirectoryIndex ""
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Optional: Force HTTPS (uncomment if SSL is active and you want to force it)
+    # RewriteCond %{HTTPS} off
+    # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+    
+    # Forward all requests to the running Node.js server (e.g., PM2 on port 3000)
+    # Make sure the port here matches the port PM2 or npm start is running on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
+</IfModule>

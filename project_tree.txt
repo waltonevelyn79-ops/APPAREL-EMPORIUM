@@ -1,0 +1,257 @@
+Folder PATH listing
+Volume serial number is 9CA5-3E93
+C:\USERS\DELL\ONEDRIVE\DESKTOP\AELBD\GARMENTS-BUYING-HOUSE\SRC
+¦   middleware.ts
+¦   
++---app
+¦   ¦   globals.css
+¦   ¦   layout.tsx
+¦   ¦   page.tsx
+¦   ¦   sitemap.ts
+¦   ¦   
+¦   +---about
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---admin
+¦   ¦   ¦   layout.tsx
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---activity-log
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---blog
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---bulk-upload
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---categories
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---email
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---forms
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---homepage
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---inquiries
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---maintenance
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---media
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---menus
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---notifications
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---performance
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---popups
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---products
+¦   ¦   ¦   ¦   page.tsx
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---new
+¦   ¦   ¦   ¦       page.tsx
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---[id]
+¦   ¦   ¦       +---edit
+¦   ¦   ¦               page.tsx
+¦   ¦   ¦               
+¦   ¦   +---rfq
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---seo
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---settings
+¦   ¦   ¦   ¦   page.tsx
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---cookies
+¦   ¦   ¦           page.tsx
+¦   ¦   ¦           
+¦   ¦   +---theme
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---tracking
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---users
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---api
+¦   ¦   +---activity-log
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---auth
+¦   ¦   ¦   +---[...nextauth]
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---backup
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---contact
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---email
+¦   ¦   ¦   +---send
+¦   ¦   ¦   ¦       route.ts
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---test
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---forms
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---[id]
+¦   ¦   ¦       +---submissions
+¦   ¦   ¦               route.ts
+¦   ¦   ¦               
+¦   ¦   +---media
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---menus
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---reorder
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---notifications
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---popups
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---products
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---bulk-upload
+¦   ¦   ¦   ¦       route.ts
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---[id]
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---rfq
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---settings
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---upload
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---users
+¦   ¦       ¦   route.ts
+¦   ¦       ¦   
+¦   ¦       +---[id]
+¦   ¦               route.ts
+¦   ¦               
+¦   +---blog
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---[slug]
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---contact
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---login
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---products
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---[id]
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---request-quote
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---support
+¦           page.tsx
+¦           
++---components
+¦   +---admin
+¦   ¦       DashboardStats.tsx
+¦   ¦       ImagePicker.tsx
+¦   ¦       KeyboardShortcutsModal.tsx
+¦   ¦       NotificationBell.tsx
+¦   ¦       ProductForm.tsx
+¦   ¦       QuickSearch.tsx
+¦   ¦       SettingsForm.tsx
+¦   ¦       Sidebar.tsx
+¦   ¦       UsersManager.tsx
+¦   ¦       
+¦   +---home
+¦   ¦       CategoryGrid.tsx
+¦   ¦       Certifications.tsx
+¦   ¦       CTASection.tsx
+¦   ¦       FeaturedProducts.tsx
+¦   ¦       HeroSlider.tsx
+¦   ¦       StatsCounter.tsx
+¦   ¦       Testimonials.tsx
+¦   ¦       WhyChooseUs.tsx
+¦   ¦       
+¦   +---layout
+¦   ¦       CookieConsent.tsx
+¦   ¦       Footer.tsx
+¦   ¦       Header.tsx
+¦   ¦       MegaMenu.tsx
+¦   ¦       MobileNav.tsx
+¦   ¦       TrackingScripts.tsx
+¦   ¦       
+¦   +---products
+¦   ¦       ProductCard.tsx
+¦   ¦       ProductFilter.tsx
+¦   ¦       ProductGrid.tsx
+¦   ¦       ProductImageGallery.tsx
+¦   ¦       
+¦   +---shared
+¦   ¦       PopupBanner.tsx
+¦   ¦       ThemeToggle.tsx
+¦   ¦       
+¦   +---ui
+¦           FileUpload.tsx
+¦           ImageUploader.tsx
+¦           
++---context
+¦       SettingsContext.tsx
+¦       ThemeContext.tsx
+¦       
++---hooks
+¦       useKeyboardShortcuts.ts
+¦       usePermission.ts
+¦       
++---lib
+¦       activity-logger.ts
+¦       auth.ts
+¦       email.ts
+¦       permissions.ts
+¦       prisma.ts
+¦       utils.ts
+¦       
++---types
+        index.ts
+        
+Folder PATH listing
+Volume serial number is 9CA5-3E93
+C:\USERS\DELL\ONEDRIVE\DESKTOP\AELBD\GARMENTS-BUYING-HOUSE\PRISMA
+    dev.db
+    schema.prisma
+    seed-company.ts
+    seed-products.ts
+    seed-reviews.ts
+    seed.ts
+    
+No subfolders exist 
+
