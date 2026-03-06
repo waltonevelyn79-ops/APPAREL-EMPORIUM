@@ -80,16 +80,23 @@ async function main() {
 
         // Homepage Group
         { key: 'announcement_bar_enabled', value: 'true' },
-        { key: 'announcement_bar_text', value: 'Welcome to our premium garments buying house portal.' },
         {
-            key: 'hero_slides', value: JSON.stringify([
-                { title: 'Premium Garment Sourcing', subtitle: 'Excellence in every stitch.', ctaText: 'View Collections', ctaLink: '/products', image: '/hero1.jpg', overlay: 'rgba(0,0,0,0.5)' },
-                { title: 'Global Supply Chain', subtitle: 'Seamless worldwide delivery.', ctaText: 'Learn More', ctaLink: '/about', image: '/hero2.jpg', overlay: 'rgba(0,0,0,0.5)' },
-                { title: 'Sustainable Fashion', subtitle: 'Eco-friendly manufacturing processes.', ctaText: 'Our Mission', ctaLink: '/about', image: '/hero3.jpg', overlay: 'rgba(0,0,0,0.5)' }
+            key: 'homepage_announcement_bar', value: JSON.stringify({
+                text: 'Welcome to our premium garments buying house portal.',
+                link: '/products',
+                bgColor: '#1B365D',
+                textColor: '#FFFFFF'
+            })
+        },
+        {
+            key: 'homepage_hero_slider', value: JSON.stringify([
+                { title: 'Premium Garment Sourcing', subtitle: 'Excellence in every stitch.', ctaText: 'View Collections', ctaLink: '/products', image: '/images/hero1.jpg', overlay: 'rgba(0,0,0,0.5)' },
+                { title: 'Global Supply Chain', subtitle: 'Seamless worldwide delivery.', ctaText: 'Learn More', ctaLink: '/about', image: '/images/hero2.jpg', overlay: 'rgba(0,0,0,0.5)' },
+                { title: 'Sustainable Fashion', subtitle: 'Eco-friendly manufacturing processes.', ctaText: 'Our Mission', ctaLink: '/about', image: '/images/hero3.jpg', overlay: 'rgba(0,0,0,0.5)' }
             ])
         },
         {
-            key: 'stats', value: JSON.stringify([
+            key: 'homepage_stats_counter', value: JSON.stringify([
                 { number: '15', label: 'Years Experience', icon: 'clock', suffix: '+' },
                 { number: '500', label: 'Global Buyers', icon: 'globe', suffix: '+' },
                 { number: '50', label: 'Partner Factories', icon: 'building', suffix: '+' },
@@ -97,7 +104,7 @@ async function main() {
             ])
         },
         {
-            key: 'why_choose_us', value: JSON.stringify([
+            key: 'homepage_why_choose_us', value: JSON.stringify([
                 { title: 'Quality Assurance', description: 'Strict AQL 2.5 quality control at every stage.', icon: 'shield-check' },
                 { title: 'Global Compliance', description: 'Working with BSCI, SEDEX, and OEKO-TEX certified factories.', icon: 'globe' },
                 { title: 'Competitive Pricing', description: 'Direct sourcing ensures the best value for your brand.', icon: 'dollar-sign' },
@@ -107,16 +114,30 @@ async function main() {
             ])
         },
         {
-            key: 'testimonials', value: JSON.stringify([
+            key: 'homepage_testimonials', value: JSON.stringify([
                 { name: 'John Doe', company: 'Fashion Inc', country: 'USA', quote: 'Excellent quality and communication.', avatar: '' },
                 { name: 'Jane Smith', company: 'Euro Trendy', country: 'UK', quote: 'Our preferred sourcing partner.', avatar: '' },
                 { name: 'Ali Hassan', company: 'Desert Wear', country: 'UAE', quote: 'Consistent high standards.', avatar: '' }
             ])
         },
-        { key: 'homepage_sections_order', value: JSON.stringify(['hero', 'stats', 'categories', 'featured_products', 'why_choose_us', 'certifications', 'testimonials', 'cta']) },
+        {
+            key: 'homepage_certifications', value: JSON.stringify([
+                { title: 'ISO 9001', image: '/images/iso.png' },
+                { title: 'OEKO-TEX', image: '/images/oeko.png' }
+            ])
+        },
+        {
+            key: 'homepage_cta_section', value: JSON.stringify({
+                title: 'Start Your Production Journey Today',
+                description: 'Partner with us to create premium garments tailored to your brand.',
+                buttonText: 'Get a Quote',
+                buttonLink: '/contact'
+            })
+        },
+        { key: 'homepage_sections_order', value: JSON.stringify(['hero_slider', 'stats_counter', 'category_grid', 'featured_products', 'why_choose_us', 'certifications', 'testimonials', 'cta_section']) },
         {
             key: 'homepage_sections_visibility', value: JSON.stringify({
-                hero: true, stats: true, categories: true, featured_products: true, why_choose_us: true, certifications: true, testimonials: true, cta: true
+                hero_slider: true, stats_counter: true, category_grid: true, featured_products: true, why_choose_us: true, certifications: true, testimonials: true, cta_section: true, announcement_bar: true
             })
         }
     ];
@@ -126,6 +147,28 @@ async function main() {
             where: { key: s.key },
             update: { value: s.value },
             create: { key: s.key, value: s.value }
+        });
+    }
+
+    // Seed Mega Menus
+    const existingMenu = await prisma.menuItem.findFirst({ where: { menuLocation: 'main', label: 'Home' } });
+    if (!existingMenu) {
+        await prisma.menuItem.createMany({
+            data: [
+                { menuLocation: 'main', label: 'Home', url: '/', order: 1, isMegaMenu: false, isActive: true },
+                {
+                    menuLocation: 'main', label: 'Products', url: '/products', order: 2, isMegaMenu: true, isActive: true, megaMenuData: JSON.stringify({
+                        title: 'Our Collections',
+                        items: [
+                            { label: 'Men\'s Wear', url: '/products/mens' },
+                            { label: 'Women\'s Wear', url: '/products/womens' },
+                            { label: 'Kids\' Wear', url: '/products/kids' }
+                        ]
+                    })
+                },
+                { menuLocation: 'main', label: 'About Us', url: '/about', order: 3, isMegaMenu: false, isActive: true },
+                { menuLocation: 'main', label: 'Contact', url: '/contact', order: 4, isMegaMenu: false, isActive: true },
+            ]
         });
     }
 
