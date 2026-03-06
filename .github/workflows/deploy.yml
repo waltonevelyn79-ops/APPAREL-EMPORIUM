@@ -61,6 +61,7 @@ jobs:
             npm install --production --no-audit --no-fund
             npx prisma generate
             npx prisma migrate deploy || npx prisma db push --accept-data-loss
+            npm run seed || true
             npm run build
             # Gracefully restart application utilizing dynamic npx executable to avoid memory crashes
             npx -y pm2 restart garments-website --update-env || npx -y pm2 start ecosystem.config.js
