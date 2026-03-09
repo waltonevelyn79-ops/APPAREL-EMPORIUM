@@ -19,10 +19,13 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const fetchSettings = async () => {
         try {
             const res = await fetch('/api/settings');
+            if (!res.ok) throw new Error('Settings fetch failed');
             const data = await res.json();
-            setSettings(data);
+            if (data && data.settings) {
+                setSettings(data.settings);
+            }
         } catch (error) {
-            console.error("Failed to load settings", error);
+            console.error("Critical: Settings fetch failed. Using fallbacks.", error);
         } finally {
             setLoading(false);
         }
@@ -39,7 +42,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const updateSettings = async (newSettings: Record<string, string>) => {
         try {
             const res = await fetch('/api/settings', {
-                method: 'PUT',
+                method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newSettings),
             });
@@ -70,3 +73,4 @@ export const useSettings = () => {
     }
     return context;
 };
+

@@ -60,7 +60,8 @@ export const authOptions: NextAuthOptions = {
         }
     },
     pages: {
-        signIn: '/login',
+        signIn: '/executive-login',
     },
     secret: process.env.NEXTAUTH_SECRET || 'super-secret-key-32-chars-long-at-least',
 };
+

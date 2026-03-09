@@ -5,7 +5,6 @@ import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
-
 export async function POST(req: NextRequest) {
     const session = await getServerSession();
     if (!session || !session.user || !session.user.email) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -23,7 +22,7 @@ export async function POST(req: NextRequest) {
         const transporter = await getTransporter();
         await transporter.verify();
 
-        const subject = "GlobalStitch: SMTP Connection Successful";
+        const subject = "APPAREL EMPORIUM: SMTP Connection Successful";
         const html = `
             <h2>System Test Passed</h2>
             <p>Your SMTP credentials configured via the Admin panel are working correctly.</p>

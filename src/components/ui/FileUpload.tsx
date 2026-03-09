@@ -90,7 +90,7 @@ export default function FileUpload({
                     if (response.success) {
                         setQueue([]);
                         setProgress(0);
-                        if (onUploadComplete) onUploadComplete(response.files);
+                        if (onUploadComplete) onUploadComplete(response.file ? [response.file] : []);
                     } else {
                         setErrors([response.error || 'Upload failed due to an unknown server error.']);
                     }
@@ -249,3 +249,4 @@ export default function FileUpload({
         </div>
     );
 }
+

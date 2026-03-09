@@ -153,7 +153,7 @@ export default function NotificationBell() {
                     </div>
 
                     <Link
-                        href="/admin/notifications"
+                        href="/executive-portal-aelbd/notifications"
                         onClick={() => setIsOpen(false)}
                         className="block px-4 py-3 bg-gray-50 dark:bg-dark-bg text-center text-xs font-bold text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition border-t border-gray-100 dark:border-gray-800"
                     >
@@ -164,3 +164,4 @@ export default function NotificationBell() {
         </div>
     );
 }
+

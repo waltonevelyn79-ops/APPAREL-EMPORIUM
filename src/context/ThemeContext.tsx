@@ -94,3 +94,4 @@ export const useTheme = () => {
     if (!context) throw new Error('useTheme used outside ThemeProvider');
     return context;
 };
+

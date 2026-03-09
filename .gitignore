@@ -1,7 +1,48 @@
-node_modules
+# Dependencies
+node_modules/
 
-.next
+# Next.js build output
+.next/
+out/
+
+# Environment files (NEVER commit these)
+.env
 .env.local
 .env.production
 .env.development
+.env.*.local
 
+# Database files (SQLite — contains real data, never commit)
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+prisma/*.db
+
+# Temporary scripts (debug/migration helpers)
+tmp/
+*.sh
+verify_cats.js
+check-*.js
+update-*.js
+seed-*.js
+manage-*.js
+
+# TypeScript build info
+tsconfig.tsbuildinfo
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+# Prisma binary cache (regenerated on deploy)
+node_modules/.prisma/

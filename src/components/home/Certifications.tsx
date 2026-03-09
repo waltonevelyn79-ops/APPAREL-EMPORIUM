@@ -12,9 +12,10 @@ interface Certification {
 
 interface CertProps {
     data: any;
+    headings?: { certifications_label?: string };
 }
 
-export default function Certifications({ data }: CertProps) {
+export default function Certifications({ data, headings }: CertProps) {
     const [certs, setCerts] = useState<Certification[]>([]);
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export default function Certifications({ data }: CertProps) {
 
                 <div className="text-center mb-10">
                     <span className="text-gray-400 dark:text-gray-500 font-bold tracking-widest uppercase text-xs">
-                        Certified By Leading Global Standards
+                        {headings?.certifications_label || 'Certified By Leading Global Standards'}
                     </span>
                 </div>
 
@@ -92,3 +93,4 @@ export default function Certifications({ data }: CertProps) {
         </section>
     );
 }
+

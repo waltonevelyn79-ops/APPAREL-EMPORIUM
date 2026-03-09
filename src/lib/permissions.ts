@@ -29,32 +29,36 @@ export const PERMISSIONS = {
 
 // Define a route permission map for middleware and frontend checking
 export const ROUTE_PERMISSIONS: Record<string, string | string[]> = {
-    '/admin': ['dashboard.view', 'buyer_dashboard.view'],
-    '/admin/products': ['products.view'],
-    '/admin/products/new': ['products.create'],
-    '/admin/bulk-upload': ['bulk_upload'],
-    '/admin/categories': ['categories.view', 'categories.*'],
-    '/admin/blog': ['blog.view', 'blog.*'],
-    '/admin/blog/new': ['blog.create', 'blog.*'],
-    '/admin/inquiries': ['inquiries.view', 'inquiries.*'],
-    '/admin/rfq': ['rfq.view', 'rfq.*'],
-    '/admin/media': ['media.view', 'media.*'],
-    '/admin/users': ['users.manage'],
-    '/admin/menus': ['menus.*'],
-    '/admin/pages': ['pages.*'],
-    '/admin/homepage': ['homepage.*'],
-    '/admin/theme': ['theme.*'],
-    '/admin/forms': ['forms.*'],
-    '/admin/popups': ['popups.*'],
-    '/admin/seo': ['seo.*'],
-    '/admin/email': ['email.*'],
-    '/admin/settings': ['settings.*'],
+    '/executive-portal-aelbd': ['dashboard.view', 'buyer_dashboard.view'],
+    '/executive-portal-aelbd/products': ['products.view'],
+    '/executive-portal-aelbd/products/new': ['products.create'],
+    '/executive-portal-aelbd/bulk-upload': ['bulk_upload'],
+    '/executive-portal-aelbd/categories': ['categories.view', 'categories.*'],
+    '/executive-portal-aelbd/blog': ['blog.view', 'blog.*'],
+    '/executive-portal-aelbd/blog/new': ['blog.create', 'blog.*'],
+    '/executive-portal-aelbd/inquiries': ['inquiries.view', 'inquiries.*'],
+    '/executive-portal-aelbd/rfq': ['rfq.view', 'rfq.*'],
+    '/executive-portal-aelbd/media': ['media.view', 'media.*'],
+    '/executive-portal-aelbd/users': ['users.manage'],
+    '/executive-portal-aelbd/menus': ['menus.*'],
+    '/executive-portal-aelbd/pages': ['pages.*'],
+    '/executive-portal-aelbd/homepage': ['homepage.*'],
+    '/executive-portal-aelbd/theme': ['theme.*'],
+    '/executive-portal-aelbd/forms': ['forms.*'],
+    '/executive-portal-aelbd/popups': ['popups.*'],
+    '/executive-portal-aelbd/seo': ['seo.*'],
+    '/executive-portal-aelbd/email': ['email.*'],
+    '/executive-portal-aelbd/settings': ['settings.*'],
+    '/buyer-portal': ['buyer_dashboard.view'],
+    '/buyer-portal/settings': ['buyer_dashboard.view'],
+    '/buyer-portal/rfqs': ['buyer_dashboard.view'],
+    '/buyer-portal/inquiries': ['buyer_dashboard.view'],
 
     // Developer only routes (checked explicitly)
-    '/admin/tracking': ['*'],
-    '/admin/maintenance': ['*'],
-    '/admin/performance': ['*'],
-    '/admin/activity-log': ['activity_log.view', '*']
+    '/executive-portal-aelbd/tracking': ['*'],
+    '/executive-portal-aelbd/maintenance': ['*'],
+    '/executive-portal-aelbd/performance': ['*'],
+    '/executive-portal-aelbd/activity-log': ['activity_log.view', '*']
 };
 
 /**
@@ -95,8 +99,8 @@ export function canAccessRoute(role: Role | undefined | null, routePath: string)
         }
     }
 
-    // Default deny for unmapped /admin routes
-    if (routePath.startsWith('/admin')) {
+    // Default deny for unmapped admin routes
+    if (routePath.startsWith('/executive-portal-aelbd')) {
         return false;
     }
 
@@ -117,38 +121,38 @@ export function getAccessibleSidebarItems(role: Role | undefined | null): Sideba
 
     const items: SidebarItem[] = [];
 
-    if (hasPermission(role, 'dashboard.view')) items.push({ label: 'Dashboard', icon: 'LayoutDashboard', href: '/admin' });
-    if (hasPermission(role, 'buyer_dashboard.view')) items.push({ label: 'Portal', icon: 'ShoppingBag', href: '/admin' });
+    if (hasPermission(role, 'dashboard.view')) items.push({ label: 'Dashboard', icon: 'LayoutDashboard', href: '/executive-portal-aelbd' });
+    if (hasPermission(role, 'buyer_dashboard.view')) items.push({ label: 'Portal', icon: 'ShoppingBag', href: '/executive-portal-aelbd' });
 
-    if (hasPermission(role, 'products.view')) items.push({ label: 'Products', icon: 'Package', href: '/admin/products' });
-    if (hasPermission(role, 'bulk_upload')) items.push({ label: 'Bulk Upload', icon: 'Upload', href: '/admin/bulk-upload' });
-    if (hasPermission(role, 'categories.*') || hasPermission(role, 'categories.view')) items.push({ label: 'Categories', icon: 'Tags', href: '/admin/categories' });
+    if (hasPermission(role, 'products.view')) items.push({ label: 'Products', icon: 'Package', href: '/executive-portal-aelbd/products' });
+    if (hasPermission(role, 'bulk_upload')) items.push({ label: 'Bulk Upload', icon: 'Upload', href: '/executive-portal-aelbd/bulk-upload' });
+    if (hasPermission(role, 'categories.*') || hasPermission(role, 'categories.view')) items.push({ label: 'Categories', icon: 'Tags', href: '/executive-portal-aelbd/categories' });
 
-    if (hasPermission(role, 'rfq.view') || hasPermission(role, 'rfq.view_own')) items.push({ label: 'Quotes', icon: 'ClipboardList', href: '/admin/rfq' });
-    if (hasPermission(role, 'inquiries.view')) items.push({ label: 'Inquiries', icon: 'MessageSquare', href: '/admin/inquiries' });
-    if (hasPermission(role, 'forms.*')) items.push({ label: 'Submissions', icon: 'FileDigit', href: '/admin/forms' });
+    if (hasPermission(role, 'rfq.view') || hasPermission(role, 'rfq.view_own')) items.push({ label: 'Quotes', icon: 'ClipboardList', href: '/executive-portal-aelbd/rfq' });
+    if (hasPermission(role, 'inquiries.view')) items.push({ label: 'Inquiries', icon: 'MessageSquare', href: '/executive-portal-aelbd/inquiries' });
+    if (hasPermission(role, 'forms.*')) items.push({ label: 'Submissions', icon: 'FileDigit', href: '/executive-portal-aelbd/forms' });
 
-    if (hasPermission(role, 'media.view')) items.push({ label: 'Media Library', icon: 'FileImage', href: '/admin/media' });
-    if (hasPermission(role, 'blog.view')) items.push({ label: 'Blog', icon: 'FileText', href: '/admin/blog' });
+    if (hasPermission(role, 'media.view')) items.push({ label: 'Media Library', icon: 'FileImage', href: '/executive-portal-aelbd/media' });
+    if (hasPermission(role, 'blog.view')) items.push({ label: 'Blog', icon: 'FileText', href: '/executive-portal-aelbd/blog' });
 
-    if (hasPermission(role, 'users.manage')) items.push({ label: 'Users & Roles', icon: 'Users', href: '/admin/users' });
+    if (hasPermission(role, 'users.manage')) items.push({ label: 'Users & Roles', icon: 'Users', href: '/executive-portal-aelbd/users' });
 
-    if (hasPermission(role, 'menus.*')) items.push({ label: 'Menus', icon: 'MenuIcon', href: '/admin/menus' });
-    if (hasPermission(role, 'pages.*')) items.push({ label: 'Pages', icon: 'FileCode', href: '/admin/pages' });
-    if (hasPermission(role, 'homepage.*')) items.push({ label: 'Homepage Builder', icon: 'LayoutTemplate', href: '/admin/homepage' });
-    if (hasPermission(role, 'theme.*')) items.push({ label: 'Theme Settings', icon: 'Paintbrush', href: '/admin/theme' });
-    if (hasPermission(role, 'popups.*')) items.push({ label: 'Pop-ups', icon: 'Megaphone', href: '/admin/popups' });
+    if (hasPermission(role, 'menus.*')) items.push({ label: 'Menus', icon: 'MenuIcon', href: '/executive-portal-aelbd/menus' });
+    if (hasPermission(role, 'pages.*')) items.push({ label: 'Pages', icon: 'FileCode', href: '/executive-portal-aelbd/pages' });
+    if (hasPermission(role, 'homepage.*')) items.push({ label: 'Homepage Builder', icon: 'LayoutTemplate', href: '/executive-portal-aelbd/homepage' });
+    if (hasPermission(role, 'theme.*')) items.push({ label: 'Theme Settings', icon: 'Paintbrush', href: '/executive-portal-aelbd/theme' });
+    if (hasPermission(role, 'popups.*')) items.push({ label: 'Pop-ups', icon: 'Megaphone', href: '/executive-portal-aelbd/popups' });
 
-    if (hasPermission(role, 'seo.*')) items.push({ label: 'SEO Manager', icon: 'Globe', href: '/admin/seo' });
-    if (hasPermission(role, 'email.*')) items.push({ label: 'Email Config', icon: 'Mail', href: '/admin/email' });
-    if (hasPermission(role, 'settings.*')) items.push({ label: 'General Settings', icon: 'Settings', href: '/admin/settings' });
+    if (hasPermission(role, 'seo.*')) items.push({ label: 'SEO Manager', icon: 'Globe', href: '/executive-portal-aelbd/seo' });
+    if (hasPermission(role, 'email.*')) items.push({ label: 'Email Config', icon: 'Mail', href: '/executive-portal-aelbd/email' });
+    if (hasPermission(role, 'settings.*')) items.push({ label: 'General Settings', icon: 'Settings', href: '/executive-portal-aelbd/settings' });
 
     if (hasPermission(role, '*')) {
-        items.push({ label: 'Tracking Scripts', icon: 'BarChart3', href: '/admin/tracking' });
-        items.push({ label: 'Activity Logs', icon: 'Activity', href: '/admin/activity-log' });
-        items.push({ label: 'Maintenance', icon: 'ShieldAlert', href: '/admin/maintenance' });
+        items.push({ label: 'Tracking Scripts', icon: 'BarChart3', href: '/executive-portal-aelbd/tracking' });
+        items.push({ label: 'Activity Logs', icon: 'Activity', href: '/executive-portal-aelbd/activity-log' });
+        items.push({ label: 'Maintenance', icon: 'ShieldAlert', href: '/executive-portal-aelbd/maintenance' });
     } else if (hasPermission(role, 'activity_log.view')) {
-        items.push({ label: 'Activity Logs', icon: 'Activity', href: '/admin/activity-log' });
+        items.push({ label: 'Activity Logs', icon: 'Activity', href: '/executive-portal-aelbd/activity-log' });
     }
 
     return items;
@@ -169,3 +173,4 @@ const ROLE_RANKS = {
 export function isRoleHigherThan(role1: Role, role2: Role): boolean {
     return ROLE_RANKS[role1] > ROLE_RANKS[role2];
 }
+

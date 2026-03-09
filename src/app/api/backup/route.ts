@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
             status: 200,
             headers: {
                 'Content-Type': 'application/x-sqlite3',
-                'Content-Disposition': `attachment; filename=globalstitch-backup-${new Date().toISOString().split('T')[0]}.db`,
+                'Content-Disposition': `attachment; filename=apparelemporium-backup-${new Date().toISOString().split('T')[0]}.db`,
             },
         });
     } catch (error: any) {
@@ -70,3 +70,4 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
 }
+

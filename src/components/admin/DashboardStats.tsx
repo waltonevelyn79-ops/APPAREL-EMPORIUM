@@ -32,3 +32,4 @@ export default function DashboardStats({ icon, label, value, trend, bgClass }: D
         </div>
     );
 }
+

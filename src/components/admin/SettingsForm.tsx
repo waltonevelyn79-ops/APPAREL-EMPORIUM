@@ -84,3 +84,4 @@ export default function SettingsForm({ initialData }: { initialData: any }) {
         </div>
     );
 }
+

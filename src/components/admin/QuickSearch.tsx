@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation';
 import { Command, Search, FileText, Settings, ShoppingBag, X } from 'lucide-react';
 
 const ADMIN_PAGES = [
-    { name: 'Dashboard', url: '/admin', icon: <Command className="w-4 h-4" /> },
-    { name: 'Settings', url: '/admin/settings', icon: <Settings className="w-4 h-4" /> },
-    { name: 'User Management', url: '/admin/users', icon: <Settings className="w-4 h-4" /> },
-    { name: 'Products', url: '/admin/products', icon: <ShoppingBag className="w-4 h-4" /> },
-    { name: 'Categories', url: '/admin/categories', icon: <ShoppingBag className="w-4 h-4" /> },
-    { name: 'Custom Forms', url: '/admin/forms', icon: <FileText className="w-4 h-4" /> },
-    { name: 'Performance Dashboard', url: '/admin/performance', icon: <Command className="w-4 h-4" /> }
+    { name: 'Dashboard', url: '/executive-portal-aelbd', icon: <Command className="w-4 h-4" /> },
+    { name: 'Settings', url: '/executive-portal-aelbd/settings', icon: <Settings className="w-4 h-4" /> },
+    { name: 'User Management', url: '/executive-portal-aelbd/users', icon: <Settings className="w-4 h-4" /> },
+    { name: 'Products', url: '/executive-portal-aelbd/products', icon: <ShoppingBag className="w-4 h-4" /> },
+    { name: 'Categories', url: '/executive-portal-aelbd/categories', icon: <ShoppingBag className="w-4 h-4" /> },
+    { name: 'Custom Forms', url: '/executive-portal-aelbd/forms', icon: <FileText className="w-4 h-4" /> },
+    { name: 'Performance Dashboard', url: '/executive-portal-aelbd/performance', icon: <Command className="w-4 h-4" /> }
 ];
 
 export default function QuickSearch() {
@@ -115,3 +115,4 @@ export default function QuickSearch() {
         </div>
     );
 }
+

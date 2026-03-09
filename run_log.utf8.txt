@@ -1,0 +1,201 @@
+﻿build-and-deploy	Set up job	∩╗┐2026-03-05T18:29:35.7327452Z Current runner version: '2.332.0'
+build-and-deploy	Set up job	2026-03-05T18:29:35.7353558Z ##[group]Runner Image Provisioner
+build-and-deploy	Set up job	2026-03-05T18:29:35.7354596Z Hosted Compute Agent
+build-and-deploy	Set up job	2026-03-05T18:29:35.7355283Z Version: 20260213.493
+build-and-deploy	Set up job	2026-03-05T18:29:35.7356067Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+build-and-deploy	Set up job	2026-03-05T18:29:35.7356851Z Build Date: 2026-02-13T00:28:41Z
+build-and-deploy	Set up job	2026-03-05T18:29:35.7357684Z Worker ID: {5954818e-44e9-4d55-b647-fabcc7749a84}
+build-and-deploy	Set up job	2026-03-05T18:29:35.7358462Z Azure Region: westus
+build-and-deploy	Set up job	2026-03-05T18:29:35.7359070Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T18:29:35.7360900Z ##[group]Operating System
+build-and-deploy	Set up job	2026-03-05T18:29:35.7361609Z Ubuntu
+build-and-deploy	Set up job	2026-03-05T18:29:35.7362247Z 24.04.3
+build-and-deploy	Set up job	2026-03-05T18:29:35.7362909Z LTS
+build-and-deploy	Set up job	2026-03-05T18:29:35.7363482Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T18:29:35.7364157Z ##[group]Runner Image
+build-and-deploy	Set up job	2026-03-05T18:29:35.7364870Z Image: ubuntu-24.04
+build-and-deploy	Set up job	2026-03-05T18:29:35.7365545Z Version: 20260302.42.1
+build-and-deploy	Set up job	2026-03-05T18:29:35.7366669Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+build-and-deploy	Set up job	2026-03-05T18:29:35.7368558Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+build-and-deploy	Set up job	2026-03-05T18:29:35.7369976Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T18:29:35.7371362Z ##[group]GITHUB_TOKEN Permissions
+build-and-deploy	Set up job	2026-03-05T18:29:35.7373347Z Contents: read
+build-and-deploy	Set up job	2026-03-05T18:29:35.7374163Z Metadata: read
+build-and-deploy	Set up job	2026-03-05T18:29:35.7374809Z Packages: read
+build-and-deploy	Set up job	2026-03-05T18:29:35.7375824Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T18:29:35.7378046Z Secret source: Actions
+build-and-deploy	Set up job	2026-03-05T18:29:35.7379013Z Prepare workflow directory
+build-and-deploy	Set up job	2026-03-05T18:29:35.7702466Z Prepare all required actions
+build-and-deploy	Set up job	2026-03-05T18:29:35.7739015Z Getting action download info
+build-and-deploy	Set up job	2026-03-05T18:29:36.2142665Z Download action repository 'appleboy/ssh-action@v1' (SHA:0ff4204d59e8e51228ff73bce53f80d53301dee2)
+build-and-deploy	Set up job	2026-03-05T18:29:38.7128843Z Complete job name: build-and-deploy
+build-and-deploy	Deploy to Hostinger via SSH	∩╗┐2026-03-05T18:29:38.8034811Z ##[group]Run appleboy/ssh-action@v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8035846Z with:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8036484Z   host: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8036987Z   username: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8040611Z   key: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8041150Z   port: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8047506Z   script: source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  git init
+build-and-deploy	Deploy to Hostinger via SSH	  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	git fetch origin main
+build-and-deploy	Deploy to Hostinger via SSH	git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Ensure .env is created for production
+build-and-deploy	Deploy to Hostinger via SSH	echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_SECRET=\"\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_URL=\"\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	npm ci --production
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	npm run build
+build-and-deploy	Deploy to Hostinger via SSH	npm install pm2 -g --no-save
+build-and-deploy	Deploy to Hostinger via SSH	pm2 restart garments-website || pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8053365Z   protocol: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8053881Z   timeout: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8054377Z   command_timeout: 10m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8054911Z   proxy_port: 22
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8055420Z   proxy_protocol: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8055953Z   proxy_timeout: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8056487Z   curl_insecure: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8057055Z   capture_stdout: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8057896Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8165672Z ##[group]Run echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8166590Z [36;1mecho "$GITHUB_ACTION_PATH" >> $GITHUB_PATH[0m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8221258Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8222048Z env:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8222746Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/appleboy/ssh-action/v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8223583Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8454307Z ##[group]Run entrypoint.sh
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8454999Z [36;1mentrypoint.sh[0m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8507165Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8508169Z env:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8508845Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/appleboy/ssh-action/v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8510078Z   INPUT_HOST: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8510616Z   INPUT_PORT: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8511148Z   INPUT_PROTOCOL: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8511733Z   INPUT_USERNAME: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8512265Z   INPUT_PASSWORD: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8512917Z   INPUT_PASSPHRASE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8516401Z   INPUT_KEY: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8516911Z   INPUT_KEY_PATH: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8517439Z   INPUT_FINGERPRINT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8517966Z   INPUT_PROXY_HOST: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8518483Z   INPUT_PROXY_PORT: 22
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8519021Z   INPUT_PROXY_USERNAME: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8519865Z   INPUT_PROXY_PASSWORD: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8520465Z   INPUT_PROXY_PASSPHRASE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8521014Z   INPUT_PROXY_KEY: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8521533Z   INPUT_PROXY_KEY_PATH: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8522088Z   INPUT_PROXY_FINGERPRINT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8522655Z   INPUT_TIMEOUT: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8523189Z   INPUT_PROXY_TIMEOUT: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8523746Z   INPUT_COMMAND_TIMEOUT: 10m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8530584Z   INPUT_SCRIPT: source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  git init
+build-and-deploy	Deploy to Hostinger via SSH	  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	git fetch origin main
+build-and-deploy	Deploy to Hostinger via SSH	git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Ensure .env is created for production
+build-and-deploy	Deploy to Hostinger via SSH	echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_SECRET=\"\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_URL=\"\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	npm ci --production
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	npm run build
+build-and-deploy	Deploy to Hostinger via SSH	npm install pm2 -g --no-save
+build-and-deploy	Deploy to Hostinger via SSH	pm2 restart garments-website || pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8536796Z   INPUT_SCRIPT_FILE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8537327Z   INPUT_ENVS: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8537830Z   INPUT_ENVS_FORMAT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8538349Z   INPUT_DEBUG: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8538837Z   INPUT_ALL_ENVS: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8539465Z   INPUT_REQUEST_PTY: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8540006Z   INPUT_USE_INSECURE_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8540575Z   INPUT_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8541090Z   INPUT_PROXY_USE_INSECURE_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8541706Z   INPUT_PROXY_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8542235Z   INPUT_SYNC: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8542751Z   INPUT_CAPTURE_STDOUT: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8543361Z   INPUT_CURL_INSECURE: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8543950Z   DRONE_SSH_VERSION: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8544473Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:38.8699717Z Downloading drone-ssh-1.8.2-linux-amd64 from https://github.com/appleboy/drone-ssh/releases/download/v1.8.2
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:39.0025920Z ======= CLI Version Information =======
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:39.0046879Z Drone SSH version 1.8.2
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:39.0051075Z =======================================
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6757001Z bash: line 1: /home/***/.bashrc: No such file or directory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6758138Z bash: line 2: /home/***/.bash_profile: No such file or directory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6788796Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6789990Z hint: is subject to change. To configure the initial branch name to use in all
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6791062Z hint: of your new repositories, which will suppress this warning, call:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6791839Z hint:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6796622Z Initialized empty Git repository in /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs/.git/
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6797625Z hint: 	git config --global init.defaultBranch <name>
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6798029Z hint:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6798795Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6799644Z hint: 'development'. The just-created branch can be renamed via this command:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6800147Z hint:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:40.6800424Z hint: 	git branch -m <name>
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.3686166Z fatal: unable to create thread: Resource temporarily unavailable
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.3689692Z fatal: fetch-pack: invalid index-pack output
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.3719497Z fatal: ambiguous argument 'origin/main': unknown revision or path not in the working tree.
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.3720160Z Use '--' to separate paths from revisions, like this:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.3720600Z 'git <command> [<revision>...] -- [<file>...]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.5248712Z npm warn config production Use `--omit=dev` instead.
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7806007Z npm error code EUSAGE
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7806490Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7807045Z npm error The `npm ci` command can only install with an existing package-lock.json or
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7808468Z npm error npm-shrinkwrap.json with lockfileVersion >= 1. Run an install with npm@5 or
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7810072Z npm error later to generate a package-lock.json file, then try again.
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7810864Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7811297Z npm error Clean install a project
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7811751Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7812094Z npm error Usage:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7812473Z npm error npm ci
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7812756Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7813036Z npm error Options:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7813450Z npm error [--install-strategy <hoisted|nested|shallow|linked>] [--legacy-bundling]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7814080Z npm error [--global-style] [--omit <dev|optional|peer> [--omit <dev|optional|peer> ...]]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7814723Z npm error [--include <prod|dev|optional|peer> [--include <prod|dev|optional|peer> ...]]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7815764Z npm error [--strict-peer-deps] [--foreground-scripts] [--ignore-scripts] [--no-audit]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7816279Z npm error [--no-bin-links] [--no-fund] [--dry-run]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7816770Z npm error [-w|--workspace <workspace-name> [-w|--workspace <workspace-name> ...]]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7817338Z npm error [-ws|--workspaces] [--include-workspace-root] [--install-links]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7817756Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7818092Z npm error aliases: clean-install, ic, install-clean, isntall-clean
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7818486Z npm error
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7818726Z npm error Run "npm help ci" for more info
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:41.7819732Z npm error A complete log of this run can be found in: /home/***/.npm/_logs/2026-03-05T18_29_40_779Z-debug-0.log
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:29:42.9618524Z npm warn exec The following package was not found and will be installed: prisma@7.4.2
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:39:40.6852337Z 2026/03/05 18:39:40 Run Command Timeout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T18:39:40.6878055Z ##[error]Process completed with exit code 1.
+build-and-deploy	Complete job	∩╗┐2026-03-05T18:39:40.6986565Z Cleaning up orphan processes

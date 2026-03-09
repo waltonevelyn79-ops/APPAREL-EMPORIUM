@@ -35,6 +35,10 @@ export interface Product {
     isFeatured: boolean;
     isActive: boolean;
     tags?: string;
+    priceDisplay: boolean;
+    minOrder: string | null;
+    priceRange: string | null;
+    tieredPricing: string | null;
     createdAt: Date;
     updatedAt: Date;
     category?: Category;
@@ -134,3 +138,4 @@ export interface CustomForm {
     isActive: boolean;
     createdAt: Date;
 }
+

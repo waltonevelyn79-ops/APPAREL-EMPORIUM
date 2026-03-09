@@ -3,17 +3,27 @@ import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
-
 export async function GET(req: Request) {
     try {
         const { searchParams } = new URL(req.url);
         const folder = searchParams.get('folder');
         const limit = searchParams.get('limit');
+        const search = searchParams.get('search');
 
-        const params: any = { orderBy: { createdAt: 'desc' } };
+        const params: any = {
+            orderBy: { createdAt: 'desc' },
+            where: {}
+        };
 
         if (folder && folder !== 'all') {
-            params.where = { folder };
+            params.where.folder = folder;
+        }
+
+        if (search) {
+            params.where.OR = [
+                { fileName: { contains: search } },
+                { originalName: { contains: search } }
+            ];
         }
 
         if (limit) {

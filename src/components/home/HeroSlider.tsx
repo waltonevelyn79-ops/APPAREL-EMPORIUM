@@ -84,12 +84,14 @@ export default function HeroSlider({ data }: HeroSliderProps) {
                         <div className={`max-w-4xl px-4 text-center transform transition-all duration-1000 delay-100 pointer-events-auto
                             ${idx === currentIdx ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                         >
-                            <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg font-heading">
-                                {slide.title}
-                            </h2>
-                            <p className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md">
-                                {slide.subtitle}
-                            </p>
+                            <h2
+                                className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg font-heading"
+                                dangerouslySetInnerHTML={{ __html: slide.title }}
+                            />
+                            <p
+                                className="text-lg md:text-2xl text-gray-200 mb-10 max-w-2xl mx-auto drop-shadow-md"
+                                dangerouslySetInnerHTML={{ __html: slide.subtitle }}
+                            />
                             {slide.ctaText && slide.ctaLink && (
                                 <Link
                                     href={slide.ctaLink}
@@ -140,3 +142,4 @@ export default function HeroSlider({ data }: HeroSliderProps) {
         </section>
     );
 }
+

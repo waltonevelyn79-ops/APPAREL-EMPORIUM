@@ -114,3 +114,4 @@ function AnimatedNumber({ value, isVisible }: { value: number, isVisible: boolea
 
     return <span>{count.toLocaleString()}</span>;
 }
+

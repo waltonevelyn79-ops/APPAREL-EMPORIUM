@@ -7,14 +7,15 @@ import Footer from '@/components/layout/Footer';
 import AuthProvider from '@/components/providers/AuthProvider';
 import TrackingScripts from '@/components/layout/TrackingScripts';
 import CookieConsent from '@/components/layout/CookieConsent';
+import CompareTray from '@/components/products/CompareTray';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata = {
-    title: 'Apparel Emporium | A Windows of Fashion',
-    description: '100% Export Oriented Readymade Garments, Home Textiles, Footwear and Accessories Buying House',
+    title: 'Apparel Emporium | Trusted Garments Sourcing Partner in Bangladesh',
+    description: '100% Export Oriented Readymade Garments, Home Textiles, Footwear and Accessories Buying House in Bangladesh. ISO 9001, BSCI, OEKO-TEX Certified.',
     icons: {
-        icon: '/logo.jpg'
+        icon: '/favicon.png'
     }
 };
 
@@ -31,10 +32,11 @@ export default function RootLayout({
                         <AuthProvider>
                             <TrackingScripts />
                             <Header />
-                            <main className="flex-grow">
+                            <main className="flex-grow relative">
                                 {children}
                             </main>
                             <Footer />
+                            <CompareTray />
                             <CookieConsent />
                         </AuthProvider>
                     </ThemeProvider>
@@ -43,3 +45,4 @@ export default function RootLayout({
         </html>
     );
 }
+

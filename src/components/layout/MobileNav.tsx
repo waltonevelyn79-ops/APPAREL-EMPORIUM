@@ -142,3 +142,4 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
         </div>
     );
 }
+

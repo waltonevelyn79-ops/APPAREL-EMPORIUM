@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSettings } from '@/context/SettingsContext';
+import { usePathname } from 'next/navigation';
 import { Facebook, Twitter, Instagram, Linkedin, Youtube, Mail, MapPin, Phone, ArrowRight } from 'lucide-react';
 
 type MenuItem = {
@@ -22,6 +23,10 @@ type CategoryItem = {
 
 export default function Footer() {
     const { settings } = useSettings();
+    const pathname = usePathname();
+
+    if (pathname?.startsWith('/executive-portal-aelbd')) return null;
+
     const [footerMenus, setFooterMenus] = useState<MenuItem[]>([]);
     const [categories, setCategories] = useState<CategoryItem[]>([]);
 
@@ -63,13 +68,12 @@ export default function Footer() {
 
                     {/* Brand Column */}
                     <div className="lg:col-span-4 space-y-6">
-                        <Link href="/" className="inline-block relative w-40 h-16">
-                            {/* If the system has a dedicated explicit light logo configured, force it in Footer, otherwise use dark text */}
+                        <Link href="/" className="inline-block relative w-56 h-14 bg-white rounded-lg p-1.5 shadow-md group overflow-hidden">
                             <Image
-                                src={settings.logo_light || '/logo.jpg'}
+                                src={settings.footer_logo || settings.logo_light || '/logo.jpg'}
                                 alt={companyName}
                                 fill
-                                className="object-contain object-left invert opacity-90 brightness-0 sepia-0 grayscale hover:opacity-100 transition-opacity"
+                                className="object-contain"
                                 unoptimized
                             />
                         </Link>
@@ -169,7 +173,7 @@ export default function Footer() {
 
                         <div className="flex gap-4 group">
                             <Mail className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={20} />
-                            <a href={`mailto:${settings.company_email || 'hello@globalstitch.com'}`} className="text-sm hover:text-white transition-colors">
+                            <a href={`mailto:${settings.company_email || 'hello@apparelemporium.com'}`} className="text-sm hover:text-white transition-colors">
                                 {settings.company_email || 'sourcing@apparel-emporium.com'}
                             </a>
                         </div>
@@ -194,3 +198,4 @@ export default function Footer() {
         </footer>
     );
 }
+

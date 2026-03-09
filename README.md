@@ -1,4 +1,4 @@
-slm# GlobalStitch Sourcing — Garments Buying House Website
+# Apparel Emporium — Garments Buying House Website
 
 A complete, production-ready, full-stack garments buying house website built with the modern Next.js 14 App Router, robust server actions, an administrative dashboard, custom drag-and-drop form builders, and a dynamic theming system.
 
@@ -61,9 +61,9 @@ Upon successful database seed, the following users are created automatically.
 
 | Role | Email | Password |
 | :--- | :--- | :--- |
-| **Developer** | `dev@globalstitch.com` | `DevMaster@2024` |
-| **Super Admin** | `admin@globalstitch.com` | `Admin@2024` |
-| **Editor** | `editor@globalstitch.com` | `Editor@2024` |
+| **Developer** | `dev@apparelemporium.com` | `DevMaster@2024` |
+| **Super Admin** | `admin@apparelemporium.com` | `Admin@2024` |
+| **Editor** | `editor@apparelemporium.com` | `Editor@2024` |
 
 *Security Note: It is highly recommended to change these default passwords or remove dummy accounts before taking the application live.*
 

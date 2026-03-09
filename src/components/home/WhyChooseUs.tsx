@@ -13,9 +13,14 @@ interface FeatureCard {
 
 interface WhyChooseUsProps {
     data: any;
+    headings?: {
+        why_choose_us_eyebrow?: string;
+        why_choose_us_heading?: string;
+        why_choose_us_subheading?: string;
+    };
 }
 
-export default function WhyChooseUs({ data }: WhyChooseUsProps) {
+export default function WhyChooseUs({ data, headings }: WhyChooseUsProps) {
     const [features, setFeatures] = useState<FeatureCard[]>([]);
 
     useEffect(() => {
@@ -42,12 +47,14 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
 
                 <div className="text-center mb-16 animate-in fade-in slide-in-from-bottom-6 duration-700">
-                    <span className="text-secondary font-bold tracking-widest uppercase text-xs md:text-sm mb-3 block">Corporate Advantage</span>
+                    <span className="text-secondary font-bold tracking-widest uppercase text-xs md:text-sm mb-3 block">
+                        {headings?.why_choose_us_eyebrow || 'Corporate Advantage'}
+                    </span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white font-heading">
-                        Why Partner With Us
+                        {headings?.why_choose_us_heading || 'Why Partner With Us'}
                     </h2>
                     <p className="mt-4 text-gray-500 dark:text-gray-400 max-w-2xl mx-auto text-lg">
-                        Leading global sourcing and manufacturing excellence with a commitment to quality, sustainability, and transparency.
+                        {headings?.why_choose_us_subheading || 'Leading global sourcing and manufacturing excellence with a commitment to quality, sustainability, and transparency.'}
                     </p>
                     <div className="w-24 h-1 bg-gradient-to-r from-primary to-secondary mx-auto mt-8 rounded-full"></div>
                 </div>
@@ -87,3 +94,4 @@ export default function WhyChooseUs({ data }: WhyChooseUsProps) {
         </section>
     );
 }
+

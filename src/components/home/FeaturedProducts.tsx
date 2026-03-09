@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, ShoppingBag, Eye, Star } from 'lucide-react';
+import { extractFeaturedImage } from '@/lib/utils';
 
 interface Product {
     id: string;
@@ -11,12 +12,13 @@ interface Product {
     slug: string;
     description: string;
     featuredImage: string;
-    price: number;
+    images: string; // JSON string of image URLs or {url, alt} objects
+    priceRange: string;
     category: { name: string, slug: string };
     _count?: { reviews: number };
 }
 
-export default function FeaturedProducts() {
+export default function FeaturedProducts({ headings }: { headings?: { featured_products_eyebrow?: string; featured_products_heading?: string } }) {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -51,10 +53,10 @@ export default function FeaturedProducts() {
                 <div className="flex justify-between items-end mb-12">
                     <div className="animate-in fade-in slide-in-from-left-4 duration-700">
                         <span className="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block flex items-center gap-2">
-                            <Star size={16} className="fill-secondary" /> Premium Quality
+                            <Star size={16} className="fill-secondary" /> {headings?.featured_products_eyebrow || 'Premium Quality'}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 dark:text-white font-heading">
-                            Featured Products
+                            {headings?.featured_products_heading || 'Featured Products'}
                         </h2>
                     </div>
 
@@ -93,10 +95,11 @@ export default function FeaturedProducts() {
                             <div className="relative aspect-[4/5] bg-gray-100 dark:bg-gray-900 overflow-hidden">
                                 <Link href={`/products/${product.slug}`}>
                                     <Image
-                                        src={product.featuredImage || '/placeholder-product.jpg'}
+                                        src={extractFeaturedImage(product.images)}
                                         alt={product.name}
                                         fill
                                         className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                        unoptimized
                                     />
                                 </Link>
 
@@ -135,7 +138,7 @@ export default function FeaturedProducts() {
 
                                 <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 dark:border-gray-800">
                                     <div className="font-bold text-xl text-primary">
-                                        ${product.price?.toFixed(2) || '0.00'}
+                                        {product.priceRange ? (product.priceRange.includes('$') ? product.priceRange : `$${product.priceRange}`) : '$0.00'}
                                     </div>
                                     <div className="flex items-center gap-1 text-sm text-yellow-500 font-bold">
                                         <Star size={14} className="fill-yellow-500" />
@@ -152,3 +155,4 @@ export default function FeaturedProducts() {
         </section>
     );
 }
+

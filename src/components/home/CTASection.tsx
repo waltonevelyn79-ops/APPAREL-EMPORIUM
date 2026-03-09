@@ -78,3 +78,4 @@ export default function CTASection({ data }: CTAProps) {
         </section>
     );
 }
+

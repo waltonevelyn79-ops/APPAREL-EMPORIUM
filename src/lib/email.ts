@@ -65,3 +65,4 @@ export function renderTemplate(templateString: string, variables: Record<string,
     });
     return result;
 }
+

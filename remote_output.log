@@ -1,0 +1,75 @@
+=== NPM INSTALL ===
+bash: line 1: /home/u808072502/.bashrc: No such file or directory
+bash: line 2: /home/u808072502/.bash_profile: No such file or directory
+npm warn config production Use `--omit=dev` instead.
+
+> garments-buying-house@1.0.0 postinstall
+> npx prisma generate
+
+Environment variables loaded from .env
+Error: Could not find Prisma Schema that is required for this command.
+You can either provide it with `--schema` argument, set it as `prisma.schema` in your package.json or put it into the default location.
+Checked following paths:
+
+schema.prisma: file not found
+prisma/schema.prisma: file not found
+prisma/schema: directory not found
+
+See also https://pris.ly/d/prisma-schema-location
+npm error code 1
+npm error path /home/u808072502/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+npm error command failed
+npm error command sh -c npx prisma generate
+npm error A complete log of this run can be found in: /home/u808072502/.npm/_logs/2026-03-05T20_14_17_186Z-debug-0.log
+=== PRISMA GENERATE ===
+Environment variables loaded from .env
+Error: Could not find Prisma Schema that is required for this command.
+You can either provide it with `--schema` argument, set it as `prisma.schema` in your package.json or put it into the default location.
+Checked following paths:
+
+schema.prisma: file not found
+prisma/schema.prisma: file not found
+prisma/schema: directory not found
+
+See also https://pris.ly/d/prisma-schema-location
+=== PRISMA DB PUSH ===
+Environment variables loaded from .env
+Error: Could not find Prisma Schema that is required for this command.
+You can either provide it with `--schema` argument, set it as `prisma.schema` in your package.json or put it into the default location.
+Checked following paths:
+
+schema.prisma: file not found
+prisma/schema.prisma: file not found
+prisma/schema: directory not found
+
+See also https://pris.ly/d/prisma-schema-location
+Environment variables loaded from .env
+Error: Could not find Prisma Schema that is required for this command.
+You can either provide it with `--schema` argument, set it as `prisma.schema` in your package.json or put it into the default location.
+Checked following paths:
+
+schema.prisma: file not found
+prisma/schema.prisma: file not found
+prisma/schema: directory not found
+
+See also https://pris.ly/d/prisma-schema-location
+=== NPM RUN BUILD ===
+
+> garments-buying-house@1.0.0 build
+> npx prisma generate && next build
+
+Environment variables loaded from .env
+Error: Could not find Prisma Schema that is required for this command.
+You can either provide it with `--schema` argument, set it as `prisma.schema` in your package.json or put it into the default location.
+Checked following paths:
+
+schema.prisma: file not found
+prisma/schema.prisma: file not found
+prisma/schema: directory not found
+
+See also https://pris.ly/d/prisma-schema-location
+=== PM2 RESTART ===
+[PM2] Spawning PM2 daemon with pm2_home=/home/u808072502/.pm2
+[PM2] PM2 Successfully daemonized
+[PM2][ERROR] Process or Namespace garments-website not found
+[PM2][ERROR] File ecosystem.config.js not found

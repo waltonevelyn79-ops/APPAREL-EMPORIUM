@@ -1,28 +1,28 @@
 generator client {
-  provider      = "prisma-client-js"
-  engineType    = "binary"
+  provider   = "prisma-client-js"
+  engineType = "binary"
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id             String           @id @default(cuid())
-  name           String?
-  email          String           @unique
-  password       String
-  role           String           @default("VIEWER") // DEVELOPER, SUPER_ADMIN, ADMIN, EDITOR, VIEWER, BUYER
-  avatar         String?
-  isActive       Boolean          @default(true)
-  lastLoginAt    DateTime?
-  createdAt      DateTime         @default(now())
-  updatedAt      DateTime         @updatedAt
-  blogPosts      BlogPost[]
-  activityLogs   ActivityLog[]
-  media          MediaFile[]
-  notifications  Notification[]
+  id            String         @id @default(cuid())
+  name          String?
+  email         String         @unique
+  password      String
+  role          String         @default("VIEWER")
+  avatar        String?
+  isActive      Boolean        @default(true)
+  lastLoginAt   DateTime?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  activityLogs  ActivityLog[]
+  blogPosts     BlogPost[]
+  media         MediaFile[]
+  notifications Notification[]
 }
 
 model Category {
@@ -32,46 +32,60 @@ model Category {
   description String?
   image       String?
   parentId    String?
-  parent      Category?  @relation("SubCategories", fields: [parentId], references: [id], onDelete: SetNull)
-  children    Category[] @relation("SubCategories")
   order       Int        @default(0)
   isActive    Boolean    @default(true)
   createdAt   DateTime   @default(now())
+  parent      Category?  @relation("SubCategories", fields: [parentId], references: [id])
+  children    Category[] @relation("SubCategories")
   products    Product[]
 }
 
 model Product {
-  id               String   @id @default(cuid())
-  name             String
-  slug             String   @unique
-  description      String
-  shortDescription String
-  categoryId       String
-  category         Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  images           String   // JSON string of paths
-  specifications   String   // JSON string of key-value
-  isFeatured       Boolean  @default(false)
-  isActive         Boolean  @default(true)
-  tags             String?  // comma separated
-  variants         String?  // JSON string of variants (color, size, price)
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
-  rfqs             RFQ[]
+  id                   String   @id @default(cuid())
+  name                 String
+  slug                 String   @unique
+  description          String
+  shortDescription     String
+  categoryId           String
+  images               String
+  specifications       String
+  isFeatured           Boolean  @default(false)
+  isActive             Boolean  @default(true)
+  tags                 String?
+  variants             String?
+  priceDisplay         Boolean  @default(true)
+  minOrder             String?
+  priceRange           String?
+  tieredPricing        String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  ogImage              String?
+  seoDescription       String?
+  seoKeywords          String?
+  seoTitle             String?
+  sku                  String?
+  additionalCategories String?
+  category             Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  rfqs                 RFQ[]
 }
 
 model BlogPost {
-  id          String    @id @default(cuid())
-  title       String
-  slug        String    @unique
-  content     String
-  excerpt     String?
-  coverImage  String?
-  authorId    String
-  author      User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  isPublished Boolean   @default(false)
-  publishedAt DateTime?
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id             String    @id @default(cuid())
+  title          String
+  slug           String    @unique
+  content        String
+  excerpt        String?
+  coverImage     String?
+  tags           String?
+  authorId       String
+  isPublished    Boolean   @default(false)
+  isFeatured     Boolean   @default(false)
+  publishedAt    DateTime?
+  seoTitle       String?
+  seoDescription String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+  author         User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
 }
 
 model ContactInquiry {
@@ -83,7 +97,7 @@ model ContactInquiry {
   country         String?
   message         String
   productInterest String?
-  status          String   @default("NEW") // NEW, READ, REPLIED
+  status          String   @default("NEW")
   createdAt       DateTime @default(now())
 }
 
@@ -91,12 +105,12 @@ model SiteSetting {
   id    String @id @default(cuid())
   key   String @unique
   value String
+  group String @default("general")
 }
 
 model RFQ {
   id                  String    @id @default(cuid())
   productId           String?
-  product             Product?  @relation(fields: [productId], references: [id], onDelete: SetNull)
   productName         String?
   buyerName           String
   buyerEmail          String
@@ -108,29 +122,30 @@ model RFQ {
   deliveryDate        DateTime?
   shippingTo          String?
   specialRequirements String?
-  status              String    @default("NEW") // NEW, IN_REVIEW, QUOTED, ACCEPTED, REJECTED
+  status              String    @default("NEW")
   adminNotes          String?
   quotedPrice         String?
   quotedAt            DateTime?
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
+  product             Product?  @relation(fields: [productId], references: [id])
 }
 
 model MenuItem {
   id           String     @id @default(cuid())
-  menuLocation String     @default("main") // main, footer, mobile
+  menuLocation String     @default("main")
   label        String
   url          String
-  target       String     @default("_self") // _self, _blank
+  target       String     @default("_self")
   icon         String?
   parentId     String?
-  parent       MenuItem?  @relation("MenuHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
-  children     MenuItem[] @relation("MenuHierarchy")
   order        Int        @default(0)
   isMegaMenu   Boolean    @default(false)
-  megaMenuData String?    // JSON string
+  megaMenuData String?
   isActive     Boolean    @default(true)
   createdAt    DateTime   @default(now())
+  parent       MenuItem?  @relation("MenuHierarchy", fields: [parentId], references: [id])
+  children     MenuItem[] @relation("MenuHierarchy")
 }
 
 model MediaFile {
@@ -142,36 +157,36 @@ model MediaFile {
   mimeType     String
   width        Int?
   height       Int?
-  folder       String   @default("general") // products, blog, logos, general
+  folder       String   @default("general")
   alt          String?
   uploadedBy   String?
-  user         User?    @relation(fields: [uploadedBy], references: [id], onDelete: SetNull)
   createdAt    DateTime @default(now())
+  user         User?    @relation(fields: [uploadedBy], references: [id])
 }
 
 model ActivityLog {
   id        String   @id @default(cuid())
   userId    String?
-  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
   action    String
   entity    String?
   entityId  String?
-  details   String?  // JSON string
+  details   String?
   ipAddress String?
   userAgent String?
   createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Notification {
   id        String   @id @default(cuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  type      String   // INFO, WARNING, SUCCESS, ERROR
+  type      String
   title     String
   message   String
   link      String?
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Redirect {
@@ -191,9 +206,9 @@ model PopupBanner {
   image        String?
   ctaText      String?
   ctaLink      String?
-  trigger      String    @default("load") // load, delay, exit, scroll
-  triggerValue String?   // "5" (seconds) or "50" (%)
-  displayPages String?   // JSON array of paths or "ALL"
+  trigger      String    @default("load")
+  triggerValue String?
+  displayPages String?
   showOnce     Boolean   @default(false)
   isActive     Boolean   @default(true)
   startDate    DateTime?
@@ -205,7 +220,7 @@ model EmailLog {
   id        String   @id @default(cuid())
   to        String
   subject   String
-  status    String   @default("sent") // sent, failed
+  status    String   @default("sent")
   error     String?
   createdAt DateTime @default(now())
 }
@@ -214,7 +229,8 @@ model CustomForm {
   id             String           @id @default(cuid())
   name           String
   slug           String           @unique
-  fields         String           // JSON string of fields
+  description    String?
+  fields         String
   submitEmail    String?
   successMessage String?
   isActive       Boolean          @default(true)
@@ -225,9 +241,9 @@ model CustomForm {
 model FormSubmission {
   id        String     @id @default(cuid())
   formId    String
-  form      CustomForm @relation(fields: [formId], references: [id], onDelete: Cascade)
-  data      String     // JSON string
+  data      String
   ipAddress String?
   isRead    Boolean    @default(false)
   createdAt DateTime   @default(now())
+  form      CustomForm @relation(fields: [formId], references: [id], onDelete: Cascade)
 }

@@ -1,34 +1,39 @@
 import { prisma } from '@/lib/prisma';
 import { notFound } from 'next/navigation';
 import ProductImageGallery from '@/components/products/ProductImageGallery';
+import RelatedProducts from '@/components/products/RelatedProducts';
+import RecentlyViewedProducts from '@/components/products/RecentlyViewedProducts';
+import RecordProductVisit from '@/components/products/RecordProductVisit';
 import Link from 'next/link';
 import { Mail, CheckCircle, Truck, Package, Factory, Info } from 'lucide-react';
+import { extractProductImages } from '@/lib/utils';
+import DownloadCatalogButton from '@/components/shared/DownloadCatalogButton';
 
 export const dynamic = 'force-dynamic';
-
 
 export default async function ProductDetailPage({
     params
 }: {
     params: { id: string }
 }) {
-    const product = await prisma.product.findUnique({
+    // Current folder is [id], but we treat the 'id' as 'slug' in the query
+    const product = (await prisma.product.findUnique({
         where: { slug: params.id },
         include: { category: true }
-    });
+    })) as any;
 
     if (!product) {
         notFound();
     }
 
-    // Parse images and specs
-    let images = ['/images/placeholder-product.svg'];
-    try {
-        if (typeof product.images === 'string') {
-            images = JSON.parse(product.images);
-            if (!Array.isArray(images) || images.length === 0) images = ['/images/placeholder-product.svg'];
-        }
-    } catch (e) { }
+    // Parse images using shared utility
+    const allImages = (product.images && typeof product.images === 'string')
+        ? (JSON.parse(product.images) || [])
+        : (product.images || []);
+    const images = extractProductImages(product.images);
+    const imageAlts = Array.isArray(allImages) && allImages.length > 0
+        ? allImages.map((img: any) => typeof img === 'object' ? (img.alt || product.name) : product.name)
+        : [product.name];
 
     let specs: any = {};
     try {
@@ -39,32 +44,41 @@ export default async function ProductDetailPage({
 
     return (
         <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-12">
+            {/* Record this visit for "Recently Viewed" */}
+            <RecordProductVisit id={product.id} />
+
             <div className="container mx-auto px-4">
 
-                {/* Breadcrumb */}
-                <div className="flex gap-2 items-center text-sm mb-8 text-gray-500 dark:text-gray-400">
+                {/* Breadcrumb Navigation */}
+                <nav className="flex gap-2 items-center text-sm mb-8 text-gray-500 dark:text-gray-400">
                     <Link href="/" className="hover:text-primary transition-colors">Home</Link>
                     <span>/</span>
                     <Link href="/products" className="hover:text-primary transition-colors">Products</Link>
                     <span>/</span>
-                    <Link href={`/products?category=${product.category?.slug}`} className="hover:text-primary transition-colors">{product.category?.name}</Link>
-                    <span>/</span>
-                    <span className="text-gray-900 dark:text-gray-200 font-medium truncate max-w-xs">{product.name}</span>
-                </div>
+                    {product.category && (
+                        <>
+                            <Link href={`/products?category=${product.category.slug}`} className="hover:text-primary transition-colors">
+                                {product.category.name}
+                            </Link>
+                            <span>/</span>
+                        </>
+                    )}
+                    <span className="text-gray-900 dark:text-gray-200 font-medium truncate max-w-xs text-primary">{product.name}</span>
+                </nav>
 
                 <div className="bg-white dark:bg-dark-surface rounded-3xl p-6 md:p-12 shadow-sm border border-gray-100 dark:border-gray-800">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
-                        {/* Left: Gallery */}
+                        {/* Left Column: Product Image Gallery */}
                         <div>
-                            <ProductImageGallery images={images} />
+                            <ProductImageGallery images={images} alts={imageAlts} />
                         </div>
 
-                        {/* Right: Info */}
+                        {/* Right Column: Key Details & Actions */}
                         <div className="flex flex-col">
                             <div className="mb-4">
                                 <span className="bg-primary/10 text-primary dark:bg-primary/20 dark:text-blue-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                                    {product.category?.name}
+                                    {product.category?.name || 'Garments'}
                                 </span>
                             </div>
 
@@ -76,7 +90,41 @@ export default async function ProductDetailPage({
                                 {product.shortDescription}
                             </p>
 
-                            {/* Key Highlights */}
+                            {/* Pricing Display */}
+                            {product.priceDisplay && (
+                                <div className="mb-10 animate-in fade-in slide-in-from-top-4 duration-500">
+                                    <div className="flex items-baseline gap-4 mb-2">
+                                        <span className="text-4xl md:text-5xl font-black text-primary dark:text-blue-400 font-mono tracking-tighter">
+                                            {product.priceRange || '$7.15-$7.85'}
+                                        </span>
+                                        <span className="text-sm text-gray-400 dark:text-gray-500 font-bold uppercase tracking-widest bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">
+                                            USD / Piece
+                                        </span>
+                                    </div>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 font-bold mb-6 flex items-center gap-2">
+                                        <CheckCircle className="w-4 h-4 text-green-500" />
+                                        Min. Order: <span className="text-gray-900 dark:text-white">{product.minOrder || '500 pieces'}</span>
+                                    </p>
+
+                                    {/* Tiered Pricing Table */}
+                                    {product.tieredPricing && (
+                                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                                            {JSON.parse(product.tieredPricing).map((tier: any, idx: number) => (
+                                                <div key={idx} className="bg-white dark:bg-gray-800/50 border border-gray-100 dark:border-gray-800 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all group border-b-4 border-b-transparent hover:border-b-primary">
+                                                    <span className="block text-[10px] text-gray-400 uppercase font-black tracking-widest mb-1 group-hover:text-primary transition-colors">
+                                                        {tier.max ? `${tier.min}-${tier.max} pcs` : `>= ${tier.min} pcs`}
+                                                    </span>
+                                                    <span className="text-xl font-black text-gray-900 dark:text-white font-mono">
+                                                        ${tier.price}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Key Highlights (MOQ, Lead Time, Capacity) */}
                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
                                 <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-xl flex items-center gap-3">
                                     <Package className="text-primary w-6 h-6" />
@@ -101,12 +149,12 @@ export default async function ProductDetailPage({
                                 </div>
                             </div>
 
-                            {/* Specifications Table */}
+                            {/* Detailed Specifications Table */}
                             <div className="mb-10">
                                 <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                                     <Info className="w-5 h-5 text-primary" /> Product Specifications
                                 </h3>
-                                <div className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden">
+                                <div className="bg-white dark:bg-dark-surface border border-gray-200 dark:border-gray-700 rounded-xl overflow-hidden shadow-sm">
                                     <table className="w-full text-sm text-left">
                                         <tbody>
                                             {Object.entries(specs).map(([key, value], idx) => (
@@ -119,37 +167,59 @@ export default async function ProductDetailPage({
                                                     </td>
                                                 </tr>
                                             ))}
+                                            {Object.keys(specs).length === 0 && (
+                                                <tr>
+                                                    <td colSpan={2} className="px-6 py-4 text-center text-gray-400 italic">No specific specs listed.</td>
+                                                </tr>
+                                            )}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
 
-                            {/* Action */}
-                            <div className="mt-auto bg-gray-50 dark:bg-gray-800/50 p-6 rounded-2xl border border-gray-200 dark:border-gray-700 flex flex-col sm:flex-row items-center justify-between gap-6">
-                                <div>
-                                    <h4 className="font-bold text-gray-900 dark:text-white text-lg">Interested in this product?</h4>
-                                    <p className="text-sm text-gray-500 dark:text-gray-400">Contact us to request tech pack, custom sample, or bulk pricing.</p>
+                            {/* Contact/Quote CTA Block */}
+                            <div className="mt-auto bg-primary/5 dark:bg-primary/10 p-8 rounded-[2rem] border border-primary/20 flex flex-col gap-4 overflow-hidden relative">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full -translate-y-16 translate-x-16 blur-3xl" />
+                                <div className="relative z-10">
+                                    <h4 className="font-bold text-gray-900 dark:text-white text-xl mb-1">Scale your production?</h4>
+                                    <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">Request tech packs, custom samples, or direct factory pricing.</p>
                                 </div>
-                                <Link
-                                    href={`/contact?product=${encodeURIComponent(product.name)}`}
-                                    className="w-full sm:w-auto flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-full font-bold transition-all shadow-md shrink-0"
-                                >
-                                    <Mail className="w-5 h-5" /> Request Quote
-                                </Link>
+                                <div className="relative z-10 flex flex-col sm:flex-row gap-3">
+                                    <Link
+                                        href={`/contact?product=${encodeURIComponent(product.name)}`}
+                                        className="flex-1 flex items-center justify-center gap-2 bg-primary hover:bg-secondary text-white px-8 py-4 rounded-2xl font-black transition-all shadow-xl hover:shadow-primary/20"
+                                    >
+                                        <Mail className="w-5 h-5" /> Request Quotation
+                                    </Link>
+                                    <DownloadCatalogButton
+                                        productId={product.id}
+                                        label="Download PDF"
+                                        variant="outline"
+                                        className="flex-1 justify-center py-4 rounded-2xl"
+                                    />
+                                </div>
                             </div>
 
                         </div>
                     </div>
 
-                    {/* Full Description */}
-                    <div className="mt-16 pt-16 border-t border-gray-200 dark:border-gray-800">
-                        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Detailed Description</h2>
-                        <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300">
-                            {product.description.split('\n').map((paragraph, idx) => (
-                                <p key={idx} className="mb-4">{paragraph}</p>
-                            ))}
+                    {/* Detailed Product Description Section */}
+                    <div className="mt-20 pt-20 border-t border-gray-100 dark:border-gray-800">
+                        <div className="max-w-4xl">
+                            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8 font-heading">Product Overview & Manufacturing Details</h2>
+                            <div className="prose prose-lg dark:prose-invert max-w-none text-gray-600 dark:text-gray-300 leading-relaxed font-medium">
+                                {product.description.split('\n').map((paragraph: string, idx: number) => (
+                                    <p key={idx} className="mb-6">{paragraph}</p>
+                                ))}
+                            </div>
                         </div>
                     </div>
+
+                    {/* Cross-Sell Related Products */}
+                    <RelatedProducts categoryId={product.categoryId} excludeProductId={product.id} />
+
+                    {/* User Browsing History */}
+                    <RecentlyViewedProducts />
 
                 </div>
             </div>

@@ -1,6 +1,6 @@
 const config = {
     app: {
-        name: process.env.NEXT_PUBLIC_APP_NAME || 'GlobalStitch Sourcing',
+        name: process.env.NEXT_PUBLIC_APP_NAME || 'APPAREL EMPORIUM',
         url: process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000',
         version: process.env.npm_package_version || '1.0.0',
         env: process.env.NODE_ENV || 'development',
@@ -33,3 +33,4 @@ const config = {
 };
 
 export default config;
+

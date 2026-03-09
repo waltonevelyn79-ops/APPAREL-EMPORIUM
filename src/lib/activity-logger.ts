@@ -35,3 +35,4 @@ export const logActivity = async (context: ActionContext) => {
         console.error("Failed to log activity event to database:", error);
     }
 }
+

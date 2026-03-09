@@ -50,11 +50,11 @@ export default function Sidebar() {
         <div className="h-full flex flex-col pt-4">
 
             <div className="px-6 mb-8 flex justify-between items-center">
-                <Link href="/admin" className="flex items-center gap-2 group">
-                    <div className="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center font-bold text-xl transition-transform group-hover:rotate-12 shadow-lg">
-                        G
+                <Link href="/executive-portal-aelbd" className="flex items-center gap-2 group">
+                    <div className="w-10 h-10 rounded-lg bg-primary text-white flex items-center justify-center font-black text-xs transition-transform group-hover:rotate-12 shadow-lg">
+                        AE
                     </div>
-                    {isOpen && <span className="font-extrabold text-xl tracking-tight text-gray-900 dark:text-white font-heading">GlobalStitch</span>}
+                    {isOpen && <span className="font-extrabold text-xl tracking-tight text-gray-900 dark:text-white font-heading uppercase">Apparel Emporium</span>}
                 </Link>
                 {isOpen && (
                     <button className="md:hidden p-2 text-gray-500 hover:text-gray-900" onClick={() => setIsMobileOpen(false)}>
@@ -99,13 +99,13 @@ export default function Sidebar() {
                         </div>
                     )}
                     {isOpen && (
-                        <button onClick={() => signOut({ callbackUrl: '/login' })} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Logout">
+                        <button onClick={() => signOut({ callbackUrl: '/executive-login' })} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Logout">
                             <LogOut size={16} />
                         </button>
                     )}
                 </div>
                 {!isOpen && (
-                    <button onClick={() => signOut({ callbackUrl: '/login' })} className="mt-4 w-full flex justify-center p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+                    <button onClick={() => signOut({ callbackUrl: '/executive-login' })} className="mt-4 w-full flex justify-center p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
                         <LogOut size={18} />
                     </button>
                 )}
@@ -117,9 +117,9 @@ export default function Sidebar() {
         <>
             {/* Mobile Top Navbar Trigger */}
             <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white dark:bg-dark-surface border-b border-gray-200 dark:border-gray-800 z-40 flex items-center justify-between px-4">
-                <Link href="/admin" className="font-extrabold text-xl font-heading text-primary">GlobalStitch</Link>
+                <Link href="/executive-portal-aelbd" className="font-extrabold text-lg font-heading text-primary uppercase">APPAREL EMPORIUM</Link>
                 <div className="flex items-center gap-4">
-                    <Link href="/admin/notifications" className="relative text-gray-600 dark:text-gray-300">
+                    <Link href="/executive-portal-aelbd/notifications" className="relative text-gray-600 dark:text-gray-300">
                         <Bell size={20} />
                         {unreadCount > 0 && <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-red-500 text-white text-[9px] font-bold rounded-full flex items-center justify-center border-2 border-white dark:border-dark-surface">{unreadCount}</span>}
                     </Link>
@@ -133,7 +133,7 @@ export default function Sidebar() {
             <aside className={`hidden md:flex flex-col fixed left-0 top-0 bottom-0 z-40 bg-white dark:bg-dark-surface border-r border-gray-200 dark:border-gray-800 transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'}`}>
                 {/* Desktop Toggle & Bell */}
                 <div className={`absolute top-4 ${isOpen ? 'right-4' : 'left-0 justify-center w-full'} flex items-center gap-2 z-50`}>
-                    <Link href="/admin/notifications" className="relative p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
+                    <Link href="/executive-portal-aelbd/notifications" className="relative p-2 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors">
                         <Bell size={18} />
                         {unreadCount > 0 && <span className="absolute top-1 right-1 w-2.5 h-2.5 bg-red-500 rounded-full border-2 border-white dark:border-dark-surface animate-pulse"></span>}
                     </Link>
@@ -156,3 +156,4 @@ export default function Sidebar() {
         </>
     );
 }
+

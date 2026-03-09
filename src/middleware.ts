@@ -5,9 +5,29 @@ import { canAccessRoute, Role } from '@/lib/permissions';
 
 export async function middleware(req: NextRequest) {
     const path = req.nextUrl.pathname;
+    const method = req.method;
+
+    // ── PRIORITY 1: Let OPTIONS preflight pass ALWAYS ─────────────────────────
+    // Browsers send OPTIONS before every cross-origin POST/GET. If we block it,
+    // the actual request never happens. OPTIONS carries no API key — by design.
+    if (method === 'OPTIONS') {
+        const preflightResponse = new NextResponse(null, { status: 204 });
+        preflightResponse.headers.set('Access-Control-Allow-Origin', '*');
+        preflightResponse.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+        preflightResponse.headers.set('Access-Control-Allow-Headers', 'Content-Type, x-api-key, Authorization, ngrok-skip-browser-warning');
+        preflightResponse.headers.set('Access-Control-Max-Age', '86400');
+        return preflightResponse;
+    }
+
+    // ── PRIORITY 2: External API routes bypass ALL middleware auth ─────────────
+    // /api/external/* is secured by API Key inside the route handler itself.
+    // Middleware must not touch these routes — it has no session to check.
+    if (path.startsWith('/api/external/')) {
+        return NextResponse.next();
+    }
 
     // Core routes definition
-    const isAdminRoute = path.startsWith('/admin') && path !== '/admin/login';
+    const isAdminRoute = path.startsWith('/executive-portal-aelbd');
     const isApiRoute = path.startsWith('/api/');
     const isAdminApiRoute = path.startsWith('/api/admin/');
 
@@ -28,24 +48,24 @@ export async function middleware(req: NextRequest) {
             if (isApiRoute) {
                 return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
             }
-            return NextResponse.redirect(new URL('/admin/login', req.url));
+            return NextResponse.redirect(new URL('/executive-login', req.url));
         }
     }
 
     // 3. RBAC Strict Route Permission Check
     if (token && isAdminRoute) {
         const userRole = token.role as Role;
-        const mappedPath = path === '/admin' ? 'dashboard.view' : path; // Handle root
+        const mappedPath = path === '/executive-portal-aelbd' ? 'dashboard.view' : path; // Handle root
 
         // Basic map checks (More complex logic handled per-component or API layer)
         const allowed = canAccessRoute(userRole, path);
         if (!allowed) {
             // Prevent redirect loop by sending Viewer home if they hit a wall
-            if (path !== '/admin') {
-                return NextResponse.redirect(new URL('/admin', req.url));
+            if (path !== '/executive-portal-aelbd') {
+                return NextResponse.redirect(new URL('/executive-portal-aelbd', req.url));
             }
             // If they can't even see the dashboard, eject them
-            return NextResponse.redirect(new URL('/admin/login?error=Forbidden', req.url));
+            return NextResponse.redirect(new URL('/executive-login?error=Forbidden', req.url));
         }
     }
 
@@ -89,10 +109,12 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-    // Match all request paths except for the ones starting with:
-    // - api/auth (auth endpoints)
-    // - _next/static (static files)
-    // - _next/image (image optimization files)
-    // - favicon.ico (favicon file)
-    matcher: ['/((?!api/auth|_next/static|_next/image|favicon.ico).*)'],
+    // Middleware runs on all routes EXCEPT:
+    // - api/auth       (NextAuth internal routes)
+    // - api/external   (Our public external API — secured by API Key, not session)
+    // - _next/static   (static assets)
+    // - _next/image    (image optimization)
+    // - favicon.ico
+    matcher: ['/((?!api/auth|api/external|_next/static|_next/image|favicon.ico).*)'],
 };
+

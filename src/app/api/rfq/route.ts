@@ -47,3 +47,4 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Failed to submit RFQ" }, { status: 500 });
     }
 }
+

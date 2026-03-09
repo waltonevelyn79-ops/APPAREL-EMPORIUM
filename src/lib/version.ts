@@ -10,7 +10,7 @@ export async function checkForUpdates(): Promise<{
     changelog: string;
 }> {
     try {
-        const repoUrl = process.env.GITHUB_REPO_URL || 'https://raw.githubusercontent.com/globalstitch/webapp/main';
+        const repoUrl = process.env.GITHUB_REPO_URL || 'https://raw.githubusercontent.com/apparelemporium/webapp/main';
 
         const pkgRes = await fetch(`${repoUrl}/package.json`, { cache: 'no-store' });
         if (!pkgRes.ok) throw new Error('Failed to fetch remote package.json');
@@ -56,3 +56,4 @@ function compareVersions(v1: string, v2: string): number {
     }
     return 0;
 }
+

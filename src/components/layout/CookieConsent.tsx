@@ -2,9 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { useSettings } from '@/context/SettingsContext';
+import { usePathname } from 'next/navigation';
 
 export default function CookieConsent() {
+    const pathname = usePathname();
     const { settings } = useSettings();
+
+    if (pathname?.startsWith('/executive-portal-aelbd')) return null;
+
     const [showBanner, setShowBanner] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
@@ -143,3 +148,4 @@ export default function CookieConsent() {
         </>
     );
 }
+

@@ -1,0 +1,14 @@
+total 344
+drwxr-xr-x   8 u808072502 o1008878908   4096 Mar  5 20:14 .
+drwxr-xr-x   4 u808072502 o1008878908   4096 Mar  5 14:06 ..
+-rw-r--r--   1 u808072502 o1008878908    293 Mar  5 19:40 .env
+drwxr-xr-x   4 u808072502 o1008878908   4096 Mar  5 19:40 .next
+drwxr-xr-x 128 u808072502 o1008878908  16384 Mar  5 20:14 node_modules
+-rw-r--r--   1 u808072502 o1008878908   1421 Mar  5 19:40 package.json
+-rw-r--r--   1 u808072502 o1008878908 285174 Mar  5 20:14 package-lock.json
+drwxr-xr-x   2 u808072502 o1008878908   4096 Mar  5 19:40 prisma
+drwxr-xr-x   2 u808072502 o1008878908   4096 Mar  5 19:39 public
+-rw-r--r--   1 u808072502 o1008878908   4687 Mar  5 19:40 server.js
+drwxr-xr-x   3 u808072502 o1008878908   4096 Mar  5 19:40 src
+-rw-r--r--   1 u808072502 o1008878908   2366 Mar  5 19:46 stderr.log
+drwxr-xr-x   2 u808072502 o1008878908   4096 Mar  5 19:40 tmp

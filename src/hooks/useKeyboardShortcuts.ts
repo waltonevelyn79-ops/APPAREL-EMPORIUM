@@ -26,7 +26,7 @@ export function useKeyboardShortcuts() {
                         break;
                     case 'n':
                         e.preventDefault();
-                        router.push('/admin/products');
+                        router.push('/executive-portal-aelbd/products');
                         break;
                     case 's':
                         e.preventDefault();
@@ -48,3 +48,4 @@ export function useKeyboardShortcuts() {
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [router]);
 }
+

@@ -1,0 +1,1017 @@
+﻿build-and-deploy	Set up job	∩╗┐2026-03-05T19:29:29.8107303Z ##[debug]Starting: Set up job
+build-and-deploy	Set up job	2026-03-05T19:29:29.8108763Z Current runner version: '2.332.0'
+build-and-deploy	Set up job	2026-03-05T19:29:29.8132481Z ##[group]Runner Image Provisioner
+build-and-deploy	Set up job	2026-03-05T19:29:29.8133338Z Hosted Compute Agent
+build-and-deploy	Set up job	2026-03-05T19:29:29.8134123Z Version: 20260213.493
+build-and-deploy	Set up job	2026-03-05T19:29:29.8134859Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+build-and-deploy	Set up job	2026-03-05T19:29:29.8135676Z Build Date: 2026-02-13T00:28:41Z
+build-and-deploy	Set up job	2026-03-05T19:29:29.8136428Z Worker ID: {b2d7fd76-0d7e-447b-9a95-ae5c0e5b27a0}
+build-and-deploy	Set up job	2026-03-05T19:29:29.8137216Z Azure Region: westcentralus
+build-and-deploy	Set up job	2026-03-05T19:29:29.8138475Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T19:29:29.8140118Z ##[group]Operating System
+build-and-deploy	Set up job	2026-03-05T19:29:29.8140984Z Ubuntu
+build-and-deploy	Set up job	2026-03-05T19:29:29.8141559Z 24.04.3
+build-and-deploy	Set up job	2026-03-05T19:29:29.8142128Z LTS
+build-and-deploy	Set up job	2026-03-05T19:29:29.8142754Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T19:29:29.8143407Z ##[group]Runner Image
+build-and-deploy	Set up job	2026-03-05T19:29:29.8144120Z Image: ubuntu-24.04
+build-and-deploy	Set up job	2026-03-05T19:29:29.8144994Z Version: 20260302.42.1
+build-and-deploy	Set up job	2026-03-05T19:29:29.8146214Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+build-and-deploy	Set up job	2026-03-05T19:29:29.8148041Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+build-and-deploy	Set up job	2026-03-05T19:29:29.8149136Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T19:29:29.8150747Z ##[group]GITHUB_TOKEN Permissions
+build-and-deploy	Set up job	2026-03-05T19:29:29.8152801Z Contents: read
+build-and-deploy	Set up job	2026-03-05T19:29:29.8153475Z Metadata: read
+build-and-deploy	Set up job	2026-03-05T19:29:29.8154169Z Packages: read
+build-and-deploy	Set up job	2026-03-05T19:29:29.8154831Z ##[endgroup]
+build-and-deploy	Set up job	2026-03-05T19:29:29.8157037Z Secret source: Actions
+build-and-deploy	Set up job	2026-03-05T19:29:29.8158324Z ##[debug]Primary repository: waltonevelyn79-ops/APPAREL-EMPORIUM
+build-and-deploy	Set up job	2026-03-05T19:29:29.8159283Z Prepare workflow directory
+build-and-deploy	Set up job	2026-03-05T19:29:29.8232679Z ##[debug]Creating pipeline directory: '/home/runner/work/APPAREL-EMPORIUM'
+build-and-deploy	Set up job	2026-03-05T19:29:29.8236415Z ##[debug]Creating workspace directory: '/home/runner/work/APPAREL-EMPORIUM/APPAREL-EMPORIUM'
+build-and-deploy	Set up job	2026-03-05T19:29:29.8238666Z ##[debug]Update context data
+build-and-deploy	Set up job	2026-03-05T19:29:29.8242323Z ##[debug]Evaluating job-level environment variables
+build-and-deploy	Set up job	2026-03-05T19:29:29.8482435Z ##[debug]Evaluating job container
+build-and-deploy	Set up job	2026-03-05T19:29:29.8486006Z ##[debug]Evaluating job service containers
+build-and-deploy	Set up job	2026-03-05T19:29:29.8488808Z ##[debug]Evaluating job defaults
+build-and-deploy	Set up job	2026-03-05T19:29:29.8515381Z Prepare all required actions
+build-and-deploy	Set up job	2026-03-05T19:29:29.8553709Z Getting action download info
+build-and-deploy	Set up job	2026-03-05T19:29:30.2210816Z Download action repository 'appleboy/ssh-action@v1' (SHA:0ff4204d59e8e51228ff73bce53f80d53301dee2)
+build-and-deploy	Set up job	2026-03-05T19:29:32.0335602Z ##[debug]Download 'https://api.github.com/repos/appleboy/ssh-action/tarball/0ff4204d59e8e51228ff73bce53f80d53301dee2' to '/home/runner/work/_actions/_temp_76db8d46-5a37-4e96-b7dd-b232bb6d072a/01f4e67e-d306-4649-bfe2-4dbbf29e1844.tar.gz'
+build-and-deploy	Set up job	2026-03-05T19:29:32.1409353Z ##[debug]Unwrap 'appleboy-ssh-action-0ff4204' to '/home/runner/work/_actions/appleboy/ssh-action/v1'
+build-and-deploy	Set up job	2026-03-05T19:29:32.1457890Z ##[debug]Archive '/home/runner/work/_actions/_temp_76db8d46-5a37-4e96-b7dd-b232bb6d072a/01f4e67e-d306-4649-bfe2-4dbbf29e1844.tar.gz' has been unzipped into '/home/runner/work/_actions/appleboy/ssh-action/v1'.
+build-and-deploy	Set up job	2026-03-05T19:29:32.1552522Z ##[debug]action.yml for action: '/home/runner/work/_actions/appleboy/ssh-action/v1/action.yml'.
+build-and-deploy	Set up job	2026-03-05T19:29:32.2650837Z ##[debug]Set step '__appleboy_ssh-action' display name to: 'Deploy to Hostinger via SSH'
+build-and-deploy	Set up job	2026-03-05T19:29:32.2652215Z Complete job name: build-and-deploy
+build-and-deploy	Set up job	2026-03-05T19:29:32.2662958Z ##[debug]Collect running processes for tracking orphan processes.
+build-and-deploy	Set up job	2026-03-05T19:29:32.2894848Z ##[debug]Finishing: Set up job
+build-and-deploy	Deploy to Hostinger via SSH	∩╗┐2026-03-05T19:29:32.3015877Z ##[debug]Evaluating condition for step: 'Deploy to Hostinger via SSH'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3054696Z ##[debug]Evaluating: success()
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3060694Z ##[debug]Evaluating success:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3076294Z ##[debug]=> true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3083348Z ##[debug]Result: true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3105694Z ##[debug]Starting: Deploy to Hostinger via SSH
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3387323Z ##[debug]Loading inputs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3404826Z ##[debug]Evaluating: secrets.HOSTINGER_HOST
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3406160Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3408739Z ##[debug]..Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3410139Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3416068Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3417246Z ##[debug]..=> 'HOSTINGER_HOST'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3421730Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3423386Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3425443Z ##[debug]Evaluating: secrets.HOSTINGER_USERNAME
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3426200Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3426845Z ##[debug]..Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3427610Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3428190Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3428800Z ##[debug]..=> 'HOSTINGER_USERNAME'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3429670Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3430266Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3431304Z ##[debug]Evaluating: secrets.HOSTINGER_SSH_KEY
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3432010Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3432580Z ##[debug]..Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3433160Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3433693Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3434300Z ##[debug]..=> 'HOSTINGER_SSH_KEY'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3435074Z ##[debug]=> '***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3435885Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3436666Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3437592Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3438383Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3439118Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3439669Z ##[debug]***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3440299Z ##[debug]Result: '***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3441149Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3441942Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3442742Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3443538Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3444260Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3444803Z ##[debug]***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3445677Z ##[debug]Evaluating: secrets.HOSTINGER_PORT
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3446378Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3446959Z ##[debug]..Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3447952Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3448568Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3449189Z ##[debug]..=> 'HOSTINGER_PORT'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3449835Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3450380Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3456219Z ##[debug]Evaluating: format('source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3457001Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3458197Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3459450Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3460216Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3460917Z ##[debug]cd /home/{0}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3461759Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3462376Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3463176Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3463907Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3464607Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3465258Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3465734Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3466307Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3466963Z ##[debug]  git remote add origin https://{1}:{2}@github.com/{3}.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3467827Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3468285Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3468775Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3469527Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3470553Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3471138Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3471775Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3473112Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3474065Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3474807Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3475706Z ##[debug]SECRET_VAL="{4}"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3476261Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3477225Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3478303Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3478844Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3479500Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3480027Z ##[debug]URL_VAL="{5}"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3480575Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3481343Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3482127Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3482635Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3483267Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3483743Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3484397Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3485445Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3486385Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3486934Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3488065Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3488792Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3489551Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3490361Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3491186Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3492123Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3493005Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3493949Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3495165Z ##[debug]', secrets.HOSTINGER_USERNAME, github.actor, secrets.GITHUB_TOKEN, github.repository, secrets.NEXTAUTH_SECRET, secrets.NEXTAUTH_URL)
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3496416Z ##[debug]Evaluating format:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3500218Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3500963Z ##[debug]..=> 'source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3501607Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3502634Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3503828Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3504602Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3505286Z ##[debug]cd /home/{0}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3506091Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3506635Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3507577Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3508332Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3509027Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3509689Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3510151Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3510713Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3511364Z ##[debug]  git remote add origin https://{1}:{2}@github.com/{3}.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3512073Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3512518Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3512994Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3513783Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3514754Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3515337Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3515947Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3517258Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3518148Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3519029Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3519908Z ##[debug]SECRET_VAL="{4}"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3520511Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3521467Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3522411Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3522945Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3523600Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3524053Z ##[debug]URL_VAL="{5}"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3524570Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3525339Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3526109Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3526621Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3527247Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3528119Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3528805Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3529885Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3530840Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3531369Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3532135Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3532810Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3533551Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3534358Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3535152Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3536091Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3536969Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3538013Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3538597Z ##[debug]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3550672Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3551345Z ##[debug]....Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3551958Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3552520Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3553108Z ##[debug]....=> 'HOSTINGER_USERNAME'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3553799Z ##[debug]..=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3554955Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3555560Z ##[debug]....Evaluating github:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3556156Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3556695Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3557325Z ##[debug]....=> 'actor'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3558135Z ##[debug]..=> 'waltonevelyn79-ops'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3558807Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3559390Z ##[debug]....Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3559965Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3560486Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3561063Z ##[debug]....=> 'GITHUB_TOKEN'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3561853Z ##[debug]..=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3562411Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3562974Z ##[debug]....Evaluating github:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3563552Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3564085Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3564663Z ##[debug]....=> 'repository'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3565352Z ##[debug]..=> 'waltonevelyn79-ops/APPAREL-EMPORIUM'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3566064Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3566628Z ##[debug]....Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3567196Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3568148Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3568771Z ##[debug]....=> 'NEXTAUTH_SECRET'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3569369Z ##[debug]..=> null
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3570117Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3570700Z ##[debug]....Evaluating secrets:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3571292Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3571812Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3572379Z ##[debug]....=> 'NEXTAUTH_URL'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3573084Z ##[debug]..=> null
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3573748Z ##[debug]=> 'source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3574356Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3575346Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3576524Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3577280Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3578330Z ##[debug]cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3579161Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3579721Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3580514Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3581257Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3581959Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3582602Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3583070Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3583640Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3584971Z ##[debug]  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3585826Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3586289Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3586771Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3587677Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3588454Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3589059Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3589686Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3590978Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3591754Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3592494Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3593373Z ##[debug]SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3593900Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3594869Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3595821Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3596354Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3597009Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3597558Z ##[debug]URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3598069Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3598829Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3599600Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3600105Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3600732Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3601197Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3601874Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3602918Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3603855Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3604386Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3605146Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3605837Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3606581Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3607584Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3608554Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3609491Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3610385Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3611345Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3612133Z ##[debug]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3612745Z ##[debug]Result: 'source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3613390Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3614395Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3615696Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3616445Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3617240Z ##[debug]cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3618206Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3618771Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3619556Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3620278Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3620974Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3621618Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3622084Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3622664Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3623944Z ##[debug]  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3624809Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3625246Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3625725Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3626475Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3627237Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3627920Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3628536Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3629778Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3630578Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3631305Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3632194Z ##[debug]SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3632733Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3633702Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3634660Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3635205Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3635859Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3636305Z ##[debug]URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3636824Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3637691Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3638471Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3638991Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3639620Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3640076Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3640726Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3642030Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3643185Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3643740Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3644511Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3645247Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3646203Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3647034Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3648187Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3649172Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3650115Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3651088Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3651685Z ##[debug]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3696289Z ##[debug]Loading env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3763064Z ##[group]Run appleboy/ssh-action@v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3763920Z with:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3764459Z   host: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3764936Z   username: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3768749Z   key: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3769471Z   port: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3780841Z   script: source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  git init
+build-and-deploy	Deploy to Hostinger via SSH	  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# System variables
+build-and-deploy	Deploy to Hostinger via SSH	echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	npm run build
+build-and-deploy	Deploy to Hostinger via SSH	# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3792262Z   protocol: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3792750Z   timeout: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3793219Z   command_timeout: 10m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3793730Z   proxy_port: 22
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3794222Z   proxy_protocol: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3794721Z   proxy_timeout: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3795219Z   curl_insecure: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3795734Z   capture_stdout: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3796606Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3855150Z ##[debug]Evaluating: github.action_path
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3855874Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3856437Z ##[debug]..Evaluating github:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3857009Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3857705Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3923443Z ##[debug]..=> 'action_path'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3924312Z ##[debug]=> '/home/runner/work/_actions/appleboy/ssh-action/v1'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3925355Z ##[debug]Result: '/home/runner/work/_actions/appleboy/ssh-action/v1'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3931586Z ##[debug]Evaluating condition for step: 'run'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3934296Z ##[debug]Evaluating: success()
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3935131Z ##[debug]Evaluating success:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3936468Z ##[debug]=> true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3937303Z ##[debug]Result: true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3945950Z ##[debug]Starting: run
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3960174Z ##[debug]Loading inputs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3961983Z ##[debug]Loading env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3981505Z ##[group]Run echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.3982391Z [36;1mecho "$GITHUB_ACTION_PATH" >> $GITHUB_PATH[0m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4037715Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4038491Z env:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4039125Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/appleboy/ssh-action/v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4039886Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4123411Z ##[debug]/usr/bin/bash --noprofile --norc -e -o pipefail /home/runner/work/_temp/43f60f87-3317-4f47-be81-64dad1d9143a.sh
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4224048Z ##[debug]Finished: run
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4232332Z ##[debug]Evaluating: github.action_path
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4233038Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4233827Z ##[debug]..Evaluating github:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4234488Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4235020Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4235584Z ##[debug]..=> 'action_path'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4236294Z ##[debug]=> '/home/runner/work/_actions/appleboy/ssh-action/v1'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4237337Z ##[debug]Result: '/home/runner/work/_actions/appleboy/ssh-action/v1'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4238832Z ##[debug]Evaluating: inputs.host
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4239440Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4239998Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4240563Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4241092Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4241638Z ##[debug]..=> 'host'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4242255Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4242779Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4243601Z ##[debug]Evaluating: inputs.port
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4244198Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4244741Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4245319Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4245842Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4246388Z ##[debug]..=> 'port'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4246947Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4247695Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4248649Z ##[debug]Evaluating: inputs.protocol
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4249317Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4249867Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4250432Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4250948Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4251494Z ##[debug]..=> 'protocol'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4252048Z ##[debug]=> 'tcp'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4252548Z ##[debug]Result: 'tcp'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4253331Z ##[debug]Evaluating: inputs.username
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4253942Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4254486Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4255050Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4255567Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4256125Z ##[debug]..=> 'username'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4256707Z ##[debug]=> '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4257232Z ##[debug]Result: '***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4258398Z ##[debug]Evaluating: inputs.password
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4259073Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4259629Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4260195Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4260711Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4261257Z ##[debug]..=> 'password'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4261802Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4262276Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4263031Z ##[debug]Evaluating: inputs.passphrase
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4263659Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4264193Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4264749Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4265248Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4265804Z ##[debug]..=> 'passphrase'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4266343Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4266815Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4267797Z ##[debug]Evaluating: inputs.key
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4268442Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4268998Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4269560Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4270075Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4270623Z ##[debug]..=> 'key'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4271267Z ##[debug]=> '***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4272056Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4272829Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4273570Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4274317Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4275004Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4275543Z ##[debug]***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4276136Z ##[debug]Result: '***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4276929Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4277885Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4278641Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4279409Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4280099Z ##[debug]***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4280617Z ##[debug]***'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4281449Z ##[debug]Evaluating: inputs.key_path
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4282069Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4282821Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4283391Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4283925Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4284500Z ##[debug]..=> 'key_path'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4285043Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4285521Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4286472Z ##[debug]Evaluating: inputs.fingerprint
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4287100Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4287891Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4288461Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4288976Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4289538Z ##[debug]..=> 'fingerprint'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4290169Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4290713Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4291564Z ##[debug]Evaluating: inputs.proxy_host
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4292197Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4292739Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4293296Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4293814Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4294387Z ##[debug]..=> 'proxy_host'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4294927Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4295400Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4296146Z ##[debug]Evaluating: inputs.proxy_port
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4296770Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4297310Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4298181Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4298716Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4299277Z ##[debug]..=> 'proxy_port'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4299826Z ##[debug]=> '22'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4300324Z ##[debug]Result: '22'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4301184Z ##[debug]Evaluating: inputs.proxy_username
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4301835Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4302384Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4302947Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4303460Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4304025Z ##[debug]..=> 'proxy_username'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4304600Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4305090Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4305857Z ##[debug]Evaluating: inputs.proxy_password
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4306505Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4307057Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4307873Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4308420Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4309012Z ##[debug]..=> 'proxy_password'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4309597Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4310092Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4311019Z ##[debug]Evaluating: inputs.proxy_passphrase
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4311685Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4312239Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4312794Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4313305Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4313876Z ##[debug]..=> 'proxy_passphrase'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4314444Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4314917Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4315660Z ##[debug]Evaluating: inputs.proxy_key
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4316305Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4316851Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4317606Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4318153Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4318716Z ##[debug]..=> 'proxy_key'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4319267Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4319751Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4320577Z ##[debug]Evaluating: inputs.proxy_key_path
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4321247Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4321798Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4322357Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4322867Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4323436Z ##[debug]..=> 'proxy_key_path'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4324005Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4324482Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4325269Z ##[debug]Evaluating: inputs.proxy_fingerprint
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4325928Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4326480Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4327228Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4328197Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4328820Z ##[debug]..=> 'proxy_fingerprint'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4329427Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4329905Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4330765Z ##[debug]Evaluating: inputs.timeout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4331564Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4332113Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4332697Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4333232Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4333784Z ##[debug]..=> 'timeout'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4334374Z ##[debug]=> '30s'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4334876Z ##[debug]Result: '30s'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4335701Z ##[debug]Evaluating: inputs.proxy_timeout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4336344Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4336895Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4337713Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4338336Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4338932Z ##[debug]..=> 'proxy_timeout'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4339529Z ##[debug]=> '30s'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4340047Z ##[debug]Result: '30s'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4340921Z ##[debug]Evaluating: inputs.command_timeout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4341570Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4342112Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4342670Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4343187Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4343742Z ##[debug]..=> 'command_timeout'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4344313Z ##[debug]=> '10m'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4344809Z ##[debug]Result: '10m'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4345586Z ##[debug]Evaluating: inputs.script
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4346181Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4346724Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4347275Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4348077Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4348670Z ##[debug]..=> 'script'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4349299Z ##[debug]=> 'source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4349905Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4350929Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4352086Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4352829Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4353622Z ##[debug]cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4354422Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4354963Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4355741Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4356446Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4357168Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4358024Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4358500Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4359054Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4360435Z ##[debug]  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4361287Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4361729Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4362196Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4362941Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4363699Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4364271Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4364877Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4366104Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4366862Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4367772Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4368659Z ##[debug]SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4369190Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4370143Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4371105Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4371919Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4372564Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4372999Z ##[debug]URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4373492Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4374248Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4375120Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4375616Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4376236Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4376683Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4377319Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4378617Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4379559Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4380083Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4380835Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4381520Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4382283Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4383095Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4383900Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4384812Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4385711Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4386634Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4387210Z ##[debug]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4388009Z ##[debug]Result: 'source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4388643Z ##[debug]source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4389639Z ##[debug]export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4390788Z ##[debug]if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4391517Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4392298Z ##[debug]cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4393112Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4393649Z ##[debug]# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4394412Z ##[debug]export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4395125Z ##[debug]git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4395800Z ##[debug]git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4396432Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4396881Z ##[debug]if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4397589Z ##[debug]  git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4398882Z ##[debug]  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4399715Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4400143Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4400609Z ##[debug]# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4401328Z ##[debug]git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4402073Z ##[debug]git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4402660Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4403259Z ##[debug]# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4404483Z ##[debug]echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4405228Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4405946Z ##[debug]# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4406833Z ##[debug]SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4407351Z ##[debug]if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4408486Z ##[debug]  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4409439Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4409968Z ##[debug]echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4410624Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4411072Z ##[debug]URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4411565Z ##[debug]if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4412309Z ##[debug]  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4413254Z ##[debug]fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4413762Z ##[debug]echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4414376Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4414829Z ##[debug]# System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4415458Z ##[debug]echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4416610Z ##[debug]echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4417746Z ##[debug]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4418283Z ##[debug]# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4419029Z ##[debug]npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4419699Z ##[debug]npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4420429Z ##[debug]npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4421228Z ##[debug]npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4422039Z ##[debug]# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4422997Z ##[debug]npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4423892Z ##[debug]npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4424832Z ##[debug]echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4425414Z ##[debug]'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4426337Z ##[debug]Evaluating: inputs.script_path
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4427003Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4427829Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4428447Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4428977Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4429543Z ##[debug]..=> 'script_path'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4430102Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4430603Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4431419Z ##[debug]Evaluating: inputs.envs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4432029Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4432582Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4433146Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4433660Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4434252Z ##[debug]..=> 'envs'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4434798Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4435277Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4436034Z ##[debug]Evaluating: inputs.envs_format
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4436653Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4437197Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4437941Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4438480Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4439041Z ##[debug]..=> 'envs_format'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4439582Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4440064Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4440846Z ##[debug]Evaluating: inputs.debug
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4441438Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4441979Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4442556Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4443077Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4443625Z ##[debug]..=> 'debug'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4444141Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4444611Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4445350Z ##[debug]Evaluating: inputs.allenvs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4445967Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4446518Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4447079Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4447785Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4448347Z ##[debug]..=> 'allenvs'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4448883Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4449373Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4450168Z ##[debug]Evaluating: inputs.request_pty
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4450802Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4451350Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4451918Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4452434Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4452993Z ##[debug]..=> 'request_pty'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4453537Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4454010Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4454798Z ##[debug]Evaluating: inputs.use_insecure_cipher
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4455476Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4456022Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4456819Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4457346Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4458061Z ##[debug]..=> 'use_insecure_cipher'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4458661Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4459144Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4459947Z ##[debug]Evaluating: inputs.cipher
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4460720Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4461274Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4461831Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4462346Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4462896Z ##[debug]..=> 'cipher'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4463407Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4463887Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4464769Z ##[debug]Evaluating: inputs.proxy_use_insecure_cipher
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4465476Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4466025Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4466588Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4467136Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4467953Z ##[debug]..=> 'proxy_use_insecure_cipher'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4468586Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4469057Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4469851Z ##[debug]Evaluating: inputs.proxy_cipher
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4470474Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4471022Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4471593Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4472111Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4472676Z ##[debug]..=> 'proxy_cipher'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4473230Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4473712Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4474535Z ##[debug]Evaluating: inputs.sync
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4475122Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4475660Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4476224Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4476966Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4478161Z ##[debug]..=> 'sync'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4478974Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4479470Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4480369Z ##[debug]Evaluating: inputs.capture_stdout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4481060Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4481616Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4482181Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4482709Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4483285Z ##[debug]..=> 'capture_stdout'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4483855Z ##[debug]=> 'false'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4484361Z ##[debug]Result: 'false'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4485143Z ##[debug]Evaluating: inputs.curl_insecure
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4485772Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4486327Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4486887Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4487605Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4488193Z ##[debug]..=> 'curl_insecure'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4488752Z ##[debug]=> 'false'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4489251Z ##[debug]Result: 'false'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4490071Z ##[debug]Evaluating: inputs.version
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4490690Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4491262Z ##[debug]..Evaluating inputs:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4491826Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4492345Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4492899Z ##[debug]..=> 'version'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4493440Z ##[debug]=> ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4493919Z ##[debug]Result: ''
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4494902Z ##[debug]Evaluating condition for step: 'run'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4496963Z ##[debug]Evaluating: success()
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4497999Z ##[debug]Evaluating success:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4498938Z ##[debug]=> true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4499746Z ##[debug]Result: true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4500704Z ##[debug]Starting: run
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4513454Z ##[debug]Loading inputs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4515271Z ##[debug]Loading env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4523324Z ##[group]Run entrypoint.sh
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4523902Z [36;1mentrypoint.sh[0m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4577156Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4578002Z env:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4578818Z   GITHUB_ACTION_PATH: /home/runner/work/_actions/appleboy/ssh-action/v1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4579701Z   INPUT_HOST: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4580213Z   INPUT_PORT: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4580701Z   INPUT_PROTOCOL: tcp
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4581219Z   INPUT_USERNAME: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4581716Z   INPUT_PASSWORD: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4582338Z   INPUT_PASSPHRASE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4585773Z   INPUT_KEY: ***
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4586254Z   INPUT_KEY_PATH: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4586741Z   INPUT_FINGERPRINT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4587247Z   INPUT_PROXY_HOST: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4587856Z   INPUT_PROXY_PORT: 22
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4588366Z   INPUT_PROXY_USERNAME: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4588877Z   INPUT_PROXY_PASSWORD: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4589382Z   INPUT_PROXY_PASSPHRASE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4589914Z   INPUT_PROXY_KEY: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4590390Z   INPUT_PROXY_KEY_PATH: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4590904Z   INPUT_PROXY_FINGERPRINT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4591443Z   INPUT_TIMEOUT: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4591940Z   INPUT_PROXY_TIMEOUT: 30s
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4592461Z   INPUT_COMMAND_TIMEOUT: 10m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4604219Z   INPUT_SCRIPT: source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  git init
+build-and-deploy	Deploy to Hostinger via SSH	  git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	  URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	fi
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# System variables
+build-and-deploy	Deploy to Hostinger via SSH	echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	# Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	npm run build
+build-and-deploy	Deploy to Hostinger via SSH	# Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	echo "Γ£à Deployment complete!"
+build-and-deploy	Deploy to Hostinger via SSH	
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4615825Z   INPUT_SCRIPT_FILE: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4616326Z   INPUT_ENVS: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4616796Z   INPUT_ENVS_FORMAT: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4617297Z   INPUT_DEBUG: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4617857Z   INPUT_ALL_ENVS: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4618328Z   INPUT_REQUEST_PTY: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4618829Z   INPUT_USE_INSECURE_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4619366Z   INPUT_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4619872Z   INPUT_PROXY_USE_INSECURE_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4620448Z   INPUT_PROXY_CIPHER: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4620942Z   INPUT_SYNC: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4621412Z   INPUT_CAPTURE_STDOUT: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4621961Z   INPUT_CURL_INSECURE: false
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4622495Z   DRONE_SSH_VERSION: 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4622974Z ##[endgroup]
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4678684Z ##[debug]/usr/bin/bash --noprofile --norc -e -o pipefail /home/runner/work/_temp/0179d765-654e-46e3-b819-9ee29887846e.sh
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.4779071Z Downloading drone-ssh-1.8.2-linux-amd64 from https://github.com/appleboy/drone-ssh/releases/download/v1.8.2
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.7759581Z ======= CLI Version Information =======
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.7781571Z Drone SSH version 1.8.2
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:32.7785755Z =======================================
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2124148Z 2026/03/05 19:29:34 ssh: command source ~/.bashrc || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2126406Z source ~/.bash_profile || true
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2127648Z export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2129396Z if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2130026Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2131387Z cd /home/***/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2132060Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2132362Z # Prevent Hostinger VPS thread & memory crashing
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2133127Z export NODE_OPTIONS="--max-old-space-size=512"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2133827Z git config --global pack.threads 1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2134808Z git config --global pack.windowMemory 50m
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2135255Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2135479Z if [ ! -d ".git" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2136063Z   git init
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2137106Z   git remote add origin ***github.com/waltonevelyn79-ops/APPAREL-EMPORIUM.git
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2137892Z fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2138051Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2138197Z # Fetch safely with fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2138686Z git fetch origin main || git fetch origin main --depth=1
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2139114Z git reset --hard origin/main
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2139317Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2139539Z # Ensure .env is created for production with robust fallbacks
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2140301Z echo "DATABASE_URL=\"***srv2112.hstgr.io:3306/***_Aelbd\"" > .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2140610Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2140875Z # Use fallback secrets if GitHub secrets are missing to prevent next-auth crashes
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2141428Z SECRET_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2141734Z if [ -z "$SECRET_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2142265Z   SECRET_VAL="super-secure-generated-random-character-secret-key-for-prod-$(date +%s)"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2142790Z fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2143130Z echo "NEXTAUTH_SECRET=\"$SECRET_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2143398Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2143517Z URL_VAL=""
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2143788Z if [ -z "$URL_VAL" ]; then
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2144218Z   URL_VAL="https://mediumblue-wildcat-188317.hostingersite.com"
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2144639Z fi
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2144999Z echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2145229Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2145359Z # System variables
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2145723Z echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2146298Z echo "NEXT_PUBLIC_APP_URL=\"https://mediumblue-wildcat-188317.hostingersite.com\"" >> .env
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2146701Z 
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2146873Z # Install packages without choking the memory
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2147280Z npm install --production --no-audit --no-fund
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2147873Z npx prisma generate
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2148278Z npx prisma migrate deploy || npx prisma db push --accept-data-loss
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2148718Z npm run build
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2149151Z # Install PM2 locally and restart gracefully to obey Hostinger permission boundaries
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2149657Z npm install pm2 --no-save
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2150123Z npx pm2 restart garments-website --update-env || npx pm2 start ecosystem.config.js
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2240800Z echo "Γ£à Deployment complete!" failed
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2251280Z ##[error]Process completed with exit code 1.
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2260760Z ##[debug]Finished: run
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2286312Z ##[debug]Evaluating: steps.entrypoint.outputs.stdout
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2286836Z ##[debug]Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2287190Z ##[debug]..Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2287844Z ##[debug]....Evaluating Index:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2288207Z ##[debug]......Evaluating steps:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2288587Z ##[debug]......=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2288995Z ##[debug]......Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2289355Z ##[debug]......=> 'entrypoint'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2289988Z ##[debug]....=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2290303Z ##[debug]....Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2290639Z ##[debug]....=> 'outputs'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2290950Z ##[debug]..=> Object
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2291262Z ##[debug]..Evaluating String:
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2291582Z ##[debug]..=> 'stdout'
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2292021Z ##[debug]=> null
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2292384Z ##[debug]Result: null
+build-and-deploy	Deploy to Hostinger via SSH	2026-03-05T19:29:34.2305250Z ##[debug]Finishing: Deploy to Hostinger via SSH
+build-and-deploy	Complete job	∩╗┐2026-03-05T19:29:34.2365512Z ##[debug]Starting: Complete job
+build-and-deploy	Complete job	2026-03-05T19:29:34.2367754Z Uploading runner diagnostic logs
+build-and-deploy	Complete job	2026-03-05T19:29:34.2379496Z ##[debug]Starting diagnostic file upload.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2379952Z ##[debug]Setting up diagnostic log folders.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2382185Z ##[debug]Creating diagnostic log files folder.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2390694Z ##[debug]Copying 1 worker diagnostic logs.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2399761Z ##[debug]Copying 1 runner diagnostic logs.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2401013Z ##[debug]Zipping diagnostic files.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2472384Z ##[debug]Uploading diagnostic metadata file.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2503613Z ##[debug]Diagnostic file upload complete.
+build-and-deploy	Complete job	2026-03-05T19:29:34.2504316Z Completed runner diagnostic log upload
+build-and-deploy	Complete job	2026-03-05T19:29:34.2504704Z Cleaning up orphan processes
+build-and-deploy	Complete job	2026-03-05T19:29:34.2781904Z ##[debug]Finishing: Complete job

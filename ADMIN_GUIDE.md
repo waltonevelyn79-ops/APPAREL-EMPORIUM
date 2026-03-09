@@ -1,4 +1,4 @@
-# Admin User Guide — GlobalStitch Sourcing Website
+# Admin User Guide — Apparel Emporium Website
 
 ## How to Login
 1. Go to `https://yourdomain.com/admin/login`
