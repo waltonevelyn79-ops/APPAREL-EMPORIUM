@@ -32,18 +32,25 @@ const statTrustInfo: Record<string, { source: string; badge: string }> = {
     'ETHICAL COMPLIANCE': { source: 'BSCI & OEKO-TEX Audited', badge: '🌱' },
     'COMPLIANT SOURCING': { source: 'BSCI, GOTS & OEKO-TEX', badge: '🌱' },
     'DEDICATED QA SUPPORT': { source: 'In-House Merchandising & QC', badge: '👔' },
+    'QA SUPPORT': { source: 'In-House Merchandising & QC', badge: '👔' },
     'TRADE & QC SUPPORT': { source: 'Dedicated Merchandisers', badge: '👔' },
-    'YEARS EXPERIENCE': { source: 'Est. 2004 · Verified', badge: '🏅' },
-    'EXPORT MARKETS': { source: 'EU, US, Canada, UAE', badge: '🌍' },
-    'GLOBAL DESTINATIONS': { source: 'EU, US, Canada, UAE', badge: '🌍' },
-    'GLOBAL BUYERS': { source: 'Active Global Network', badge: '🌍' },
-    'AUDITED FACTORIES': { source: 'BSCI / ISO Certified', badge: '🏭' },
-    'PARTNER FACTORIES': { source: 'BSCI / ISO Audited', badge: '🏭' },
-    'PCS ANNUAL VOLUME': { source: 'BGMEA Export Record', badge: '📦' },
-    'PIECES/YEAR': { source: 'Export volume · BGMEA', badge: '📦' },
+    'AQL PASS RATE': { source: 'AQL 1.5 / 2.5 Level II', badge: '🛡️' },
     'CLIENT RETENTION': { source: 'Repeat Buyer Rate', badge: '⭐' },
-    'COMPLIANCE RATE': { source: 'AQL 2.5 Standard', badge: '🛡️' },
+    'COMPLIANCE RATE': { source: 'BSCI & OEKO-TEX Standard', badge: '🌱' },
 };
+
+// Filter out legacy unrealistic stats (e.g., 500+ buyers, 100M+ pcs, etc.)
+function sanitizeStats(rawList: any[]): Stat[] {
+    if (!Array.isArray(rawList) || rawList.length === 0) return DEFAULT_STATS;
+    const legacyKeywords = ['global buyers', 'years experience', 'partner factories', 'pieces/year', '100 m+', '500+'];
+    const hasLegacy = rawList.some(s => {
+        const lbl = (s?.label || '').toLowerCase();
+        const sfx = (s?.suffix || '').toLowerCase();
+        return legacyKeywords.some(k => lbl.includes(k)) || (s?.number === 500 && sfx.includes('+')) || (s?.number === 100 && sfx.toLowerCase().includes('m'));
+    });
+    if (hasLegacy) return DEFAULT_STATS;
+    return rawList;
+}
 
 // Certifications strip
 const CERTS = [
@@ -64,16 +71,12 @@ export default function StatsCounter({ data }: StatsCounterProps) {
         if (data && typeof data === 'string') {
             try {
                 const parsed = JSON.parse(data);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    setStats(parsed);
-                } else {
-                    setStats(DEFAULT_STATS);
-                }
+                setStats(sanitizeStats(parsed));
             } catch (e) {
                 setStats(DEFAULT_STATS);
             }
         } else if (Array.isArray(data) && data.length > 0) {
-            setStats(data);
+            setStats(sanitizeStats(data));
         } else {
             setStats(DEFAULT_STATS);
         }

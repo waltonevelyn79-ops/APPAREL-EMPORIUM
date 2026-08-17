@@ -339,10 +339,10 @@ async function main() {
         {
             key: 'homepage_stats_counter',
             value: JSON.stringify([
-                { id: '1', number: 20, suffix: '+', label: 'Years Experience', icon: 'Award' },
-                { id: '2', number: 500, suffix: '+', label: 'Global Buyers', icon: 'Globe2' },
-                { id: '3', number: 50, suffix: '+', label: 'Partner Factories', icon: 'Factory' },
-                { id: '4', number: 100, suffix: 'M+', label: 'Pieces/Year', icon: 'Activity' }
+                { id: '1', number: 99, suffix: '%', label: 'Quality Pass Rate', icon: 'ShieldCheck' },
+                { id: '2', number: 98, suffix: '%', label: 'On-Time Shipment', icon: 'Clock' },
+                { id: '3', number: 100, suffix: '%', label: 'Ethical Compliance', icon: 'Award' },
+                { id: '4', number: 100, suffix: '%', label: 'Dedicated QA Support', icon: 'CheckCircle2' }
             ]),
             group: 'homepage'
         },
@@ -389,17 +389,18 @@ async function main() {
             ]),
             group: 'homepage'
         },
-        // ── Homepage: Certifications (7 badges) ──
+        // ── Homepage: Certifications (8 badges) ──
         {
             key: 'homepage_certifications',
             value: JSON.stringify([
-                { id: '1', name: 'OEKO-TEX', image: '', link: 'https://www.oeko-tex.com' },
-                { id: '2', name: 'BSCI', image: '', link: 'https://www.amfori.org/content/amfori-bsci' },
-                { id: '3', name: 'SEDEX', image: '', link: 'https://www.sedex.com' },
-                { id: '4', name: 'WRAP', image: '', link: 'https://wrapcompliance.org' },
-                { id: '5', name: 'GOTS', image: '', link: 'https://www.global-standard.org' },
-                { id: '6', name: 'ISO 9001', image: '', link: 'https://www.iso.org/iso-9001' },
-                { id: '7', name: 'Fair Wear', image: '', link: 'https://www.fairwear.org' }
+                { id: '1', name: 'OEKO-TEX® Standard 100', subtitle: 'Chemical & Eco Safety', image: '/images/certifications/oeko-tex.png', link: 'https://www.oeko-tex.com' },
+                { id: '2', name: 'amfori BSCI', subtitle: 'Social & Ethical Audit', image: '/images/certifications/bsci.png', link: 'https://www.amfori.org/content/amfori-bsci' },
+                { id: '3', name: 'SEDEX SMETA', subtitle: 'Supply Chain Transparency', image: '/images/certifications/sedex.png', link: 'https://www.sedex.com' },
+                { id: '4', name: 'WRAP Certified', subtitle: 'Lawful & Ethical Production', image: '/images/certifications/wrap.png', link: 'https://wrapcompliance.org' },
+                { id: '5', name: 'GOTS Organic', subtitle: 'Global Organic Textile', image: '/images/certifications/gots.png', link: 'https://www.global-standard.org' },
+                { id: '6', name: 'ISO 9001:2015', subtitle: 'Quality Management System', image: '/images/certifications/iso9001.svg', link: 'https://www.iso.org/iso-9001' },
+                { id: '7', name: 'Fair Wear Foundation', subtitle: 'Fair Labor & Safe Workplace', image: '/images/certifications/fairwear.png', link: 'https://www.fairwear.org' },
+                { id: '8', name: 'BGMEA Member', subtitle: 'Registered Apparel Exporter', image: '/images/certifications/bgmea.svg', link: 'https://www.bgmea.com.bd' }
             ]),
             group: 'homepage'
         },
@@ -471,7 +472,7 @@ async function main() {
         },
         // ── SEO Defaults ──
         { key: 'seo_default_title', value: 'Apparel Emporium | Trusted Garments Sourcing Partner in Bangladesh', group: 'seo' },
-        { key: 'seo_default_description', value: 'Apparel Emporium is a leading Bangladeshi garments buying house with 20+ years of experience. ISO 9001, BSCI, OEKO-TEX certified. 500+ global buyers trust us.', group: 'seo' },
+        { key: 'seo_default_description', value: 'Apparel Emporium is a premier Bangladeshi garments buying house. ISO 9001, BSCI, OEKO-TEX & GOTS certified. AQL 2.5 quality control and 100% compliant apparel export sourcing.', group: 'seo' },
     ];
 
     for (const s of settings) {

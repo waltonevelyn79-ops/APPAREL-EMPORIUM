@@ -14,7 +14,7 @@ export const dynamic = 'force-dynamic';
 
 export const metadata = {
     title: 'Apparel Emporium | Trusted Garments Sourcing Partner in Bangladesh',
-    description: 'Apparel Emporium is a leading Bangladeshi garments buying house. ISO 9001, BSCI, OEKO-TEX & GOTS certified. 20+ years experience, 500+ global buyers. Request a quote today.',
+    description: 'Apparel Emporium is a leading Bangladeshi garments buying house. ISO 9001, BSCI, OEKO-TEX & GOTS certified. AQL 2.5 quality assurance, transparent merchandising, and 100% compliant export sourcing.',
 };
 
 export default async function HomePage() {

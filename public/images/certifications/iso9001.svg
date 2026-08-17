@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 80" width="200" height="80" fill="none">
+  <rect width="200" height="80" rx="10" fill="#0B1628" stroke="#C8A962" stroke-width="1.5"/>
+  <g transform="translate(14, 16)">
+    <circle cx="24" cy="24" r="22" stroke="#C8A962" stroke-width="2" fill="none"/>
+    <path d="M16 24L22 30L32 18" stroke="#C8A962" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="68" y="32" fill="#FFFFFF" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="900" letter-spacing="1.5">ISO 9001:2015</text>
+  <text x="68" y="48" fill="#C8A962" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="1">QUALITY ASSURED</text>
+  <text x="68" y="60" fill="#94A3B8" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-weight="500">MANAGEMENT SYSTEM</text>
+</svg>

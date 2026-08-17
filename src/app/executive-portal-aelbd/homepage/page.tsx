@@ -38,7 +38,9 @@ interface HeadingField { key: string; label: string; placeholder: string; hint?:
 
 const HEADING_FIELDS: HeadingField[] = [
     // Certifications
-    { key: 'certifications_label', label: 'Certifications — Section Label', placeholder: 'Certified By Leading Global Standards', hint: 'Small uppercase label above the logo marquee.' },
+    { key: 'certifications_label', label: 'Certifications — Eyebrow Label', placeholder: 'Compliance & Production Standards', hint: 'Small uppercase label above the main heading.' },
+    { key: 'certifications_heading', label: 'Certifications — Main Heading', placeholder: 'Engineered to the Standards of Leading Global Apparel Brands' },
+    { key: 'certifications_subheading', label: 'Certifications — Subheading Description', placeholder: 'We manufacture apparel strictly aligned with world-class quality benchmarks…', hint: 'Description below the heading.' },
     // Why Choose Us
     { key: 'why_choose_us_eyebrow', label: 'Why Choose Us — Eyebrow Tag', placeholder: 'Corporate Advantage', hint: 'Small coloured tag above the heading.' },
     { key: 'why_choose_us_heading', label: 'Why Choose Us — Main Heading', placeholder: 'Why Partner With Us' },
@@ -340,21 +342,24 @@ export default function HomepageBuilderPage() {
                                                             <>
                                                                 <div className="grid grid-cols-3 gap-3">
                                                                     <div><FieldLabel>Number</FieldLabel><input type="number" value={item.number || 0} onChange={e => updateArrayItem(idx, 'number', parseInt(e.target.value) || 0)} className="w-full text-sm p-2 border rounded font-mono" /></div>
-                                                                    <div><FieldLabel>Suffix (M+, %)</FieldLabel><input type="text" value={item.suffix || ''} onChange={e => updateArrayItem(idx, 'suffix', e.target.value)} className="w-full text-sm p-2.5 border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 outline-none" /></div>
+                                                                    <div><FieldLabel>Suffix (%, +, M+)</FieldLabel><input type="text" value={item.suffix || ''} onChange={e => updateArrayItem(idx, 'suffix', e.target.value)} className="w-full text-sm p-2.5 border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 outline-none" /></div>
                                                                     <div><FieldLabel>Icon</FieldLabel>
                                                                         <select value={item.icon} onChange={e => updateArrayItem(idx, 'icon', e.target.value)} className="w-full text-sm p-2.5 border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700">
+                                                                            <option value="ShieldCheck">ShieldCheck</option>
+                                                                            <option value="Clock">Clock</option>
+                                                                            <option value="Award">Award</option>
+                                                                            <option value="CheckCircle2">CheckCircle2</option>
+                                                                            <option value="Star">Star</option>
+                                                                            <option value="TrendingUp">TrendingUp</option>
                                                                             <option value="Users">Users</option>
                                                                             <option value="Factory">Factory</option>
                                                                             <option value="Globe2">Globe</option>
                                                                             <option value="Activity">Activity</option>
-                                                                            <option value="Star">Star</option>
-                                                                            <option value="Award">Award</option>
-                                                                            <option value="TrendingUp">Trending Up</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
                                                                 <FieldLabel>Descriptive Label</FieldLabel>
-                                                                <input type="text" value={item.label || ''} onChange={e => updateArrayItem(idx, 'label', e.target.value)} className="w-full text-sm p-2.5 border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 outline-none" placeholder="e.g. Global Buyers" />
+                                                                <input type="text" value={item.label || ''} onChange={e => updateArrayItem(idx, 'label', e.target.value)} className="w-full text-sm p-2.5 border rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 outline-none" placeholder="e.g. Quality Pass Rate" />
                                                             </>
                                                         )}
 

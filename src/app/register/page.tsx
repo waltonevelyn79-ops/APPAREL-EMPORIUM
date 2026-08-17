@@ -86,14 +86,16 @@ export default function RegisterPage() {
                     <h1 className="text-6xl font-black font-heading leading-tight tracking-tighter">Join the<br /><span className="text-primary italic">Global Textile</span> Network.</h1>
                     <p className="text-xl text-gray-500 font-medium max-w-lg leading-relaxed">Gain immediate access to verified Bangladeshi garment manufacturers, manage your RFQs, and track your global sourcing operations in one unified executive dashboard.</p>
 
-                    <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-100">
+                    <div className="grid grid-cols-2 gap-8 pt-8 border-t border-gray-100 dark:border-gray-800">
                         <div>
-                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Active RFQs</p>
-                            <p className="text-3xl font-black font-heading">12.4K+</p>
+                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Quality Pass Rate</p>
+                            <p className="text-3xl font-black font-heading text-primary">99%</p>
+                            <p className="text-[10px] text-gray-400 font-medium">AQL 2.5 Standard</p>
                         </div>
                         <div>
-                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Global Buyers</p>
-                            <p className="text-3xl font-black font-heading">5,200+</p>
+                            <p className="text-xs font-black uppercase tracking-widest text-gray-400 mb-1">Ethical Compliance</p>
+                            <p className="text-3xl font-black font-heading text-secondary">100%</p>
+                            <p className="text-[10px] text-gray-400 font-medium">BSCI & OEKO-TEX Audited</p>
                         </div>
                     </div>
                 </div>
