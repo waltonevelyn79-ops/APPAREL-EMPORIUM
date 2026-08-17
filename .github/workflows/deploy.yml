@@ -16,7 +16,7 @@ jobs:
           key: ${{ secrets.HOSTINGER_SSH_KEY }}
           password: ${{ secrets.HOSTINGER_PASSWORD }}
           port: ${{ secrets.HOSTINGER_PORT }}
-          timeout: 60s
+          timeout: 120s
           command_timeout: 30m
           script: |
             source ~/.bashrc || true
