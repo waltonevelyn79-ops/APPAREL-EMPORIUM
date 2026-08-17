@@ -42,8 +42,8 @@ export default function LoginPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center p-4">
-            <div className="w-full max-w-md bg-white p-10 rounded-[2.5rem] shadow-2xl border border-gray-100">
+        <div className="min-h-screen bg-gray-50 dark:bg-dark-bg flex flex-col justify-center items-center pt-28 pb-16 px-4">
+            <div className="w-full max-w-md bg-white dark:bg-dark-surface p-10 rounded-[2.5rem] shadow-2xl border border-gray-100 dark:border-gray-800">
 
                 <div className="text-center mb-10">
                     <h1 className="text-4xl font-black font-heading mb-2 uppercase tracking-tighter">

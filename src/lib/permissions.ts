@@ -6,18 +6,20 @@ export const PERMISSIONS = {
     SUPER_ADMIN: [
         'products.*', 'categories.*', 'blog.*', 'inquiries.*', 'rfq.*', 'users.manage',
         'media.*', 'settings.*', 'seo.*', 'menus.*', 'homepage.*', 'pages.*', 'theme.*',
-        'forms.*', 'popups.*', 'activity_log.view', 'email.*', 'analytics.*', 'dashboard.view'
+        'forms.*', 'popups.*', 'activity_log.view', 'email.*', 'analytics.*', 'dashboard.view',
+        'deliveries.*'
     ],
     ADMIN: [
         'products.create', 'products.edit', 'products.delete', 'products.view',
         'categories.*', 'blog.*', 'inquiries.view', 'inquiries.reply',
         'rfq.view', 'rfq.update', 'media.upload', 'media.view', 'analytics.view',
-        'bulk_upload', 'dashboard.view'
+        'bulk_upload', 'dashboard.view', 'deliveries.*'
     ],
     EDITOR: [
         'products.create', 'products.edit', 'products.view',
         'blog.create', 'blog.edit', 'blog.view',
-        'inquiries.view', 'media.upload', 'media.view', 'dashboard.view'
+        'inquiries.view', 'media.upload', 'media.view', 'dashboard.view',
+        'deliveries.*'
     ],
     VIEWER: [
         'dashboard.view', 'products.view', 'inquiries.view', 'analytics.view'
@@ -43,6 +45,7 @@ export const ROUTE_PERMISSIONS: Record<string, string | string[]> = {
     '/executive-portal-aelbd/menus': ['menus.*'],
     '/executive-portal-aelbd/pages': ['pages.*'],
     '/executive-portal-aelbd/homepage': ['homepage.*'],
+    '/executive-portal-aelbd/deliveries': ['deliveries.*', 'homepage.*'],
     '/executive-portal-aelbd/theme': ['theme.*'],
     '/executive-portal-aelbd/forms': ['forms.*'],
     '/executive-portal-aelbd/popups': ['popups.*'],
@@ -55,6 +58,7 @@ export const ROUTE_PERMISSIONS: Record<string, string | string[]> = {
     '/buyer-portal/inquiries': ['buyer_dashboard.view'],
 
     // Developer only routes (checked explicitly)
+    '/executive-portal-aelbd/api-manager': ['*'],
     '/executive-portal-aelbd/tracking': ['*'],
     '/executive-portal-aelbd/maintenance': ['*'],
     '/executive-portal-aelbd/performance': ['*'],
@@ -140,6 +144,7 @@ export function getAccessibleSidebarItems(role: Role | undefined | null): Sideba
     if (hasPermission(role, 'menus.*')) items.push({ label: 'Menus', icon: 'MenuIcon', href: '/executive-portal-aelbd/menus' });
     if (hasPermission(role, 'pages.*')) items.push({ label: 'Pages', icon: 'FileCode', href: '/executive-portal-aelbd/pages' });
     if (hasPermission(role, 'homepage.*')) items.push({ label: 'Homepage Builder', icon: 'LayoutTemplate', href: '/executive-portal-aelbd/homepage' });
+    if (hasPermission(role, 'deliveries.*') || hasPermission(role, 'homepage.*')) items.push({ label: 'Live Deliveries', icon: 'Truck', href: '/executive-portal-aelbd/deliveries' });
     if (hasPermission(role, 'theme.*')) items.push({ label: 'Theme Settings', icon: 'Paintbrush', href: '/executive-portal-aelbd/theme' });
     if (hasPermission(role, 'popups.*')) items.push({ label: 'Pop-ups', icon: 'Megaphone', href: '/executive-portal-aelbd/popups' });
 
@@ -148,6 +153,7 @@ export function getAccessibleSidebarItems(role: Role | undefined | null): Sideba
     if (hasPermission(role, 'settings.*')) items.push({ label: 'General Settings', icon: 'Settings', href: '/executive-portal-aelbd/settings' });
 
     if (hasPermission(role, '*')) {
+        items.push({ label: 'Developer API', icon: 'KeyRound', href: '/executive-portal-aelbd/api-manager' });
         items.push({ label: 'Tracking Scripts', icon: 'BarChart3', href: '/executive-portal-aelbd/tracking' });
         items.push({ label: 'Activity Logs', icon: 'Activity', href: '/executive-portal-aelbd/activity-log' });
         items.push({ label: 'Maintenance', icon: 'ShieldAlert', href: '/executive-portal-aelbd/maintenance' });

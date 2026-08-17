@@ -16,14 +16,35 @@ export default async function ProductsPage({
     // Fetch categories for sidebar
     const categories = await prisma.category.findMany({
         where: { isActive: true },
+        include: {
+            parent: { select: { name: true, slug: true } },
+            children: { where: { isActive: true }, select: { id: true, name: true, slug: true } },
+            _count: { select: { products: true } }
+        },
         orderBy: { order: 'asc' }
     });
+
+    // Popular root categories for top quick pills
+    const topPills = [
+        { label: 'All Items', slug: '' },
+        ...categories
+            .filter(c => !c.parentId)
+            .slice(0, 7)
+            .map(c => ({ label: c.name, slug: c.slug }))
+    ];
 
     // Build the query object
     const where: any = { isActive: true };
 
     if (category) {
-        where.category = { slug: category };
+        // Match category directly or its subcategories
+        const targetCategory = categories.find(c => c.slug === category);
+        if (targetCategory && targetCategory.children && targetCategory.children.length > 0) {
+            const childSlugs = targetCategory.children.map(ch => ch.slug);
+            where.category = { slug: { in: [category, ...childSlugs] } };
+        } else {
+            where.category = { slug: category };
+        }
     }
 
     if (q) {
@@ -85,10 +106,20 @@ export default async function ProductsPage({
         return `/products?${params.toString()}`;
     };
 
+    // Helper for pill links
+    const buildPillLink = (pillSlug: string) => {
+        const params = new URLSearchParams();
+        if (pillSlug) params.set('category', pillSlug);
+        if (q) params.set('q', q);
+        if (fabric) params.set('fabric', fabric);
+        if (moq) params.set('moq', moq);
+        return `/products?${params.toString()}`;
+    };
+
     return (
         <div className="bg-light-bg dark:bg-dark-bg min-h-screen">
-            {/* Page Header */}
-            <div className="bg-primary text-white py-16 relative overflow-hidden">
+            {/* Page Header — pt-20 or pt-24 offsets the fixed nav (h ~64-80px) */}
+            <div className="bg-primary text-white pt-28 pb-16 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cross-stripes.png')] opacity-20"></div>
                 <div className="container mx-auto px-4 text-center relative z-10">
                     <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">Manufacturer Catalog</h1>
@@ -99,11 +130,32 @@ export default async function ProductsPage({
             </div>
 
             <div className="container mx-auto px-4 py-12">
+                {/* ── Top Horizontal Category Pills Bar (Amazon / Modern E-Commerce Style) ── */}
+                <div className="mb-8 overflow-x-auto custom-scrollbar pb-2">
+                    <div className="flex items-center gap-2 min-w-max">
+                        {topPills.map((pill) => {
+                            const isPillActive = (!category && !pill.slug) || (category === pill.slug);
+                            return (
+                                <Link
+                                    key={pill.slug || 'all'}
+                                    href={buildPillLink(pill.slug)}
+                                    className={`px-4 py-2 rounded-2xl text-xs font-bold transition-all shadow-sm flex items-center gap-1.5 ${isPillActive
+                                        ? 'bg-primary text-white scale-105 shadow-md shadow-primary/20'
+                                        : 'bg-white dark:bg-dark-surface text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-800 hover:border-primary hover:text-primary'
+                                        }`}
+                                >
+                                    <span>{pill.label}</span>
+                                </Link>
+                            );
+                        })}
+                    </div>
+                </div>
+
                 <div className="flex flex-col lg:flex-row gap-8">
 
                     {/* Filter Sidebar */}
                     <div className="w-full lg:w-72 shrink-0">
-                        <ProductFilter categories={categories} />
+                        <ProductFilter categories={categories as any} />
                     </div>
 
                     {/* Product Marketplace */}

@@ -39,7 +39,7 @@ export default function ContactPage() {
     };
 
     return (
-        <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-20">
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen pt-32 pb-20">
             <div className="container mx-auto px-4 max-w-6xl">
 
                 <div className="text-center mb-16">

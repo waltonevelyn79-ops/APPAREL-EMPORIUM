@@ -84,7 +84,7 @@ function RequestQuoteContent() {
     }
 
     return (
-        <main className="py-20 bg-gray-50 dark:bg-dark-bg transition-colors">
+        <main className="pt-32 pb-20 bg-gray-50 dark:bg-dark-bg transition-colors">
             <div className="max-w-4xl mx-auto px-4 sm:px-6">
 
                 <div className="text-center mb-12 animate-in fade-in slide-in-from-bottom-4">

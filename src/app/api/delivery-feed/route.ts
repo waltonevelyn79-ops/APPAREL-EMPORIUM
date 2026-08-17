@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 export const dynamic = 'force-dynamic';
 
@@ -13,6 +15,7 @@ const SEED_DATA = [
         buyerCountry: 'Sweden',
         quantity: '50,000 pcs',
         status: 'DELIVERED' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toISOString(),
     },
     {
@@ -24,6 +27,7 @@ const SEED_DATA = [
         buyerCountry: 'Canada',
         quantity: '12,000 pcs',
         status: 'IN_PRODUCTION' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 1).toISOString(),
     },
     {
@@ -35,6 +39,7 @@ const SEED_DATA = [
         buyerCountry: 'Australia',
         quantity: '30,000 pcs',
         status: 'SHIPPED' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 12).toISOString(),
     },
     {
@@ -46,6 +51,7 @@ const SEED_DATA = [
         buyerCountry: 'UAE',
         quantity: '80,000 pcs',
         status: 'COMPLETED' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 5).toISOString(),
     },
     {
@@ -57,6 +63,7 @@ const SEED_DATA = [
         buyerCountry: 'United Kingdom',
         quantity: '25,000 pcs',
         status: 'IN_PRODUCTION' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 6).toISOString(),
     },
     {
@@ -68,19 +75,26 @@ const SEED_DATA = [
         buyerCountry: 'Germany',
         quantity: '40,000 pcs',
         status: 'DELIVERED' as const,
+        imageUrl: 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&h=380&fit=crop&q=80',
         createdAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3).toISOString(),
     },
 ];
 
+// ─── GET: Fetch delivery feed items ──────────────────────────────────────────
 export async function GET(req: NextRequest) {
     try {
+        const { searchParams } = new URL(req.url);
+        const includeAll = searchParams.get('all') === 'true';
+
+        const whereClause = includeAll ? {} : { isActive: true };
+
         const items = await prisma.deliveryUpdate.findMany({
-            where: { isActive: true },
+            where: whereClause,
             orderBy: [{ sortOrder: 'asc' }, { createdAt: 'desc' }],
-            take: 20,
+            take: includeAll ? 100 : 20,
         });
 
-        if (items.length === 0) {
+        if (items.length === 0 && !includeAll) {
             return NextResponse.json(SEED_DATA);
         }
 
@@ -94,11 +108,78 @@ export async function GET(req: NextRequest) {
             quantity: item.quantity,
             status: item.status,
             imageUrl: item.imageUrl,
+            isActive: item.isActive,
+            sortOrder: item.sortOrder,
             createdAt: item.createdAt.toISOString(),
+            updatedAt: item.updatedAt.toISOString(),
         }));
 
         return NextResponse.json(mapped);
-    } catch (error) {
+    } catch (error: any) {
         return NextResponse.json(SEED_DATA);
+    }
+}
+
+// ─── POST: Create new delivery update ────────────────────────────────────────
+export async function POST(req: NextRequest) {
+    try {
+        const session = await getServerSession(authOptions);
+        const apiKey = req.headers.get('x-api-key');
+
+        let isAuthorized = false;
+        if (session && (session.user as any)?.role) {
+            isAuthorized = true;
+        } else if (apiKey) {
+            const validKeySetting = await prisma.siteSetting.findUnique({
+                where: { key: 'api_external_key' }
+            });
+            if (validKeySetting && apiKey === validKeySetting.value) {
+                isAuthorized = true;
+            }
+        }
+
+        if (!isAuthorized) {
+            return NextResponse.json({ success: false, error: 'Unauthorized' }, { status: 401 });
+        }
+
+        const body = await req.json();
+        const {
+            title,
+            description,
+            category,
+            buyer,
+            buyerCountry,
+            quantity,
+            status = 'COMPLETED',
+            imageUrl,
+            isActive = true,
+            sortOrder = 0
+        } = body;
+
+        if (!title || !category || !buyerCountry || !quantity) {
+            return NextResponse.json({
+                success: false,
+                error: 'Missing required fields: title, category, buyerCountry, and quantity are required.'
+            }, { status: 400 });
+        }
+
+        const newItem = await prisma.deliveryUpdate.create({
+            data: {
+                title,
+                description: description || '',
+                category,
+                buyer: buyer || 'International Client',
+                buyerCountry,
+                quantity,
+                status,
+                imageUrl: imageUrl || null,
+                isActive: isActive !== false,
+                sortOrder: Number(sortOrder) || 0,
+            }
+        });
+
+        return NextResponse.json({ success: true, item: newItem }, { status: 201 });
+    } catch (error: any) {
+        return NextResponse.json({ success: false, error: error.message || 'Failed to create delivery update' }, { status: 500 });
     }
 }

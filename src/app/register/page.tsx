@@ -75,7 +75,7 @@ export default function RegisterPage() {
     }
 
     return (
-        <div className="min-h-screen bg-white flex items-center justify-center p-6">
+        <div className="min-h-screen bg-white dark:bg-dark-bg flex items-center justify-center pt-28 pb-16 px-6">
             <div className="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 {/* Visual Side */}

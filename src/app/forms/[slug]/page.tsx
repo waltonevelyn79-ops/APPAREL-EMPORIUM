@@ -15,7 +15,7 @@ export default async function StandaloneFormPage({ params }: { params: { slug: s
     }
 
     return (
-        <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-20 relative overflow-hidden">
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen pt-32 pb-20 relative overflow-hidden">
             {/* Dynamic background elements */}
             <div className="absolute top-0 right-0 w-1/3 h-1/2 bg-blue-50/50 dark:bg-blue-900/5 blur-[120px] rounded-full -translate-y-20 translate-x-20" />
             <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-purple-50/50 dark:bg-purple-900/5 blur-[120px] rounded-full translate-y-20 -translate-x-20" />

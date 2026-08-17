@@ -1,7 +1,8 @@
-﻿'use client';
+'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Package, Truck, CheckCircle2, Clock, Globe, ChevronRight, Loader2 } from 'lucide-react';
+import { Package, Truck, CheckCircle2, Clock, Globe, ChevronRight, Loader2, ShoppingBag } from 'lucide-react';
+import Image from 'next/image';
 
 interface DeliveryUpdate {
     id: string;
@@ -43,6 +44,32 @@ const statusConfig: Record<DeliveryUpdate['status'], { label: string; color: str
     },
 };
 
+// Category-based placeholder images (high-quality garment stock photos)
+const categoryPlaceholders: Record<string, string> = {
+    'Knitwear': 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=300&fit=crop&q=80',
+    'Woven': 'https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=300&fit=crop&q=80',
+    'Activewear': 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=400&h=300&fit=crop&q=80',
+    'Kidswear': 'https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=400&h=300&fit=crop&q=80',
+    'Denim': 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=400&h=300&fit=crop&q=80',
+    'Sweater': 'https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=400&h=300&fit=crop&q=80',
+    'default': 'https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=400&h=300&fit=crop&q=80',
+};
+
+function getPlaceholderImage(category: string): string {
+    return categoryPlaceholders[category] || categoryPlaceholders['default'];
+}
+
+// Country flag emoji helper
+function getCountryFlag(country: string): string {
+    const flags: Record<string, string> = {
+        'Sweden': '🇸🇪', 'Canada': '🇨🇦', 'Australia': '🇦🇺', 'UAE': '🇦🇪',
+        'United Kingdom': '🇬🇧', 'Germany': '🇩🇪', 'USA': '🇺🇸', 'France': '🇫🇷',
+        'Japan': '🇯🇵', 'South Korea': '🇰🇷', 'Netherlands': '🇳🇱', 'Spain': '🇪🇸',
+        'Italy': '🇮🇹', 'Denmark': '🇩🇰', 'Norway': '🇳🇴', 'Finland': '🇫🇮',
+    };
+    return flags[country] || '🌍';
+}
+
 function timeAgo(dateStr: string): string {
     const now = new Date();
     const date = new Date(dateStr);
@@ -59,42 +86,69 @@ function timeAgo(dateStr: string): string {
 
 function FeedCard({ item }: { item: DeliveryUpdate }) {
     const status = statusConfig[item.status] || statusConfig.COMPLETED;
+    const imgSrc = item.imageUrl || getPlaceholderImage(item.category);
+    const [imgError, setImgError] = useState(false);
+
     return (
-        <div className="flex-none w-[320px] sm:w-[360px] bg-white/5 border border-white/10 hover:border-primary/40 rounded-2xl p-5 flex flex-col gap-3 transition-all duration-300 hover:bg-white/10 group cursor-default backdrop-blur-sm">
-            <div className="flex items-start justify-between gap-3">
-                <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                        <Package size={14} className="text-primary flex-shrink-0" />
-                        <span className="text-[11px] font-bold text-primary uppercase tracking-widest truncate">
-                            {item.category}
-                        </span>
+        <div className="flex-none w-[300px] sm:w-[340px] bg-white/5 border border-white/10 hover:border-primary/50 rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:bg-white/[0.08] group cursor-default hover:shadow-xl hover:shadow-primary/5 hover:-translate-y-0.5">
+            {/* Product Image */}
+            <div className="relative h-44 w-full overflow-hidden bg-slate-800/60 flex-shrink-0">
+                {!imgError ? (
+                    <img
+                        src={imgSrc}
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={() => setImgError(true)}
+                        loading="lazy"
+                    />
+                ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-600">
+                        <ShoppingBag size={36} />
+                        <span className="text-xs font-medium text-slate-500">{item.category}</span>
                     </div>
-                    <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 group-hover:text-primary/90 transition-colors">
-                        {item.title}
-                    </h3>
+                )}
+                {/* Status badge on image */}
+                <div className="absolute top-3 right-3">
+                    <span className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border backdrop-blur-sm ${status.bg} ${status.color}`}>
+                        {status.icon}
+                        {status.label}
+                    </span>
                 </div>
-                <span className={`flex-shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border ${status.bg} ${status.color}`}>
-                    {status.icon}
-                    {status.label}
-                </span>
+                {/* Category chip */}
+                <div className="absolute top-3 left-3">
+                    <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/50 text-white backdrop-blur-sm border border-white/10 uppercase tracking-wider">
+                        {item.category}
+                    </span>
+                </div>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0f1e]/80 via-transparent to-transparent pointer-events-none" />
             </div>
-            <p className="text-slate-400 text-xs leading-relaxed line-clamp-2">
-                {item.description}
-            </p>
-            <div className="flex items-center justify-between pt-2 border-t border-white/10">
-                <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-1.5 text-slate-400">
-                        <Globe size={11} />
-                        <span className="text-[11px] font-medium">{item.buyerCountry}</span>
+
+            {/* Card Body */}
+            <div className="p-4 flex flex-col gap-2.5 flex-1">
+                <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 group-hover:text-primary/90 transition-colors">
+                    {item.title}
+                </h3>
+                <p className="text-slate-400 text-xs leading-relaxed line-clamp-2 flex-1">
+                    {item.description}
+                </p>
+
+                {/* Meta row */}
+                <div className="flex items-center justify-between pt-2.5 border-t border-white/[0.07] mt-auto">
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-1.5">
+                            <span className="text-sm leading-none">{getCountryFlag(item.buyerCountry)}</span>
+                            <span className="text-[11px] font-semibold text-slate-300">{item.buyerCountry}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-slate-500">
+                            <Package size={10} />
+                            <span className="text-[10px] font-medium">{item.quantity}</span>
+                        </div>
                     </div>
-                    <div className="flex items-center gap-1.5 text-slate-400">
-                        <Package size={11} />
-                        <span className="text-[11px] font-medium">{item.quantity}</span>
-                    </div>
+                    <span className="text-[10px] text-slate-600 font-medium tabular-nums">
+                        {timeAgo(item.createdAt)}
+                    </span>
                 </div>
-                <span className="text-[10px] text-slate-600 font-medium">
-                    {timeAgo(item.createdAt)}
-                </span>
             </div>
         </div>
     );
@@ -154,13 +208,13 @@ export default function DeliveryFeed() {
 
     return (
         <section className="py-14 bg-slate-950 border-y border-white/5 overflow-hidden relative" id="live-feed">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-10">
                 <div className="flex items-center justify-between flex-wrap gap-4">
                     <div>
-                        <div className="flex items-center gap-2 mb-1">
+                        <div className="flex items-center gap-2 mb-2">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400"></span>
@@ -170,7 +224,7 @@ export default function DeliveryFeed() {
                         <h2 className="text-2xl md:text-3xl font-black text-white font-heading">
                             Recent Deliveries &amp; Production
                         </h2>
-                        <p className="text-slate-500 text-xs mt-1 max-w-lg">
+                        <p className="text-slate-500 text-xs mt-1.5 max-w-lg">
                             Real-time updates on active orders, recent shipments and completed deliveries to our global buyers.
                         </p>
                     </div>

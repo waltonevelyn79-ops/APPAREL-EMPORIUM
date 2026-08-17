@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     ];
 
     return (
-        <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-16">
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen pt-28 pb-16">
             <div className="container mx-auto px-4 max-w-7xl">
 
                 {/* Breadcrumb */}

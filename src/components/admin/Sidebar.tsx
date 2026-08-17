@@ -6,7 +6,8 @@ import { usePathname } from 'next/navigation';
 import { usePermission } from '@/hooks/usePermission';
 import { getAccessibleSidebarItems, SidebarItem } from '@/lib/permissions';
 import { signOut, useSession } from 'next-auth/react';
-import { Menu, X, LogOut, LayoutDashboard, Bell } from 'lucide-react';
+import * as Icons from 'lucide-react';
+import { Menu, X, LogOut, LayoutDashboard, Bell, Truck } from 'lucide-react';
 
 export default function Sidebar() {
     const { role } = usePermission();
@@ -41,8 +42,10 @@ export default function Sidebar() {
         setIsMobileOpen(false);
     }, [pathname]);
 
-    // Simple mapping for lucide-react, would usually be dynamic
+    // Icon resolver
     const getIcon = (name: string) => {
+        const IconComp = (Icons as any)[name];
+        if (IconComp) return <IconComp size={18} />;
         return <LayoutDashboard size={18} />;
     }
 

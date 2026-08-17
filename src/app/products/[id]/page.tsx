@@ -43,7 +43,7 @@ export default async function ProductDetailPage({
     } catch (e) { }
 
     return (
-        <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-12">
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen pt-28 pb-16">
             {/* Record this visit for "Recently Viewed" */}
             <RecordProductVisit id={product.id} />
 

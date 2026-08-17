@@ -21,7 +21,7 @@ export default function ComparePage() {
 
     if (compareList.length === 0) {
         return (
-            <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center bg-gray-50 dark:bg-dark-bg transition-colors">
+            <div className="min-h-[70vh] flex flex-col items-center justify-center pt-32 pb-20 px-4 text-center bg-gray-50 dark:bg-dark-bg transition-colors">
                 <div className="w-24 h-24 bg-white dark:bg-dark-surface rounded-[2rem] shadow-xl flex items-center justify-center mb-10 text-gray-200">
                     <Columns2 size={48} />
                 </div>
@@ -45,7 +45,7 @@ export default function ComparePage() {
     ));
 
     return (
-        <div className="bg-gray-50 dark:bg-dark-bg min-h-screen py-20 transition-colors">
+        <div className="bg-gray-50 dark:bg-dark-bg min-h-screen pt-32 pb-20 transition-colors">
             <div className="container mx-auto px-4">
 
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">

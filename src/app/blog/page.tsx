@@ -35,7 +35,7 @@ export default async function BlogPage() {
         <div className="bg-light-bg dark:bg-dark-bg min-h-screen">
 
             {/* ── PAGE HERO ───────────────────────────────────────── */}
-            <div className="bg-primary text-white py-20 px-4">
+            <div className="bg-primary text-white pt-28 pb-16 px-4">
                 <div className="container mx-auto max-w-6xl">
                     <div className="flex items-center gap-3 mb-4">
                         <Rss className="w-5 h-5 text-secondary" />

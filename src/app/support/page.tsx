@@ -7,7 +7,7 @@ export const metadata = {
 
 export default function SupportPage() {
     return (
-        <div className="bg-light-bg dark:bg-dark-bg min-h-screen py-20">
+        <div className="bg-light-bg dark:bg-dark-bg min-h-screen pt-32 pb-20">
             <div className="container mx-auto px-4 max-w-5xl">
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">Our Trade Support Service</h1>
