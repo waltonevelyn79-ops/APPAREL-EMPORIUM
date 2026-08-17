@@ -84,7 +84,7 @@ export default function HeroSlider({ data }: HeroSliderProps) {
                         <div className={`max-w-4xl px-4 text-center transform transition-all duration-1000 delay-100 pointer-events-auto
                             ${idx === currentIdx ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                         >
-                            <h2
+                            <h1
                                 className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg font-heading"
                                 dangerouslySetInnerHTML={{ __html: slide.title }}
                             />
@@ -110,12 +110,14 @@ export default function HeroSlider({ data }: HeroSliderProps) {
                 <>
                     <button
                         onClick={prevSlide}
+                        aria-label="Previous Slide"
                         className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-black/20 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all backdrop-blur-sm"
                     >
                         <ChevronLeft size={32} />
                     </button>
                     <button
                         onClick={nextSlide}
+                        aria-label="Next Slide"
                         className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 bg-black/20 hover:bg-black/50 text-white rounded-full opacity-0 group-hover:opacity-100 transition-all backdrop-blur-sm"
                     >
                         <ChevronRight size={32} />

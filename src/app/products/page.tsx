@@ -108,20 +108,24 @@ export default async function ProductsPage({
 
                     {/* Product Marketplace */}
                     <div className="flex-grow">
-                        <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-white dark:bg-dark-surface rounded-2xl border border-gray-100 dark:border-gray-800 gap-4">
+                        <div className="mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-white dark:bg-dark-surface rounded-2xl border border-gray-200 dark:border-gray-700 gap-4">
                             <div>
-                                <h4 className="text-sm font-bold text-gray-500 uppercase tracking-widest mb-1">Live Results</h4>
+                                <h2 className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase tracking-widest mb-1">Live Results</h2>
                                 <p className="text-gray-900 dark:text-white font-bold">
-                                    Showing <span className="text-primary">{products.length > 0 ? skip + 1 : 0}-{Math.min(skip + limit, totalProducts)}</span> of {totalProducts} items matching your criteria
+                                    Showing <span className="text-primary dark:text-blue-400">{products.length > 0 ? skip + 1 : 0}-{Math.min(skip + limit, totalProducts)}</span> of {totalProducts} items matching your criteria
                                 </p>
                             </div>
 
                             <div className="flex items-center gap-3">
-                                <span className="text-xs font-bold text-gray-400 uppercase">Sort By</span>
-                                <select className="bg-gray-50 dark:bg-gray-800 border-none rounded-lg text-sm font-bold p-2 focus:ring-0">
-                                    <option>Latest Arrival</option>
-                                    <option>Name (A-Z)</option>
-                                    <option>Low MOQ First</option>
+                                <label htmlFor="product-sort-select" className="text-xs font-bold text-gray-700 dark:text-gray-300 uppercase">Sort By</label>
+                                <select
+                                    id="product-sort-select"
+                                    aria-label="Sort garments by criteria"
+                                    className="bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-bold p-2 focus:ring-2 focus:ring-primary outline-none"
+                                >
+                                    <option value="latest">Latest Arrival</option>
+                                    <option value="name">Name (A-Z)</option>
+                                    <option value="moq">Low MOQ First</option>
                                 </select>
                             </div>
                         </div>

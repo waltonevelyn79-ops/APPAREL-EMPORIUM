@@ -40,10 +40,10 @@ export default function Certifications({ data, headings }: CertProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
 
                 <div className="text-center mb-8 max-w-2xl mx-auto">
-                    <span className="text-primary font-bold tracking-widest uppercase text-xs block mb-1">
+                    <h2 className="text-primary dark:text-blue-400 font-bold tracking-widest uppercase text-xs block mb-1">
                         {headings?.certifications_label || 'Compliance & Production Standards'}
-                    </span>
-                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                    </h2>
+                    <p className="text-xs text-gray-700 dark:text-gray-300">
                         Our partner manufacturing units across Bangladesh adhere to recognized international compliance and safety benchmarks:
                     </p>
                 </div>

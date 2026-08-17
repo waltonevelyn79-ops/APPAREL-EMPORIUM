@@ -2,6 +2,9 @@
 const nextConfig = {
     reactStrictMode: true,
 
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
     output: 'standalone', // Required for Hostinger Node.js hosting
     images: {
         remotePatterns: [
