@@ -22,10 +22,24 @@ jobs:
             export PATH=$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin
             if [ -s "$HOME/.nvm/nvm.sh" ]; then source "$HOME/.nvm/nvm.sh"; fi
 
-            # Determine directory
-            DEPLOY_DIR="/home/${{ secrets.HOSTINGER_USERNAME }}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs"
-            if [ -d "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/nodejs" ]; then
+            # Determine directory automatically
+            DEPLOY_DIR=""
+            for CANDIDATE in \
+              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/nodejs" \
+              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/public_html" \
+              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net" \
+              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/mediumblue-wildcat-188317.hostingersite.com/nodejs" \
+              "/home/${{ secrets.HOSTINGER_USERNAME }}/public_html"
+            do
+              if [ -d "$CANDIDATE" ]; then
+                DEPLOY_DIR="$CANDIDATE"
+                break
+              fi
+            done
+
+            if [ -z "$DEPLOY_DIR" ]; then
               DEPLOY_DIR="/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/nodejs"
+              mkdir -p "$DEPLOY_DIR"
             fi
             
             echo "Deploying to $DEPLOY_DIR"
