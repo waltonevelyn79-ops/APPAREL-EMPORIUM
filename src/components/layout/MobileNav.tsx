@@ -82,7 +82,8 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
                     {(hasChildren || hasMegaMenu) && (
                         <button
                             onClick={(e) => toggleExpand(e, item.id)}
-                            className="p-2 ml-2 bg-gray-50 dark:bg-gray-800 rounded-full text-gray-500 hover:text-primary transition"
+                            aria-label={`Toggle ${item.label} submenu`}
+                            className="p-2 ml-2 bg-gray-50 dark:bg-gray-800 rounded-full text-gray-700 dark:text-gray-300 hover:text-primary transition"
                         >
                             <ChevronRight size={20} className={`transform transition-transform duration-300 ${isExpanded ? 'rotate-90' : ''}`} />
                         </button>
@@ -110,6 +111,7 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
             <div
                 className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
                 onClick={onClose}
+                aria-hidden="true"
             ></div>
 
             {/* Slider Sheet */}
@@ -119,7 +121,8 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
                     <span className="font-extrabold text-xl tracking-tight text-primary">Menu</span>
                     <button
                         onClick={onClose}
-                        className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm text-gray-500 hover:text-red-500 hover:rotate-90 transition-all duration-300"
+                        aria-label="Close Menu"
+                        className="p-2 bg-white dark:bg-gray-800 rounded-full shadow-sm text-gray-700 dark:text-gray-300 hover:text-red-500 hover:rotate-90 transition-all duration-300"
                     >
                         <X size={20} />
                     </button>

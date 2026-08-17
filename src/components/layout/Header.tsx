@@ -124,8 +124,9 @@ export default function Header() {
 
                         <Link
                             href="/buyer-portal"
-                            className="p-2 text-gray-400 dark:text-gray-500 hover:text-primary transition-colors hover:bg-primary/10 rounded-full"
+                            className="p-2 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-white transition-colors hover:bg-primary/10 rounded-full"
                             title="Buyer Portal"
+                            aria-label="Buyer Portal"
                         >
                             <User size={20} />
                         </Link>
@@ -139,14 +140,15 @@ export default function Header() {
 
                         {/* Mobile Access */}
                         <button
-                            className="lg:hidden p-2.5 text-gray-500 dark:text-white hover:text-primary transition-colors bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-100 dark:border-white/10"
+                            className="lg:hidden p-2.5 text-gray-700 dark:text-white hover:text-primary transition-colors bg-gray-50 dark:bg-white/5 rounded-xl border border-gray-200 dark:border-white/10"
                             onClick={() => setMobileOpen(true)}
+                            aria-label="Toggle Menu"
                         >
                             <Menu size={24} />
                         </button>
                     </div>
                 </div>
-            </header >
+            </header>
 
             <MobileNav
                 menus={mobileMenus.length > 0 ? mobileMenus : menus}
