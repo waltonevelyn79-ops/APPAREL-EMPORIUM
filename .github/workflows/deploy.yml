@@ -84,12 +84,28 @@ jobs:
             echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
             echo "NEXT_PUBLIC_APP_URL=\"https://aelbd.net\"" >> .env
             
-            # Install packages (including devDependencies required by Next.js & Prisma build)
-            npm install --no-audit --no-fund
+            # Export node paths and local node_modules bin
+            export PATH="./node_modules/.bin:$PATH:/usr/local/bin:/opt/alt/alt-nodejs22/root/usr/bin:/opt/alt/alt-nodejs20/root/usr/bin"
+            
+            # Install packages with clean fallback if node_modules collision occurs
+            echo "Installing dependencies..."
+            npm install --no-audit --no-fund || (echo "Retrying clean install..." && rm -rf node_modules package-lock.json && npm install --no-audit --no-fund)
+            
+            echo "Generating Prisma client..."
             npx prisma generate
+            
+            echo "Updating database schema..."
             npx prisma db push --accept-data-loss
+            
+            echo "Running database seed..."
             npm run seed || true
+            
+            echo "Building Next.js application..."
             npm run build
+            
             # Gracefully restart application utilizing pm2
+            echo "Restarting PM2 process..."
             npx -y pm2 restart garments-website --update-env || npx -y pm2 start ecosystem.config.js
+            npx -y pm2 save
+            npx -y pm2 list
             echo "✅ Deployment complete!"
