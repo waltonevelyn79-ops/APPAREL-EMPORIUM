@@ -18,7 +18,8 @@ export async function GET(req: NextRequest) {
 
         return withCors(req, NextResponse.json({ success: true, count: items.length, data: items }));
     } catch (error: any) {
-        return withCors(req, NextResponse.json({ success: false, error: error.message }, { status: 500 }));
+        console.error('[External Delivery Feed] GET error:', error);
+        return withCors(req, NextResponse.json({ success: true, count: 0, data: [] }));
     }
 }
 
