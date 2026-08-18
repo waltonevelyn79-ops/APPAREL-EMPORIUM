@@ -27,9 +27,6 @@ jobs:
             # Determine directory automatically
             DEPLOY_DIR=""
             for CANDIDATE in \
-              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/ielbd.net/nodejs" \
-              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/ielbd.net/public_html" \
-              "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/ielbd.net" \
               "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/nodejs" \
               "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net/public_html" \
               "/home/${{ secrets.HOSTINGER_USERNAME }}/domains/aelbd.net" \

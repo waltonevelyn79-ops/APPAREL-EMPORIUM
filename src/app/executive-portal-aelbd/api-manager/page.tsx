@@ -124,7 +124,7 @@ export default function ApiManagerPage() {
     const samplePython = `import requests
 
 API_KEY = "${apiKey || 'YOUR_API_KEY'}"
-BASE_URL = "https://ielbd.net"
+BASE_URL = "https://aelbd.net"
 
 # 1. Fetch available categories
 cats = requests.get(f"{BASE_URL}/api/external/categories?format=flat").json()
@@ -144,16 +144,52 @@ product_data = {
         "MOQ": "500 Pcs"
     }
 }
-
-response = requests.post(
+prod_res = requests.post(
     f"{BASE_URL}/api/external/products",
     headers={"x-api-key": API_KEY, "Content-Type": "application/json"},
     json=product_data
 )
-print(response.json())
+print("Product Upload:", prod_res.json())
+
+# 3. Upload a Blog Post
+blog_data = {
+    "title": "Top Trends in Sustainable Knitwear for 2026",
+    "content": "<h2>Sustainable Sourcing</h2><p>Overview of organic cotton and eco-friendly dyeing techniques for global buyers.</p>",
+    "excerpt": "Discover modern eco-friendly apparel manufacturing and export trends.",
+    "tags": ["Sustainable", "Knitwear", "Export"],
+    "coverImage": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800",
+    "isPublished": True,
+    "seoTitle": "Sustainable Knitwear Sourcing | Apparel Emporium",
+    "seoDescription": "Learn key trends in sustainable knitwear manufacturing."
+}
+blog_res = requests.post(
+    f"{BASE_URL}/api/external/blog",
+    headers={"x-api-key": API_KEY, "Content-Type": "application/json"},
+    json=blog_data
+)
+print("Blog Upload:", blog_res.json())
+
+# 4. Upload a Recent Delivery Update (Live Feed)
+delivery_data = {
+    "title": "15,000 Pcs Organic Pique Polo Exported",
+    "category": "Polo Shirt",
+    "buyer": "European Apparel Brand",
+    "buyerCountry": "Germany",
+    "quantity": "15,000 Pcs",
+    "status": "COMPLETED",
+    "description": "Shipped to Hamburg port with GOTS certified combed organic cotton.",
+    "imageUrl": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"
+}
+delivery_res = requests.post(
+    f"{BASE_URL}/api/external/delivery-feed",
+    headers={"x-api-key": API_KEY, "Content-Type": "application/json"},
+    json=delivery_data
+)
+print("Delivery Feed Upload:", delivery_res.json())
 `;
 
-    const sampleCurl = `curl -X POST "https://ielbd.net/api/external/products" \\
+    const sampleCurl = `# 1. Upload Product
+curl -X POST "https://aelbd.net/api/external/products" \\
   -H "x-api-key: ${apiKey || 'YOUR_API_KEY'}" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -162,6 +198,27 @@ print(response.json())
     "description": "Pre-shrunk organic cotton t-shirt with ribbed collar.",
     "images": ["https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500"],
     "minOrder": "1000 pcs"
+  }'
+
+# 2. Upload Blog Post
+curl -X POST "https://aelbd.net/api/external/blog" \\
+  -H "x-api-key: ${apiKey || 'YOUR_API_KEY'}" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "title": "Sustainable Apparel Trends",
+    "content": "<p>Article content here...</p>",
+    "isPublished": true
+  }'
+
+# 3. Upload Recent Delivery Update
+curl -X POST "https://aelbd.net/api/external/delivery-feed" \\
+  -H "x-api-key: ${apiKey || 'YOUR_API_KEY'}" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "title": "10,000 Pcs Polo Shipped",
+    "category": "Polo Shirt",
+    "buyerCountry": "Germany",
+    "quantity": "10,000 Pcs"
   }'`;
 
     return (
