@@ -41,27 +41,32 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
         try {
             const columns = JSON.parse(dataStr);
             return columns.map((col: any, idx: number) => (
-                <div key={idx} className="mb-5 pl-3 border-l-2 border-primary/40 bg-gray-50/50 dark:bg-white/[0.02] p-3 rounded-r-xl">
-                    <h5 className="text-xs font-black text-primary uppercase tracking-wider mb-2.5 flex items-center justify-between">
-                        <span>{col.title}</span>
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                <div key={idx} className="mb-4 p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/80 dark:bg-slate-900/90 space-y-3">
+                    <h5 className="text-xs font-extrabold text-primary dark:text-blue-400 uppercase tracking-wider flex items-center justify-between border-b border-slate-200/80 dark:border-slate-800 pb-2">
+                        <span className="flex items-center gap-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_6px_rgba(37,99,235,0.8)]"></span>
+                            {col.title}
+                        </span>
+                        <span className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                            Pillar
+                        </span>
                     </h5>
                     {col.sections && col.sections.length > 0 ? (
-                        <div className="space-y-3.5 pl-1">
+                        <div className="space-y-2.5">
                             {col.sections.map((sec: any, sIdx: number) => (
-                                <div key={sIdx} className="space-y-1.5">
+                                <div key={sIdx} className="p-2.5 rounded-lg bg-white dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/60 space-y-1.5">
                                     {sec.header && (
-                                        <span className="text-[11px] font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide block">
+                                        <span className="text-[11px] font-bold text-slate-900 dark:text-slate-100 uppercase tracking-wide block pb-1 border-b border-slate-100 dark:border-slate-700/50">
                                             {sec.header}
                                         </span>
                                     )}
-                                    <ul className="space-y-1 pl-2 border-l border-gray-200 dark:border-gray-800">
+                                    <ul className="space-y-0.5 pt-0.5">
                                         {sec.links?.map((link: any, lIdx: number) => (
                                             <li key={lIdx}>
                                                 <Link
                                                     href={link.url}
                                                     onClick={onClose}
-                                                    className="text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors block py-0.5"
+                                                    className="text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-2 py-1 rounded block transition-colors"
                                                 >
                                                     {link.label}
                                                 </Link>
@@ -72,13 +77,13 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
                             ))}
                         </div>
                     ) : (
-                        <ul className="space-y-2">
+                        <ul className="space-y-1">
                             {col.links?.map((link: any, lIdx: number) => (
                                 <li key={lIdx}>
                                     <Link
                                         href={link.url}
                                         onClick={onClose}
-                                        className="text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors block py-0.5"
+                                        className="text-xs font-medium text-slate-700 dark:text-slate-200 hover:text-primary dark:hover:text-blue-300 hover:bg-slate-50 dark:hover:bg-slate-700/50 px-2 py-1 rounded block transition-colors"
                                     >
                                         {link.label}
                                     </Link>

@@ -37,14 +37,19 @@ export default async function ProductsPage({
     const where: any = { isActive: true };
 
     if (category) {
-        // Match category directly or its subcategories
-        const targetCategory = categories.find(c => c.slug === category);
-        if (targetCategory && targetCategory.children && targetCategory.children.length > 0) {
-            const childSlugs = targetCategory.children.map(ch => ch.slug);
-            where.category = { slug: { in: [category, ...childSlugs] } };
-        } else {
-            where.category = { slug: category };
-        }
+        // Match category directly or any of its descendant subcategories recursively
+        const collectDescendantSlugs = (slugToFind: string): string[] => {
+            const target = categories.find(c => c.slug === slugToFind);
+            if (!target) return [slugToFind];
+            const directChildSlugs = categories
+                .filter(c => c.parentId === target.id)
+                .map(c => c.slug);
+            const nestedSlugs = directChildSlugs.flatMap(s => collectDescendantSlugs(s));
+            return [slugToFind, ...directChildSlugs, ...nestedSlugs];
+        };
+
+        const allMatchedSlugs = Array.from(new Set(collectDescendantSlugs(category)));
+        where.category = { slug: { in: allMatchedSlugs } };
     }
 
     if (q) {

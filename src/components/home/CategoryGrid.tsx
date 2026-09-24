@@ -17,17 +17,19 @@ interface Category {
 
 // Map category names to gradient colors and icons for when no image is available
 const categoryStyles: Record<string, { gradient: string; icon: React.ReactNode }> = {
+    "knitwear": { gradient: 'from-[#1E3A8A] via-[#1D4ED8] to-[#2563EB]', icon: <Shirt size={56} className="text-white/95" /> },
+    "woven": { gradient: 'from-[#0F2942] via-[#0F4C81] to-[#1E3A8A]', icon: <Layers size={56} className="text-white/95" /> },
+    "sweater": { gradient: 'from-[#3E2723] via-[#4E342E] to-[#5D4037]', icon: <ShoppingBag size={56} className="text-white/95" /> },
+    "accessories": { gradient: 'from-[#2E1065] via-[#4C1D95] to-[#6D28D9]', icon: <Star size={56} className="text-white/95" /> },
     "men's fashion": { gradient: 'from-[#0F172A] via-[#1E293B] to-[#334155]', icon: <Shirt size={56} className="text-white/90" /> },
     "women's fashion": { gradient: 'from-[#4C0519] via-[#881337] to-[#BE123C]', icon: <ShoppingBag size={56} className="text-white/90" /> },
     "children's fashion": { gradient: 'from-[#064E3B] via-[#065F46] to-[#0D9488]', icon: <Baby size={56} className="text-white/90" /> },
-    "home textiles": { gradient: 'from-[#713F12] via-[#854D0E] to-[#A16207]', icon: <Home size={56} className="text-white/90" /> },
-    "footwear & accessories": { gradient: 'from-[#2E1065] via-[#4C1D95] to-[#6D28D9]', icon: <Star size={56} className="text-white/90" /> },
 };
 
 function getCategoryStyle(name: string) {
     const key = name.toLowerCase();
     for (const [pattern, style] of Object.entries(categoryStyles)) {
-        if (key.includes(pattern.split(' ')[0])) return style;
+        if (key.includes(pattern)) return style;
     }
     return { gradient: 'from-gray-900 via-gray-800 to-gray-700', icon: <Layers size={56} className="text-white/90" /> };
 }

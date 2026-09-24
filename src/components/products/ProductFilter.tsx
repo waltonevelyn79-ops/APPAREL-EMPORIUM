@@ -42,13 +42,28 @@ export default function ProductFilter({ categories }: ProductFilterProps) {
     const FABRIC_OPTIONS = ['Cotton', 'Polyester', 'Denim', 'Linen', 'Silk', 'Viscose', 'Jersey', 'Fleece'];
     const MOQ_OPTIONS = ['< 100', '100-500', '500-1000', '1000+'];
 
-    // Sync from URL
+    // Sync from URL and auto-expand ancestors
     useEffect(() => {
-        setSelectedCategory(searchParams.get('category') || '');
+        const cat = searchParams.get('category') || '';
+        setSelectedCategory(cat);
         setSelectedFabrics(searchParams.get('fabric')?.split(',').filter(Boolean) || []);
         setSelectedMOQs(searchParams.get('moq')?.split(',').filter(Boolean) || []);
         setSearch(searchParams.get('q') || '');
-    }, [searchParams]);
+
+        if (cat) {
+            const current = categories.find(c => c.slug === cat);
+            if (current && current.parentId) {
+                setExpandedParents(prev => {
+                    const next = { ...prev, [current.parentId!]: true };
+                    const parent = categories.find(c => c.id === current.parentId);
+                    if (parent && parent.parentId) {
+                        next[parent.parentId] = true;
+                    }
+                    return next;
+                });
+            }
+        }
+    }, [searchParams, categories]);
 
     // Build parent-child tree from categories list
     const { rootCategories, flatFilteredCategories, activeCategoryName } = useMemo(() => {
@@ -348,22 +363,64 @@ export default function ProductFilter({ categories }: ProductFilterProps) {
                                     )}
                                 </div>
 
-                                {/* Child Categories (Sub-tree) */}
+                                {/* Child Categories (Level 2: Departments e.g. Men's, Women's, Kids') */}
                                 {hasChildren && isParentExpanded && (
-                                    <div className="pl-4 pr-1 py-1 space-y-1 border-l-2 border-gray-100 dark:border-gray-800 ml-3">
-                                        {cat.children!.map((child) => (
-                                            <button
-                                                key={child.id}
-                                                onClick={() => handleCategorySelect(child.slug)}
-                                                className={`w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] transition-all text-left ${selectedCategory === child.slug
-                                                    ? 'bg-primary text-white font-bold shadow-sm'
-                                                    : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
-                                                    }`}
-                                            >
-                                                <span className="truncate">{child.name}</span>
-                                                {selectedCategory === child.slug && <Check size={12} />}
-                                            </button>
-                                        ))}
+                                    <div className="pl-3 pr-1 py-1 space-y-1 border-l-2 border-primary/25 dark:border-primary/40 ml-3">
+                                        {cat.children!.map((child) => {
+                                            const isChildSelected = selectedCategory === child.slug;
+                                            const hasGrandChildren = child.children && child.children.length > 0;
+                                            const isChildExpanded = expandedParents[child.id];
+
+                                            return (
+                                                <div key={child.id} className="space-y-1">
+                                                    <div className="flex items-center gap-1">
+                                                        <button
+                                                            onClick={() => handleCategorySelect(child.slug)}
+                                                            className={`flex-1 flex items-center justify-between px-2.5 py-1.5 rounded-lg text-[11px] font-semibold transition-all text-left ${isChildSelected
+                                                                ? 'bg-primary text-white font-bold shadow-sm'
+                                                                : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                                                                }`}
+                                                        >
+                                                            <span className="truncate">{child.name}</span>
+                                                            {isChildSelected && <Check size={12} className="shrink-0" />}
+                                                        </button>
+
+                                                        {hasGrandChildren && (
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => toggleParent(child.id)}
+                                                                className="p-1 text-gray-400 hover:text-primary rounded hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+                                                                title="Toggle items"
+                                                            >
+                                                                {isChildExpanded ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                                                            </button>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Level 3: Individual Garment Items */}
+                                                    {hasGrandChildren && isChildExpanded && (
+                                                        <div className="pl-3 pr-1 py-0.5 space-y-0.5 border-l border-gray-200 dark:border-gray-700 ml-2">
+                                                            {child.children!.map((grandChild) => {
+                                                                const isGrandSelected = selectedCategory === grandChild.slug;
+                                                                return (
+                                                                    <button
+                                                                        key={grandChild.id}
+                                                                        onClick={() => handleCategorySelect(grandChild.slug)}
+                                                                        className={`w-full flex items-center justify-between px-2 py-1 rounded-md text-[10.5px] transition-all text-left ${isGrandSelected
+                                                                            ? 'bg-primary text-white font-bold shadow-sm'
+                                                                            : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-800'
+                                                                            }`}
+                                                                    >
+                                                                        <span className="truncate">{grandChild.name}</span>
+                                                                        {isGrandSelected && <Check size={11} className="shrink-0" />}
+                                                                    </button>
+                                                                );
+                                                            })}
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 )}
                             </div>

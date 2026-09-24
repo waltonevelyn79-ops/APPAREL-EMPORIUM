@@ -1,15 +1,18 @@
 // Production deployment: sections updated for aelbd.net
 import React from 'react';
+import nextDynamic from 'next/dynamic';
 import { prisma } from '@/lib/prisma';
-import HeroSlider from '@/components/home/HeroSlider';
-import StatsCounter from '@/components/home/StatsCounter';
-import CategoryGrid from '@/components/home/CategoryGrid';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
-import WhyChooseUs from '@/components/home/WhyChooseUs';
-import Certifications from '@/components/home/Certifications';
-import Testimonials from '@/components/home/Testimonials';
-import CTASection from '@/components/home/CTASection';
-import DeliveryFeed from '@/components/home/DeliveryFeed';
+import Category3DStage from '@/components/home/Category3DStage';
+
+const HeroSlider = nextDynamic(() => import('@/components/home/HeroSlider'), { ssr: false });
+const StatsCounter = nextDynamic(() => import('@/components/home/StatsCounter'), { ssr: false });
+const CategoryGrid = nextDynamic(() => import('@/components/home/CategoryGrid'), { ssr: false });
+const WhyChooseUs = nextDynamic(() => import('@/components/home/WhyChooseUs'), { ssr: false });
+const Certifications = nextDynamic(() => import('@/components/home/Certifications'), { ssr: false });
+const Testimonials = nextDynamic(() => import('@/components/home/Testimonials'), { ssr: false });
+const DeliveryFeed = nextDynamic(() => import('@/components/home/DeliveryFeed'), { ssr: false });
+const CTASection = nextDynamic(() => import('@/components/home/CTASection'), { ssr: false });
 
 export const dynamic = 'force-dynamic';
 
@@ -38,16 +41,25 @@ export default async function HomePage() {
     let sectionOrder: string[] = [];
     try { sectionOrder = JSON.parse(settingsMap['homepage_sections_order'] || '[]'); } catch (e) { }
     if (sectionOrder.length === 0) {
-        sectionOrder = ['hero_slider', 'stats_counter', 'category_grid', 'featured_products', 'delivery_feed', 'why_choose_us', 'certifications', 'testimonials', 'cta_section'];
-    } else if (!sectionOrder.includes('delivery_feed')) {
-        const idx = sectionOrder.indexOf('featured_products');
-        if (idx !== -1) sectionOrder.splice(idx + 1, 0, 'delivery_feed');
-        else sectionOrder.push('delivery_feed');
+        sectionOrder = ['category_3d_stage', 'featured_products', 'delivery_feed', 'why_choose_us', 'certifications', 'testimonials', 'cta_section'];
+    } else {
+        if (!sectionOrder.includes('category_3d_stage')) {
+            sectionOrder.unshift('category_3d_stage');
+        }
+        if (!sectionOrder.includes('delivery_feed')) {
+            const idx = sectionOrder.indexOf('featured_products');
+            if (idx !== -1) sectionOrder.splice(idx + 1, 0, 'delivery_feed');
+            else sectionOrder.push('delivery_feed');
+        }
     }
 
     // Section visibility
     let visibility: Record<string, boolean> = {};
     try { visibility = JSON.parse(settingsMap['homepage_sections_visibility'] || '{}'); } catch (e) { }
+    // Default 3D Stage to visible
+    if (visibility['category_3d_stage'] === undefined) {
+        visibility['category_3d_stage'] = true;
+    }
 
     // Section headings — ALL editable labels from the admin dashboard
     let headings: Record<string, string> = {};
@@ -62,6 +74,7 @@ export default async function HomePage() {
 
     // Section component map — headings prop injected into each relevant component
     const sectionComponentMap: Record<string, JSX.Element | null> = {
+        'category_3d_stage': <Category3DStage key="category_3d_stage" />,
         'hero_slider': <HeroSlider data={settingsMap['homepage_hero_slider'] || '[]'} key="hero_slider" />,
         'stats_counter': <StatsCounter data={settingsMap['homepage_stats_counter'] || '[]'} key="stats_counter" />,
         'category_grid': <CategoryGrid headings={headings} key="category_grid" />,

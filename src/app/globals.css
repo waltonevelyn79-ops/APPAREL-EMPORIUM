@@ -6,11 +6,11 @@
   --color-primary: #1B365D;
   --color-secondary: #C8A962;
   --color-accent: #2E8B57;
-  --color-light-bg: #F8F9FA;
-  --color-dark-bg: #0F172A;
-  --color-dark-surface: #1E293B;
+  --color-light-bg: #FAF7F2;
+  --color-dark-bg: #0B0F19;
+  --color-dark-surface: #121826;
 
-  --color-text-light: #1F2937;
+  --color-text-light: #1A1A1A;
   --color-text-dark: #F3F4F6;
 
   --font-heading: 'Inter', sans-serif;
@@ -97,4 +97,22 @@ h6 {
     border-color: var(--color-primary);
     --tw-ring-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
   }
+}
+
+/* ─── 3D Perspective & Hardware Acceleration ─── */
+.perspective-stage {
+  perspective: 1600px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.gpu-accelerated {
+  transform: translateZ(0);
+  will-change: transform, opacity;
 }

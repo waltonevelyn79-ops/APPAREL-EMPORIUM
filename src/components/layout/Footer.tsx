@@ -62,139 +62,47 @@ export default function Footer() {
     const companyName = settings.company_name || 'Apparel Emporium Ltd.';
 
     return (
-        <footer className="bg-[#1A202C] dark:bg-[#0B0F19] text-gray-300 pt-16 pb-8 border-t border-white/10">
-            <div className="max-w-7xl mx-auto px-6 lg:px-8">
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
-
-                    {/* Brand Column */}
-                    <div className="lg:col-span-4 space-y-6">
-                        <Link href="/" className="inline-block relative w-56 h-14 bg-white rounded-lg p-1.5 shadow-md group overflow-hidden">
-                            <Image
-                                src={settings.footer_logo || settings.logo_light || '/logo.jpg'}
-                                alt={companyName}
-                                fill
-                                className="object-contain"
-                                unoptimized
-                            />
-                        </Link>
-                        <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
-                            {settings.company_short_description ||
-                                "Premium garments sourcing and manufacturing. We bridge the gap between world-class fashion brands and ethical, high-quality production facilities globally."}
-                        </p>
-
-                        <div className="flex gap-4 pt-2">
-                            {settings.facebook_url && (
-                                <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Facebook size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
-                                </a>
-                            )}
-                            {settings.linkedin_url && (
-                                <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Linkedin size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
-                                </a>
-                            )}
-                            {settings.instagram_url && (
-                                <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Instagram size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
-                                </a>
-                            )}
-                            {settings.twitter_url && (
-                                <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Twitter size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
-                                </a>
-                            )}
-                            {settings.youtube_url && (
-                                <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-red-600 hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Youtube size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
-                                </a>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Quick Links Column */}
-                    <div className="lg:col-span-2">
-                        <h4 className="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm border-b border-white/10 pb-3 inline-block">Explore</h4>
-                        <ul className="space-y-3.5">
-                            {linksToRender.map(link => (
-                                <li key={link.id}>
-                                    <Link
-                                        href={link.url}
-                                        target={link.target}
-                                        className="text-sm text-gray-300 hover:text-white hover:translate-x-1 transition-transform inline-block"
-                                    >
-                                        {link.label}
-                                    </Link>
-                                </li>
-                            ))}
+        <footer className="bg-[#151922] dark:bg-[#080B11] text-slate-300 pt-16 pb-12 border-t border-slate-800/80 dark:border-white/5 transition-colors duration-500">
+            <div className="max-w-4xl mx-auto px-6">
+                {/* 3 Columns matching mockup: Company, Sourcing, Support */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-16 text-center sm:text-left mb-14">
+                    {/* Column 1: Company */}
+                    <div className="space-y-3">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-wider">Company</h4>
+                        <ul className="space-y-2.5">
+                            <li><Link href="/about" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">About</Link></li>
+                            <li><Link href="/contact" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Contact</Link></li>
+                            <li><Link href="/careers" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Careers</Link></li>
                         </ul>
                     </div>
 
-                    {/* Dynamic Categories Column */}
-                    <div className="lg:col-span-3">
-                        <h4 className="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm border-b border-white/10 pb-3 inline-block">Collections</h4>
-                        <ul className="space-y-3.5">
-                            {categories.length > 0 ? categories.map(cat => (
-                                <li key={cat.id}>
-                                    <Link
-                                        href={`/products?category=${cat.slug}`}
-                                        className="text-sm text-gray-300 hover:text-white hover:translate-x-1 transition-transform inline-block truncate max-w-[200px]"
-                                    >
-                                        {cat.name}
-                                    </Link>
-                                </li>
-                            )) : (
-                                <>
-                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Menswear</Link></li>
-                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Womenswear</Link></li>
-                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Kidswear</Link></li>
-                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Activewear</Link></li>
-                                </>
-                            )}
+                    {/* Column 2: Sourcing */}
+                    <div className="space-y-3">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-wider">Sourcing</h4>
+                        <ul className="space-y-2.5">
+                            <li><Link href="/products?category=knitwear" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Knitwear</Link></li>
+                            <li><Link href="/products?category=woven" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Woven Wear</Link></li>
+                            <li><Link href="/products?category=sweater" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Outerwear</Link></li>
                         </ul>
                     </div>
 
-                    {/* Contact Column */}
-                    <div className="lg:col-span-3 space-y-4">
-                        <h4 className="text-white font-bold text-lg mb-6 uppercase tracking-wider text-sm border-b border-white/10 pb-3 inline-block">Get In Touch</h4>
-
-                        <div className="flex gap-4 group">
-                            <MapPin className="text-primary mt-1 shrink-0 group-hover:animate-pulse" size={20} />
-                            <p className="text-sm text-gray-300">
-                                {settings.company_address || '123 Fashion Avenue, Suite 400\nGarment District, NY 10018\nUnited States'}
-                            </p>
-                        </div>
-
-                        <div className="flex gap-4 group">
-                            <Phone className="text-primary shrink-0 group-hover:rotate-12 transition-transform" size={20} />
-                            <a href={`tel:${settings.company_phone || '+1 234 567 8900'}`} className="text-sm text-gray-300 hover:text-white transition-colors">
-                                {settings.company_phone || '+1 (234) 567-8900'}
-                            </a>
-                        </div>
-
-                        <div className="flex gap-4 group">
-                            <Mail className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={20} />
-                            <a href={`mailto:${settings.company_email || 'hello@apparelemporium.com'}`} className="text-sm text-gray-300 hover:text-white transition-colors">
-                                {settings.company_email || 'sourcing@apparel-emporium.com'}
-                            </a>
-                        </div>
+                    {/* Column 3: Support */}
+                    <div className="space-y-3">
+                        <h4 className="text-white font-extrabold text-sm uppercase tracking-wider">Support</h4>
+                        <ul className="space-y-2.5">
+                            <li><Link href="/faqs" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">FAQs</Link></li>
+                            <li><Link href="/terms" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Terms</Link></li>
+                            <li><Link href="/privacy-policy" className="text-xs sm:text-sm text-slate-400 hover:text-white transition-colors">Privacy</Link></li>
+                        </ul>
                     </div>
-
                 </div>
 
-                {/* Newsletter / Bottom Strip */}
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-sm text-gray-300 font-medium">
-                        &copy; {year} {companyName}. All rights reserved.
+                {/* Bottom Centered Copyright Strip */}
+                <div className="pt-8 border-t border-slate-800/80 dark:border-white/5 text-center">
+                    <p className="text-xs text-slate-400 tracking-wide">
+                        All Rights Reserved, {companyName} {year}
                     </p>
-
-                    <div className="flex flex-wrap gap-6 text-sm text-gray-300 font-medium">
-                        <Link href="/privacy-policy" className="text-gray-300 hover:text-white hover:underline transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="text-gray-300 hover:text-white hover:underline transition-colors">Terms of Service</Link>
-                        <Link href="/sitemap" className="text-gray-300 hover:text-white hover:underline transition-colors">Sitemap</Link>
-                    </div>
                 </div>
-
             </div>
         </footer>
     );

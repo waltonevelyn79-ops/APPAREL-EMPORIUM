@@ -50,7 +50,7 @@ const nextConfig = {
             },
         ];
     },
-    webpack: (config, { isServer }) => {
+    webpack: (config, { isServer, dev }) => {
         if (!isServer) {
             // Needed if using prisma/sqlite on frontend/browser components
             config.resolve.fallback = {
@@ -58,6 +58,10 @@ const nextConfig = {
                 fs: false,
                 path: false,
             };
+        }
+        if (dev) {
+            // Disable heavy pack disk caching in dev to avoid ArrayBuffer RangeErrors on Windows
+            config.cache = false;
         }
         return config;
     },

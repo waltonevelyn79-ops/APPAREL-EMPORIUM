@@ -50,7 +50,7 @@ async function main() {
             title: "Knitwear",
             sections: [
                 {
-                    header: "Men's Knit",
+                    header: "Men's Knitwear",
                     links: [
                         { label: "T-Shirt & V-Neck", url: "/products?category=mens-tshirt" },
                         { label: "Polo Shirts", url: "/products?category=mens-polo" },
@@ -61,7 +61,7 @@ async function main() {
                     ]
                 },
                 {
-                    header: "Women's Knit",
+                    header: "Women's Knitwear",
                     links: [
                         { label: "T-Shirts & Crop Tops", url: "/products?category=womens-knit-tshirt" },
                         { label: "Polo Shirts", url: "/products?category=womens-knit-polo" },
@@ -71,7 +71,7 @@ async function main() {
                     ]
                 },
                 {
-                    header: "Children's Knit",
+                    header: "Children's Knitwear",
                     links: [
                         { label: "Kids T-Shirts & Polos", url: "/products?category=kids-knit-tshirt" },
                         { label: "Baby Rompers & Bodysuits", url: "/products?category=kids-knit-romper" },
