@@ -1,3 +1,4 @@
+// Production deployment: sections updated for aelbd.net
 import React from 'react';
 import { prisma } from '@/lib/prisma';
 import HeroSlider from '@/components/home/HeroSlider';
