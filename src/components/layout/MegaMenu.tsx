@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { ArrowRight } from 'lucide-react';
 
 type MegaMenuLink = {
     label: string;
@@ -42,33 +43,42 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
 
     if (columns.length === 0) return null;
 
+    const gridClass = columns.length === 4
+        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:gap-8"
+        : "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8";
+
     return (
-        <div className="w-full bg-[#0F172A] text-white shadow-[0_20px_50px_rgba(0,0,0,0.5)] border-t border-white/5 animate-in slide-in-from-top-1 duration-500 z-50 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-10 py-16">
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12">
+        <div className="w-full bg-[#0B0F19]/98 backdrop-blur-2xl text-white shadow-[0_25px_60px_rgba(0,0,0,0.7)] border-t border-white/10 border-b border-white/10 animate-in slide-in-from-top-2 duration-300 z-50 overflow-hidden max-h-[calc(100vh-90px)] overflow-y-auto custom-scrollbar">
+            <div className="max-w-7xl mx-auto px-6 lg:px-10 py-8 lg:py-10">
+                <div className={gridClass}>
                     {columns.map((col, idx) => (
-                        <div key={idx} className="flex flex-col space-y-10">
-                            <h3 className="font-black text-primary uppercase tracking-[0.25em] text-[12px] border-b border-white/10 pb-5">
-                                {col.title}
+                        <div
+                            key={idx}
+                            className="flex flex-col space-y-6 bg-white/[0.02] hover:bg-white/[0.04] p-5 lg:p-6 rounded-2xl border border-white/5 hover:border-primary/40 transition-all duration-300 shadow-md group/card"
+                        >
+                            <h3 className="font-extrabold text-primary uppercase tracking-[0.16em] text-[13px] border-b border-white/10 pb-3 flex items-center justify-between">
+                                <span className="group-hover/card:text-blue-400 transition-colors">{col.title}</span>
+                                <span className="w-2 h-2 rounded-full bg-primary/40 group-hover/card:bg-primary transition-all"></span>
                             </h3>
 
-                            <div className="space-y-10">
+                            <div className="space-y-6 flex-1">
                                 {col.sections.map((section, sIdx) => (
-                                    <div key={sIdx} className="space-y-5">
+                                    <div key={sIdx} className="space-y-2.5">
                                         {section.header && (
-                                            <h4 className="font-extrabold text-gray-200 uppercase tracking-tighter text-[11px] opacity-60">
+                                            <h4 className="font-bold text-gray-300 uppercase tracking-wider text-[11px] flex items-center gap-1.5 opacity-90">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-primary/80"></span>
                                                 {section.header}
                                             </h4>
                                         )}
-                                        <ul className="space-y-3.5">
+                                        <ul className="space-y-1.5 pl-1.5">
                                             {section.links.map((link, lIdx) => (
                                                 <li key={lIdx}>
                                                     <Link
                                                         href={link.url}
-                                                        className="text-gray-400 hover:text-white transition-all text-[13px] font-bold flex items-center group"
+                                                        className="text-gray-400 hover:text-white hover:translate-x-1.5 transition-all duration-200 text-[12.5px] font-medium flex items-center group/link py-0.5"
                                                     >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-primary/20 mr-3 group-hover:bg-primary group-hover:scale-125 transition-all"></span>
-                                                        {link.label}
+                                                        <span className="w-1 h-1 rounded-full bg-gray-600 mr-2.5 group-hover/link:bg-primary group-hover/link:scale-125 transition-all"></span>
+                                                        <span className="group-hover/link:text-white transition-colors">{link.label}</span>
                                                     </Link>
                                                 </li>
                                             ))}
@@ -76,14 +86,24 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
                                     </div>
                                 ))}
                             </div>
+
+                            {/* Department Quick Link */}
+                            <div className="pt-3 border-t border-white/5">
+                                <Link
+                                    href="/products"
+                                    className="inline-flex items-center gap-1.5 text-[11.5px] font-bold text-gray-400 hover:text-primary transition-colors tracking-wide uppercase"
+                                >
+                                    <span>Browse All</span>
+                                    <ArrowRight size={12} className="group-hover/card:translate-x-1 transition-transform" />
+                                </Link>
+                            </div>
                         </div>
                     ))}
                 </div>
             </div>
 
-            {/* Aesthetic Detail */}
-            <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-50"></div>
+            {/* Aesthetic Gradient Divider */}
+            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent"></div>
         </div>
     );
 }
-

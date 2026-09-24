@@ -81,20 +81,20 @@ export default function Header() {
                     {/* Navigation Engine */}
                     <nav className="hidden lg:flex items-center gap-1 xl:gap-4">
                         {menus.map((item) => {
-                            const hasMega = item.isMegaMenu && item.megaMenuData;
+                            const hasMega = Boolean(item.isMegaMenu && item.megaMenuData);
                             const isActive = pathname === item.url;
 
                             return (
                                 <div
                                     key={item.id}
                                     className="relative h-12 flex items-center"
-                                    onMouseEnter={() => setHoveredMenu(item.id)}
+                                    onMouseEnter={() => hasMega && setHoveredMenu(item.id)}
                                     onMouseLeave={() => setHoveredMenu(null)}
                                 >
                                     <Link
                                         href={item.url}
                                         target={item.target}
-                                        className={`px-4 py-2 rounded-xl font-bold text-[13px] uppercase tracking-widest transition-all flex items-center gap-2 group
+                                        className={`px-4 py-2 rounded-xl font-bold text-[13px] uppercase tracking-widest transition-all flex items-center gap-1.5 group
                                         ${isActive
                                                 ? 'text-primary'
                                                 : 'text-gray-600 dark:text-gray-400 hover:text-primary dark:hover:text-white hover:bg-gray-50 dark:hover:bg-white/5'
@@ -102,18 +102,9 @@ export default function Header() {
                                     >
                                         {item.label}
                                         {hasMega && (
-                                            <ChevronDown size={14} className={`transform transition-transform duration-500 ${hoveredMenu === item.id ? 'rotate-180 text-primary' : 'text-gray-400 dark:text-gray-600'}`} />
+                                            <ChevronDown size={14} className={`transform transition-transform duration-300 ${hoveredMenu === item.id ? 'rotate-180 text-primary' : 'text-gray-400 dark:text-gray-500'}`} />
                                         )}
                                     </Link>
-
-                                    {/* Mega Menu Portal */}
-                                    {hasMega && hoveredMenu === item.id && (
-                                        <div className="fixed top-[74px] left-0 w-screen h-screen pointer-events-none z-50">
-                                            <div className="pointer-events-auto">
-                                                <MegaMenu data={item.megaMenuData!} isVisible={true} />
-                                            </div>
-                                        </div>
-                                    )}
                                 </div>
                             );
                         })}
@@ -150,6 +141,23 @@ export default function Header() {
                         </button>
                     </div>
                 </div>
+
+                {/* Mega Menu Dropdown attached seamlessly to header bottom */}
+                {menus.map((item) => {
+                    const hasMega = Boolean(item.isMegaMenu && item.megaMenuData);
+                    if (!hasMega || hoveredMenu !== item.id) return null;
+
+                    return (
+                        <div
+                            key={`mega-dropdown-${item.id}`}
+                            className="absolute top-full left-0 w-full z-50 shadow-2xl animate-in fade-in duration-200"
+                            onMouseEnter={() => setHoveredMenu(item.id)}
+                            onMouseLeave={() => setHoveredMenu(null)}
+                        >
+                            <MegaMenu data={item.megaMenuData!} isVisible={true} />
+                        </div>
+                    );
+                })}
             </header>
 
             <MobileNav

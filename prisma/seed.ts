@@ -47,135 +47,137 @@ async function main() {
     // 2. Main Menu with Mega Menu
     const megaMenuData = [
         {
-            title: "Men's Fashion",
+            title: "Knitwear (নিট)",
             sections: [
                 {
-                    header: "Knit Fashion",
+                    header: "Men's Knit",
                     links: [
-                        { label: "T-Shirt", url: "/products?category=mens-tshirt" },
-                        { label: "Polo-Shirt", url: "/products?category=mens-polo" },
-                        { label: "Sweatshirt", url: "/products?category=mens-sweatshirt" },
-                        { label: "Jacket/Vest", url: "/products?category=mens-jacket" },
-                        { label: "Swimwear", url: "/products?category=mens-swimwear" },
-                        { label: "Boxershorts", url: "/products?category=mens-boxers" },
-                        { label: "Trousers/Joggers", url: "/products?category=mens-trouser" },
-                        { label: "Undergarments", url: "/products?category=mens-under" },
-                        { label: "Sportswear", url: "/products?category=mens-sport" },
-                        { label: "Nightwear", url: "/products?category=mens-night" },
+                        { label: "T-Shirt & V-Neck", url: "/products?category=mens-tshirt" },
+                        { label: "Polo Shirts", url: "/products?category=mens-polo" },
+                        { label: "Hoodies & Sweatshirts", url: "/products?category=mens-knit-hoodie" },
+                        { label: "Joggers & Trackpants", url: "/products?category=mens-knit-jogger" },
+                        { label: "Tank Tops & Vests", url: "/products?category=mens-knit-tank" },
+                        { label: "Undergarments & Boxers", url: "/products?category=mens-knit-underwear" }
                     ]
                 },
                 {
-                    header: "Woven Fashion",
+                    header: "Women's Knit",
                     links: [
-                        { label: "Jacket/Vest", url: "/products?category=mens-woven-jacket" },
-                        { label: "Coat/Blazer", url: "/products?category=mens-coat" },
-                        { label: "Shirt", url: "/products?category=mens-shirt" },
+                        { label: "T-Shirts & Crop Tops", url: "/products?category=womens-knit-tshirt" },
+                        { label: "Polo Shirts", url: "/products?category=womens-knit-polo" },
+                        { label: "Hoodies & Sweatshirts", url: "/products?category=womens-knit-hoodie" },
+                        { label: "Leggings & Tights", url: "/products?category=womens-knit-legging" },
+                        { label: "Knit Dresses & Pyjamas", url: "/products?category=womens-knit-dress" }
+                    ]
+                },
+                {
+                    header: "Children's Knit",
+                    links: [
+                        { label: "Kids T-Shirts & Polos", url: "/products?category=kids-knit-tshirt" },
+                        { label: "Baby Rompers & Bodysuits", url: "/products?category=kids-knit-romper" },
+                        { label: "Kids Hoodies & Sets", url: "/products?category=kids-knit-hoodie" },
+                        { label: "Nightwear & Pajamas", url: "/products?category=kids-knit-nightwear" }
                     ]
                 }
             ]
         },
         {
-            title: "Women's Fashion",
+            title: "Woven (ওভেন)",
             sections: [
                 {
-                    header: "Knit Fashion",
+                    header: "Men's Woven",
                     links: [
-                        { label: "T-Shirt", url: "/products?category=womens-tshirt" },
-                        { label: "Polo-Shirt", url: "/products?category=womens-polo" },
-                        { label: "Sweatshirt", url: "/products?category=womens-sweatshirt" },
-                        { label: "Jacket/Vest", url: "/products?category=womens-jacket" },
-                        { label: "Dress", url: "/products?category=womens-dress" },
-                        { label: "Trouser/Pyjama/Skirt", url: "/products?category=womens-trouser" },
-                        { label: "Jumpsuits/Overalls", url: "/products?category=womens-jumpsuit" },
-                        { label: "Swimwear", url: "/products?category=womens-swim" },
-                        { label: "Undergarments", url: "/products?category=womens-under" },
-                        { label: "Sportswear", url: "/products?category=womens-sport" },
-                        { label: "Nightwear", url: "/products?category=womens-night" },
+                        { label: "Casual & Formal Shirts", url: "/products?category=mens-woven-shirt" },
+                        { label: "Denim Jeans & Pants", url: "/products?category=mens-woven-denim" },
+                        { label: "Chinos & Cargo Trousers", url: "/products?category=mens-woven-trouser" },
+                        { label: "Jackets & Windbreakers", url: "/products?category=mens-woven-jacket" },
+                        { label: "Blazers & Overcoats", url: "/products?category=mens-woven-blazer" }
                     ]
                 },
                 {
-                    header: "Woven Fashion",
+                    header: "Women's Woven",
                     links: [
-                        { label: "Jacket/Vest", url: "/products?category=womens-woven-jacket" },
-                        { label: "Coat/Blazer", url: "/products?category=womens-coat" },
+                        { label: "Blouses & Tops", url: "/products?category=womens-woven-blouse" },
+                        { label: "Denim Jeans & Shorts", url: "/products?category=womens-woven-denim" },
+                        { label: "Woven Pants & Trousers", url: "/products?category=womens-woven-pant" },
+                        { label: "Woven Dresses & Skirts", url: "/products?category=womens-woven-dress" },
+                        { label: "Jackets & Blazers", url: "/products?category=womens-woven-jacket" }
+                    ]
+                },
+                {
+                    header: "Children's Woven",
+                    links: [
+                        { label: "Kids Shirts & Tops", url: "/products?category=kids-woven-shirt" },
+                        { label: "Kids Denim Jeans", url: "/products?category=kids-woven-denim" },
+                        { label: "Cargo Shorts & Pants", url: "/products?category=kids-woven-trouser" },
+                        { label: "School Uniforms & Jackets", url: "/products?category=kids-woven-jacket" }
                     ]
                 }
             ]
         },
         {
-            title: "Children's Fashion",
+            title: "Sweater (সুইটার)",
             sections: [
                 {
-                    header: "Knit Fashion",
+                    header: "Men's Sweater",
                     links: [
-                        { label: "Poncho", url: "/products?category=kids-poncho" },
-                        { label: "T-Shirt", url: "/products?category=kids-tshirt" },
-                        { label: "Polo-Shirt", url: "/products?category=kids-polo" },
-                        { label: "Sweatshirt", url: "/products?category=kids-sweatshirt" },
-                        { label: "Jacket/Vest", url: "/products?category=kids-jacket" },
-                        { label: "Pant/Legging/Skirt", url: "/products?category=kids-pant" },
-                        { label: "Romper", url: "/products?category=kids-romper" },
-                        { label: "Dress", url: "/products?category=kids-dress" },
-                        { label: "Sportswear", url: "/products?category=kids-sport" },
-                        { label: "Nightwear", url: "/products?category=kids-night" },
+                        { label: "Crewneck Pullovers", url: "/products?category=mens-sweater-crewneck" },
+                        { label: "V-Neck Sweaters", url: "/products?category=mens-sweater-vneck" },
+                        { label: "Cardigans & Button-Ups", url: "/products?category=mens-sweater-cardigan" },
+                        { label: "Turtlenecks & Mocknecks", url: "/products?category=mens-sweater-turtleneck" },
+                        { label: "Cable Knit & Heavy Gauge", url: "/products?category=mens-sweater-cable" },
+                        { label: "Sleeveless Knitted Vests", url: "/products?category=mens-sweater-vest" }
                     ]
                 },
                 {
-                    header: "Woven Fashion",
+                    header: "Women's Sweater",
                     links: [
-                        { label: "Jacket/Vest", url: "/products?category=kids-woven-jacket" },
-                        { label: "Coat/Blazer", url: "/products?category=kids-coat" },
-                        { label: "Shirt/Blouse", url: "/products?category=kids-shirt" },
+                        { label: "Knitted Cardigans", url: "/products?category=womens-sweater-cardigan" },
+                        { label: "Crewneck Pullovers", url: "/products?category=womens-sweater-pullover" },
+                        { label: "Chunky & Oversized Knits", url: "/products?category=womens-sweater-chunky" },
+                        { label: "Ponchos & Shawl Knits", url: "/products?category=womens-sweater-poncho" },
+                        { label: "Turtlenecks & Fine Gauge", url: "/products?category=womens-sweater-turtleneck" }
+                    ]
+                },
+                {
+                    header: "Children's Sweater",
+                    links: [
+                        { label: "Kids Pullover Sweaters", url: "/products?category=kids-sweater-pullover" },
+                        { label: "Kids Button Cardigans", url: "/products?category=kids-sweater-cardigan" },
+                        { label: "Hooded Knit Sweaters", url: "/products?category=kids-sweater-hooded" },
+                        { label: "Baby Knitted Jumpers", url: "/products?category=kids-sweater-baby" }
                     ]
                 }
             ]
         },
         {
-            title: "Home Textiles",
+            title: "Accessories (এক্সেসরিজ)",
             sections: [
                 {
-                    header: "Towel",
+                    header: "Garment Trims & Notions",
                     links: [
-                        { label: "Face Towel", url: "/products?category=home-face-towel" },
-                        { label: "Hand Towel", url: "/products?category=home-hand-towel" },
-                        { label: "Bath Towel", url: "/products?category=home-bath-towel" },
-                        { label: "Bath Mat", url: "/products?category=home-bath-mat" },
-                        { label: "Bath Sheet", url: "/products?category=home-bath-sheet" },
-                        { label: "Kitchen Towel", url: "/products?category=home-kitchen-towel" },
-                        { label: "Bar Mop", url: "/products?category=home-bar-mop" },
-                        { label: "Beach Towel", url: "/products?category=home-beach-towel" },
-                        { label: "Bath Robe", url: "/products?category=home-bath-robe" },
-                        { label: "Stripe Towel", url: "/products?category=home-stripe-towel" },
-                        { label: "Embroidered Towel", url: "/products?category=home-embroidered-towel" },
+                        { label: "Buttons (Metal, Plastic, Horn)", url: "/products?category=acc-buttons" },
+                        { label: "Zippers (Metal, Nylon, Coil)", url: "/products?category=acc-zippers" },
+                        { label: "Woven & Care Labels", url: "/products?category=acc-labels" },
+                        { label: "Hangtags & Price Tickets", url: "/products?category=acc-hangtags" },
+                        { label: "Elastic Bands & Drawstrings", url: "/products?category=acc-elastic" }
                     ]
                 },
                 {
-                    header: "Bedding",
+                    header: "Fashion Accessories",
                     links: [
-                        { label: "Duvet Cover", url: "/products?category=home-duvet" },
-                        { label: "Pillowcases", url: "/products?category=home-pillow" },
-                    ]
-                }
-            ]
-        },
-        {
-            title: "Footwear & Accessories",
-            sections: [
-                {
-                    header: "Footwear",
-                    links: [
-                        { label: "Basic Espadrilles", url: "/products?category=footwear-basic" },
-                        { label: "Fashion Espadrilles", url: "/products?category=footwear-fashion" },
+                        { label: "Caps, Beanies & Hats", url: "/products?category=acc-caps" },
+                        { label: "Scarves, Mufflers & Shawls", url: "/products?category=acc-scarves" },
+                        { label: "Socks & Hosiery", url: "/products?category=acc-socks" },
+                        { label: "Gloves & Mittens", url: "/products?category=acc-gloves" }
                     ]
                 },
                 {
-                    header: "Accessories",
+                    header: "Packaging & Sourcing",
                     links: [
-                        { label: "Scarves", url: "/products?category=acc-scarves" },
-                        { label: "Hats/Caps", url: "/products?category=acc-hats" },
-                        { label: "Gloves", url: "/products?category=acc-gloves" },
-                        { label: "Socks", url: "/products?category=acc-socks" },
-                        { label: "Gift Box", url: "/products?category=acc-gift" },
+                        { label: "Poly Bags & Garment Covers", url: "/products?category=acc-polybags" },
+                        { label: "Export Master Cartons", url: "/products?category=acc-cartons" },
+                        { label: "Custom Garment Hangers", url: "/products?category=acc-hangers" }
                     ]
                 }
             ]
@@ -191,7 +193,7 @@ async function main() {
     await prisma.menuItem.create({
         data: {
             menuLocation: 'main',
-            label: 'Products',
+            label: 'Categories',
             url: '/products',
             order: 2,
             isMegaMenu: true,
@@ -201,15 +203,27 @@ async function main() {
     });
 
     await prisma.menuItem.create({
-        data: { menuLocation: 'main', label: 'About Us', url: '/about', order: 3, isMegaMenu: false, isActive: true }
+        data: {
+            menuLocation: 'main',
+            label: 'Products',
+            url: '/products',
+            order: 3,
+            isMegaMenu: false,
+            megaMenuData: null,
+            isActive: true
+        }
     });
 
     await prisma.menuItem.create({
-        data: { menuLocation: 'main', label: 'Support', url: '/support', order: 4, isMegaMenu: false, isActive: true }
+        data: { menuLocation: 'main', label: 'About Us', url: '/about', order: 4, isMegaMenu: false, isActive: true }
     });
 
     await prisma.menuItem.create({
-        data: { menuLocation: 'main', label: 'Contact', url: '/contact', order: 5, isMegaMenu: false, isActive: true }
+        data: { menuLocation: 'main', label: 'Support', url: '/support', order: 5, isMegaMenu: false, isActive: true }
+    });
+
+    await prisma.menuItem.create({
+        data: { menuLocation: 'main', label: 'Contact', url: '/contact', order: 6, isMegaMenu: false, isActive: true }
     });
 
     // 3. Categories (Generated from Mega Menu Data for consistency)

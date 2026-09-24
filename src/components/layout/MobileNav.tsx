@@ -41,21 +41,51 @@ export default function MobileNav({ menus, isOpen, onClose }: MobileNavProps) {
         try {
             const columns = JSON.parse(dataStr);
             return columns.map((col: any, idx: number) => (
-                <div key={idx} className="mb-4 pl-4 border-l border-gray-200 dark:border-gray-700">
-                    <h5 className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">{col.title}</h5>
-                    <ul className="space-y-3">
-                        {col.links.map((link: any, lIdx: number) => (
-                            <li key={lIdx}>
-                                <Link
-                                    href={link.url}
-                                    onClick={onClose}
-                                    className="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-primary transition-colors block py-1"
-                                >
-                                    {link.label}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
+                <div key={idx} className="mb-5 pl-3 border-l-2 border-primary/40 bg-gray-50/50 dark:bg-white/[0.02] p-3 rounded-r-xl">
+                    <h5 className="text-xs font-black text-primary uppercase tracking-wider mb-2.5 flex items-center justify-between">
+                        <span>{col.title}</span>
+                        <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                    </h5>
+                    {col.sections && col.sections.length > 0 ? (
+                        <div className="space-y-3.5 pl-1">
+                            {col.sections.map((sec: any, sIdx: number) => (
+                                <div key={sIdx} className="space-y-1.5">
+                                    {sec.header && (
+                                        <span className="text-[11px] font-bold text-gray-700 dark:text-gray-300 uppercase tracking-wide block">
+                                            {sec.header}
+                                        </span>
+                                    )}
+                                    <ul className="space-y-1 pl-2 border-l border-gray-200 dark:border-gray-800">
+                                        {sec.links?.map((link: any, lIdx: number) => (
+                                            <li key={lIdx}>
+                                                <Link
+                                                    href={link.url}
+                                                    onClick={onClose}
+                                                    className="text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors block py-0.5"
+                                                >
+                                                    {link.label}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            ))}
+                        </div>
+                    ) : (
+                        <ul className="space-y-2">
+                            {col.links?.map((link: any, lIdx: number) => (
+                                <li key={lIdx}>
+                                    <Link
+                                        href={link.url}
+                                        onClick={onClose}
+                                        className="text-xs font-medium text-gray-600 dark:text-gray-400 hover:text-primary transition-colors block py-0.5"
+                                    >
+                                        {link.label}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
                 </div>
             ));
         } catch { return null; }
