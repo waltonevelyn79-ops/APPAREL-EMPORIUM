@@ -78,7 +78,7 @@ jobs:
             echo "NEXTAUTH_URL=\"$URL_VAL\"" >> .env
             
             # System variables
-            echo "PRISMA_CLIENT_ENGINE_TYPE=\"binary\"" >> .env
+            echo "PRISMA_CLIENT_ENGINE_TYPE=\"library\"" >> .env
             echo "NEXT_PUBLIC_APP_URL=\"https://aelbd.net\"" >> .env
             
             # Export node paths and local node_modules bin

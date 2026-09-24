@@ -19,9 +19,14 @@ export const metadata = {
 
 export default async function HomePage() {
 
-    const settingsRecords = await prisma.siteSetting.findMany({
-        where: { key: { startsWith: 'homepage_' } }
-    });
+    let settingsRecords: any[] = [];
+    try {
+        settingsRecords = await prisma.siteSetting.findMany({
+            where: { key: { startsWith: 'homepage_' } }
+        });
+    } catch (err) {
+        console.error('Failed to load homepage settings from database:', err);
+    }
 
     const settingsMap = settingsRecords.reduce((acc, curr) => {
         acc[curr.key] = curr.value;
