@@ -42,12 +42,13 @@ export default function Footer() {
     useEffect(() => {
         // Fetch Footer Menus
         fetch('/api/menus?location=footer')
-            .then(res => res.json())
-            .then(data => data.success && setFooterMenus(data.flat.filter((m: any) => m.active)));
+            .then(res => res.ok ? res.json() : null)
+            .then(data => data && data.success && setFooterMenus(data.flat.filter((m: any) => m.active)))
+            .catch(() => { });
 
         // Fetch Categories for dynamic column
         fetch('/api/categories')
-            .then(res => res.json())
+            .then(res => res.ok ? res.json() : null)
             .then(data => {
                 if (data && Array.isArray(data)) {
                     setCategories(data.slice(0, 5)); // Take top 5

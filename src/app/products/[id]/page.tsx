@@ -16,9 +16,19 @@ export default async function ProductDetailPage({
 }: {
     params: { id: string }
 }) {
-    // Current folder is [id], but we treat the 'id' as 'slug' in the query
-    const product = (await prisma.product.findUnique({
-        where: { slug: params.id },
+    let decodedSlug = params.id;
+    try {
+        decodedSlug = decodeURIComponent(params.id);
+    } catch (e) { }
+
+    const product = (await prisma.product.findFirst({
+        where: {
+            OR: [
+                { slug: params.id },
+                { slug: decodedSlug },
+                { id: params.id }
+            ]
+        },
         include: { category: true }
     })) as any;
 

@@ -39,12 +39,14 @@ export default function Header() {
     useEffect(() => {
         if (isAdminPath) return; // Don't fetch if not showing
         fetch('/api/menus?location=main')
-            .then(res => res.json())
-            .then(data => data.success && setMenus(data.menus));
+            .then(res => res.ok ? res.json() : null)
+            .then(data => data && data.success && setMenus(data.menus))
+            .catch(() => { });
 
         fetch('/api/menus?location=mobile')
-            .then(res => res.json())
-            .then(data => data.success && setMobileMenus(data.menus));
+            .then(res => res.ok ? res.json() : null)
+            .then(data => data && data.success && setMobileMenus(data.menus))
+            .catch(() => { });
 
         const handleScroll = () => setIsScrolled(window.scrollY > 20);
         window.addEventListener('scroll', handleScroll);

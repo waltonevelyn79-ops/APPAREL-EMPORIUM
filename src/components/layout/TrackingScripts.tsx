@@ -29,13 +29,20 @@ export default function TrackingScripts() {
         // Safe fail
     }
 
+    useEffect(() => {
+        if (settings.google_search_console_meta && typeof document !== 'undefined') {
+            let metaTag = document.querySelector('meta[name="google-site-verification"]');
+            if (!metaTag) {
+                metaTag = document.createElement('meta');
+                metaTag.setAttribute('name', 'google-site-verification');
+                document.head.appendChild(metaTag);
+            }
+            metaTag.setAttribute('content', settings.google_search_console_meta);
+        }
+    }, [settings.google_search_console_meta]);
+
     return (
         <>
-            {/* 1. Necessary / Global head tags */}
-            {settings.google_search_console_meta && (
-                <meta name="google-site-verification" content={settings.google_search_console_meta} />
-            )}
-
             {/* Custom Scripts HEAD */}
             {customScripts.filter(s => s.active && s.location === 'head').map((script, idx) => (
                 <Script
