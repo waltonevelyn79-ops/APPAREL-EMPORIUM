@@ -78,7 +78,7 @@ export default function Footer() {
                                 unoptimized
                             />
                         </Link>
-                        <p className="text-sm text-gray-400 leading-relaxed max-w-sm">
+                        <p className="text-sm text-gray-300 leading-relaxed max-w-sm">
                             {settings.company_short_description ||
                                 "Premium garments sourcing and manufacturing. We bridge the gap between world-class fashion brands and ethical, high-quality production facilities globally."}
                         </p>
@@ -86,27 +86,27 @@ export default function Footer() {
                         <div className="flex gap-4 pt-2">
                             {settings.facebook_url && (
                                 <a href={settings.facebook_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Facebook size={18} className="group-hover:scale-110 transition-transform" />
+                                    <Facebook size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
                                 </a>
                             )}
                             {settings.linkedin_url && (
                                 <a href={settings.linkedin_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+                                    <Linkedin size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
                                 </a>
                             )}
                             {settings.instagram_url && (
                                 <a href={settings.instagram_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+                                    <Instagram size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
                                 </a>
                             )}
                             {settings.twitter_url && (
                                 <a href={settings.twitter_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-primary hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Twitter size={18} className="group-hover:scale-110 transition-transform" />
+                                    <Twitter size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
                                 </a>
                             )}
                             {settings.youtube_url && (
                                 <a href={settings.youtube_url} target="_blank" rel="noopener noreferrer" className="bg-white/5 hover:bg-red-600 hover:text-white p-2.5 rounded-full transition-all duration-300 group">
-                                    <Youtube size={18} className="group-hover:scale-110 transition-transform" />
+                                    <Youtube size={18} className="group-hover:scale-110 transition-transform text-gray-200" />
                                 </a>
                             )}
                         </div>
@@ -121,7 +121,7 @@ export default function Footer() {
                                     <Link
                                         href={link.url}
                                         target={link.target}
-                                        className="text-sm hover:text-primary hover:translate-x-1 transition-transform inline-block"
+                                        className="text-sm text-gray-300 hover:text-white hover:translate-x-1 transition-transform inline-block"
                                     >
                                         {link.label}
                                     </Link>
@@ -138,17 +138,17 @@ export default function Footer() {
                                 <li key={cat.id}>
                                     <Link
                                         href={`/products?category=${cat.slug}`}
-                                        className="text-sm hover:text-primary hover:translate-x-1 transition-transform inline-block truncate max-w-[200px]"
+                                        className="text-sm text-gray-300 hover:text-white hover:translate-x-1 transition-transform inline-block truncate max-w-[200px]"
                                     >
                                         {cat.name}
                                     </Link>
                                 </li>
                             )) : (
                                 <>
-                                    <li><Link href="/products" className="text-sm hover:text-primary transition-colors">Menswear</Link></li>
-                                    <li><Link href="/products" className="text-sm hover:text-primary transition-colors">Womenswear</Link></li>
-                                    <li><Link href="/products" className="text-sm hover:text-primary transition-colors">Kidswear</Link></li>
-                                    <li><Link href="/products" className="text-sm hover:text-primary transition-colors">Activewear</Link></li>
+                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Menswear</Link></li>
+                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Womenswear</Link></li>
+                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Kidswear</Link></li>
+                                    <li><Link href="/products" className="text-sm text-gray-300 hover:text-white transition-colors">Activewear</Link></li>
                                 </>
                             )}
                         </ul>
@@ -160,21 +160,21 @@ export default function Footer() {
 
                         <div className="flex gap-4 group">
                             <MapPin className="text-primary mt-1 shrink-0 group-hover:animate-pulse" size={20} />
-                            <p className="text-sm text-gray-400">
+                            <p className="text-sm text-gray-300">
                                 {settings.company_address || '123 Fashion Avenue, Suite 400\nGarment District, NY 10018\nUnited States'}
                             </p>
                         </div>
 
                         <div className="flex gap-4 group">
                             <Phone className="text-primary shrink-0 group-hover:rotate-12 transition-transform" size={20} />
-                            <a href={`tel:${settings.company_phone || '+1 234 567 8900'}`} className="text-sm hover:text-white transition-colors">
+                            <a href={`tel:${settings.company_phone || '+1 234 567 8900'}`} className="text-sm text-gray-300 hover:text-white transition-colors">
                                 {settings.company_phone || '+1 (234) 567-8900'}
                             </a>
                         </div>
 
                         <div className="flex gap-4 group">
                             <Mail className="text-primary shrink-0 group-hover:scale-110 transition-transform" size={20} />
-                            <a href={`mailto:${settings.company_email || 'hello@apparelemporium.com'}`} className="text-sm hover:text-white transition-colors">
+                            <a href={`mailto:${settings.company_email || 'hello@apparelemporium.com'}`} className="text-sm text-gray-300 hover:text-white transition-colors">
                                 {settings.company_email || 'sourcing@apparel-emporium.com'}
                             </a>
                         </div>
@@ -184,14 +184,14 @@ export default function Footer() {
 
                 {/* Newsletter / Bottom Strip */}
                 <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-6">
-                    <p className="text-xs text-gray-500 font-medium">
+                    <p className="text-sm text-gray-300 font-medium">
                         &copy; {year} {companyName}. All rights reserved.
                     </p>
 
-                    <div className="flex gap-6 text-xs text-gray-500 font-medium">
-                        <Link href="/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link>
-                        <Link href="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
+                    <div className="flex flex-wrap gap-6 text-sm text-gray-300 font-medium">
+                        <Link href="/privacy-policy" className="text-gray-300 hover:text-white hover:underline transition-colors">Privacy Policy</Link>
+                        <Link href="/terms" className="text-gray-300 hover:text-white hover:underline transition-colors">Terms of Service</Link>
+                        <Link href="/sitemap" className="text-gray-300 hover:text-white hover:underline transition-colors">Sitemap</Link>
                     </div>
                 </div>
 

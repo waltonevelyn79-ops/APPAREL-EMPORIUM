@@ -90,10 +90,10 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
 
                 {/* B2B Sourcing Tag (NO PUBLIC PRICES) */}
                 <div className="mb-3 flex items-center justify-between min-w-0 gap-2">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-800 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-md truncate">
+                    <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-blue-700 dark:text-blue-200 bg-blue-50 dark:bg-blue-900/60 border border-blue-200/80 dark:border-blue-700/60 px-2.5 py-1 rounded-md truncate">
                         B2B Sourcing & Export
                     </span>
-                    <span className="text-[11px] font-semibold text-gray-700 dark:text-gray-300 shrink-0">
+                    <span className="text-xs font-semibold text-slate-600 dark:text-slate-300 shrink-0">
                         Custom Tech-Pack
                     </span>
                 </div>
@@ -105,13 +105,13 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
                 {/* Specs highlight grid */}
                 <div className="grid grid-cols-2 gap-2 mb-4">
                     <div className="bg-gray-50 dark:bg-gray-800 rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-700 min-w-0">
-                        <span className="block text-[9px] text-gray-700 dark:text-gray-300 uppercase font-black tracking-widest mb-0.5">Min. Order</span>
+                        <span className="block text-[10px] text-slate-600 dark:text-slate-300 uppercase font-black tracking-wider mb-0.5">Min. Order</span>
                         <span className="block text-xs font-bold text-gray-900 dark:text-white truncate" title={specs['MOQ'] || product.minOrder || '500 Pcs'}>
                             {specs['MOQ'] || product.minOrder || '500 Pcs'}
                         </span>
                     </div>
                     <div className="bg-gray-50 dark:bg-gray-800 rounded-xl px-3 py-2 border border-gray-200 dark:border-gray-700 min-w-0">
-                        <span className="block text-[9px] text-gray-700 dark:text-gray-300 uppercase font-black tracking-widest mb-0.5">Fabric</span>
+                        <span className="block text-[10px] text-slate-600 dark:text-slate-300 uppercase font-black tracking-wider mb-0.5">Fabric</span>
                         <span className="block text-xs font-bold text-gray-900 dark:text-white truncate" title={specs['Fabric'] || 'Custom Combed Cotton'}>
                             {specs['Fabric'] || 'Custom Combed Cotton'}
                         </span>
@@ -122,13 +122,13 @@ export default function ProductCard({ product, onQuickView }: ProductCardProps) 
                 <div className="mt-auto flex items-center gap-2 pt-3 border-t border-gray-100 dark:border-gray-800">
                     <Link
                         href={`/products/${product.slug}`}
-                        className="flex-1 text-center py-2 px-3 text-xs font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 rounded-lg transition-colors"
+                        className="flex-1 text-center py-2 px-3 text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors"
                     >
                         Specs
                     </Link>
                     <Link
                         href={`/request-quote?product=${encodeURIComponent(product.name)}`}
-                        className="flex-1 py-2 px-3 text-xs font-bold text-white bg-primary hover:bg-primary/90 rounded-lg shadow-sm transition-all text-center flex items-center justify-center gap-1"
+                        className="flex-1 py-2 px-3 text-xs sm:text-sm font-bold text-white bg-primary hover:bg-blue-600 rounded-lg shadow-sm transition-all text-center flex items-center justify-center gap-1"
                     >
                         <span>Quote</span>
                         <ArrowRight size={13} />

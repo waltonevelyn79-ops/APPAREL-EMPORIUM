@@ -92,7 +92,7 @@ function RequestQuoteContent() {
                     <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-white font-heading">
                         Request a Quote
                     </h1>
-                    <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+                    <p className="text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto text-base">
                         Please provide detailed information about your sourcing requirements. The more details you provide, the more accurate our quote will be.
                     </p>
                 </div>

@@ -127,7 +127,7 @@ export default function FeaturedProducts({ headings }: { headings?: { featured_p
                                 <div className="mb-2">
                                     <Link
                                         href={`/products?category=${product.category?.slug}`}
-                                        className="text-xs font-bold text-gray-400 hover:text-primary transition-colors uppercase tracking-wider"
+                                        className="text-xs font-bold text-slate-600 dark:text-slate-300 hover:text-primary dark:hover:text-blue-400 transition-colors uppercase tracking-wider"
                                     >
                                         {product.category?.name || 'Uncategorized'}
                                     </Link>
@@ -137,12 +137,12 @@ export default function FeaturedProducts({ headings }: { headings?: { featured_p
                                 </h3>
 
                                 <div className="flex items-center justify-between mt-auto pt-3 border-t border-gray-100 dark:border-gray-800">
-                                    <div className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                    <span className="inline-flex items-center text-xs font-extrabold text-blue-700 dark:text-blue-200 bg-blue-50 dark:bg-blue-900/60 border border-blue-200/80 dark:border-blue-700/60 px-2.5 py-1 rounded-md uppercase tracking-wider">
                                         B2B Sourcing
-                                    </div>
+                                    </span>
                                     <Link
                                         href={`/request-quote?product=${encodeURIComponent(product.name)}`}
-                                        className="text-xs font-bold text-primary hover:underline flex items-center gap-1"
+                                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold text-white bg-primary hover:bg-blue-600 px-3.5 py-1.5 rounded-lg shadow-sm hover:shadow transition-all"
                                     >
                                         <span>Request Quote &rarr;</span>
                                     </Link>

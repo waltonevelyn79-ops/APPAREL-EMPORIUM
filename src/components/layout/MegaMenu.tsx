@@ -56,7 +56,7 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
                             key={idx}
                             className="flex flex-col space-y-6 bg-slate-50/80 dark:bg-white/[0.02] hover:bg-slate-100/80 dark:hover:bg-white/[0.04] p-5 lg:p-6 rounded-2xl border border-slate-200/80 dark:border-white/5 hover:border-primary/50 dark:hover:border-primary/40 transition-all duration-300 shadow-sm group/card"
                         >
-                            <h3 className="font-black text-primary uppercase tracking-[0.16em] text-[13px] border-b border-slate-200 dark:border-white/10 pb-3 flex items-center justify-between">
+                            <h3 className="font-black text-primary uppercase tracking-[0.16em] text-sm border-b border-slate-200 dark:border-white/10 pb-3 flex items-center justify-between">
                                 <span className="group-hover/card:text-blue-600 dark:group-hover/card:text-blue-400 transition-colors">{col.title}</span>
                                 <span className="w-2 h-2 rounded-full bg-primary/40 group-hover/card:bg-primary transition-all"></span>
                             </h3>
@@ -65,7 +65,7 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
                                 {col.sections.map((section, sIdx) => (
                                     <div key={sIdx} className="space-y-2.5">
                                         {section.header && (
-                                            <h4 className="font-extrabold text-slate-800 dark:text-gray-200 uppercase tracking-wider text-[11px] flex items-center gap-1.5">
+                                            <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-wider text-xs flex items-center gap-1.5">
                                                 <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
                                                 {section.header}
                                             </h4>
@@ -75,9 +75,9 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
                                                 <li key={lIdx}>
                                                     <Link
                                                         href={link.url}
-                                                        className="text-slate-600 dark:text-gray-400 hover:text-primary dark:hover:text-white hover:translate-x-1.5 transition-all duration-200 text-[12.5px] font-semibold flex items-center group/link py-0.5"
+                                                        className="text-slate-700 dark:text-gray-200 hover:text-primary dark:hover:text-white hover:translate-x-1.5 transition-all duration-200 text-sm font-medium flex items-center group/link py-0.5"
                                                     >
-                                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-gray-600 mr-2.5 group-hover/link:bg-primary group-hover/link:scale-125 transition-all"></span>
+                                                        <span className="w-1.5 h-1.5 rounded-full bg-slate-400 dark:bg-gray-500 mr-2.5 group-hover/link:bg-primary group-hover/link:scale-125 transition-all"></span>
                                                         <span className="group-hover/link:text-primary dark:group-hover/link:text-white transition-colors">{link.label}</span>
                                                     </Link>
                                                 </li>
@@ -91,7 +91,7 @@ export default function MegaMenu({ data, isVisible }: MegaMenuProps) {
                             <div className="pt-3 border-t border-slate-200 dark:border-white/5">
                                 <Link
                                     href="/products"
-                                    className="inline-flex items-center gap-1.5 text-[11.5px] font-black text-slate-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors tracking-wide uppercase"
+                                    className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary transition-colors tracking-wide uppercase"
                                 >
                                     <span>Browse All</span>
                                     <ArrowRight size={12} className="group-hover/card:translate-x-1 transition-transform text-primary" />

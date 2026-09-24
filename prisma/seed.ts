@@ -47,7 +47,7 @@ async function main() {
     // 2. Main Menu with Mega Menu
     const megaMenuData = [
         {
-            title: "Knitwear (নিট)",
+            title: "Knitwear",
             sections: [
                 {
                     header: "Men's Knit",
@@ -82,7 +82,7 @@ async function main() {
             ]
         },
         {
-            title: "Woven (ওভেন)",
+            title: "Woven",
             sections: [
                 {
                     header: "Men's Woven",
@@ -116,7 +116,7 @@ async function main() {
             ]
         },
         {
-            title: "Sweater (সুইটার)",
+            title: "Sweater",
             sections: [
                 {
                     header: "Men's Sweater",
@@ -151,7 +151,7 @@ async function main() {
             ]
         },
         {
-            title: "Accessories (এক্সেসরিজ)",
+            title: "Accessories",
             sections: [
                 {
                     header: "Garment Trims & Notions",
