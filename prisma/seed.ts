@@ -452,18 +452,19 @@ async function main() {
         // ── Homepage: Section order and visibility ──
         {
             key: 'homepage_sections_order',
-            value: JSON.stringify(['hero_slider', 'stats_counter', 'category_grid', 'featured_products', 'why_choose_us', 'certifications', 'testimonials', 'cta_section']),
+            value: JSON.stringify(['hero_slider', 'stats_counter', 'category_grid', 'featured_products', 'delivery_feed', 'why_choose_us', 'certifications', 'testimonials', 'cta_section']),
             group: 'homepage'
         },
         {
             key: 'homepage_sections_visibility',
             value: JSON.stringify({
                 announcement_bar: true,
-                hero_slider: true,
-                stats_counter: true,
-                category_grid: true,
+                hero_slider: false,
+                stats_counter: false,
+                category_grid: false,
+                delivery_feed: false,
+                why_choose_us: false,
                 featured_products: true,
-                why_choose_us: true,
                 certifications: true,
                 testimonials: true,
                 cta_section: true

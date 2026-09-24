@@ -13,12 +13,16 @@ export async function GET(req: Request) {
         const group = searchParams.get('group');
 
         // Allow public read access to settings for branding/ui
-        const settings = await prisma.siteSetting.findMany({
-            ...(group === 'homepage'
-                ? { where: { OR: [{ group: 'homepage' }, { key: { startsWith: 'homepage_' } }] } }
-                : (group ? { where: { group } } : {})
-            )
-        });
+        const whereClause: any = {};
+        if (group === 'homepage') {
+            whereClause.OR = [{ group: 'homepage' }, { key: { startsWith: 'homepage_' } }];
+        } else if (group) {
+            whereClause.group = group;
+        }
+
+        const settings = await prisma.siteSetting.findMany(
+            Object.keys(whereClause).length > 0 ? { where: whereClause } : undefined
+        );
 
         const cfg = settings.reduce((acc, curr) => {
             acc[curr.key] = curr.value;

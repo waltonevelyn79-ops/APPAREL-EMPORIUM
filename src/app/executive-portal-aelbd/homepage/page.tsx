@@ -332,8 +332,41 @@ export default function HomepageBuilderPage() {
                                         </div>
                                     )}
 
+                                    {editingSection === 'delivery_feed' && (
+                                        <div className="space-y-4 p-6 text-center bg-gray-50 dark:bg-gray-800/20 rounded-xl border border-gray-200 dark:border-gray-700">
+                                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                Recent Deliveries are dynamically updated from the <strong>Deliveries Manager</strong>.
+                                            </p>
+                                            <a href="/executive-portal-aelbd/deliveries" className="inline-block px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90">
+                                                Go to Deliveries Manager →
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    {editingSection === 'category_grid' && (
+                                        <div className="space-y-4 p-6 text-center bg-gray-50 dark:bg-gray-800/20 rounded-xl border border-gray-200 dark:border-gray-700">
+                                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                Manufacturing categories are managed in the <strong>Categories Manager</strong>.
+                                            </p>
+                                            <a href="/executive-portal-aelbd/categories" className="inline-block px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90">
+                                                Go to Categories Manager →
+                                            </a>
+                                        </div>
+                                    )}
+
+                                    {editingSection === 'featured_products' && (
+                                        <div className="space-y-4 p-6 text-center bg-gray-50 dark:bg-gray-800/20 rounded-xl border border-gray-200 dark:border-gray-700">
+                                            <p className="text-sm text-gray-600 dark:text-gray-300">
+                                                Featured products are marked and managed in the <strong>Products Manager</strong>.
+                                            </p>
+                                            <a href="/executive-portal-aelbd/products" className="inline-block px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-primary/90">
+                                                Go to Products Manager →
+                                            </a>
+                                        </div>
+                                    )}
+
                                     {/* ARRAY-BASED SECTIONS */}
-                                    {Array.isArray(editorData) && editingSection !== 'category_grid' && editingSection !== 'featured_products' && (
+                                    {Array.isArray(editorData) && editingSection !== 'category_grid' && editingSection !== 'featured_products' && editingSection !== 'delivery_feed' && (
                                         <div className="space-y-8">
                                             {editorData.map((item: any, idx: number) => (
                                                 <div key={item.id || idx} className="bg-gray-50 dark:bg-gray-800/20 p-5 rounded-xl border border-gray-200 dark:border-gray-700 relative group">
