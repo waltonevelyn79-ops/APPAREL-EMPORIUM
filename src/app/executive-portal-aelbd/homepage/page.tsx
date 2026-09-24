@@ -22,9 +22,9 @@ const SECTION_NAMES: Record<SectionID, string> = {
     featured_products: 'Featured Products (ফিচার্ড প্রোডাক্টস)',
     delivery_feed: 'Recent Deliveries & Production (লাইভ ডেলিভারি ফিড)',
     why_choose_us: 'Why Partner With Us (কর্পোরেট সুবিধা)',
-    certifications: 'Certifications Standards (সার্টিফিকেটসমূহ)',
-    testimonials: 'Buyer Testimonials (বায়ারদের রিভিউ)',
-    cta_section: 'CTA Section (অর্ডার রিকোয়েস্ট ব্যানার)'
+    certifications: 'Compliance & Production Standards (কমপ্লায়েন্স ও স্ট্যান্ডার্ড)',
+    testimonials: 'Our 4-Step Sourcing & Delivery Process (৪-ধাপের সোর্সিং প্রসেস)',
+    cta_section: 'Ready to Source / CTA Section (অর্ডার রিকোয়েস্ট ব্যানার)'
 };
 
 const DEFAULT_ORDER: SectionID[] = [

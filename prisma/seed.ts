@@ -465,9 +465,9 @@ async function main() {
                 delivery_feed: false,
                 why_choose_us: false,
                 featured_products: true,
-                certifications: true,
-                testimonials: true,
-                cta_section: true
+                certifications: false,
+                testimonials: false,
+                cta_section: false
             }),
             group: 'homepage'
         },
