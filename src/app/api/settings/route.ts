@@ -14,7 +14,10 @@ export async function GET(req: Request) {
 
         // Allow public read access to settings for branding/ui
         const settings = await prisma.siteSetting.findMany({
-            ...(group ? { where: { group } } : {})
+            ...(group === 'homepage'
+                ? { where: { OR: [{ group: 'homepage' }, { key: { startsWith: 'homepage_' } }] } }
+                : (group ? { where: { group } } : {})
+            )
         });
 
         const cfg = settings.reduce((acc, curr) => {
@@ -41,12 +44,22 @@ export async function POST(req: Request) {
         const { searchParams } = new URL(req.url);
         const group = searchParams.get('group') || 'general';
 
-        for (const [key, value] of Object.entries(data)) {
+        if (data.key !== undefined && data.value !== undefined) {
+            const itemGroup = data.group || group;
             await prisma.siteSetting.upsert({
-                where: { key },
-                update: { value: String(value), group },
-                create: { key, value: String(value), group }
+                where: { key: data.key },
+                update: { value: String(data.value), group: itemGroup },
+                create: { key: data.key, value: String(data.value), group: itemGroup }
             });
+        } else {
+            for (const [key, value] of Object.entries(data)) {
+                if (key === 'group') continue;
+                await prisma.siteSetting.upsert({
+                    where: { key },
+                    update: { value: String(value), group },
+                    create: { key, value: String(value), group }
+                });
+            }
         }
 
         await logActivity({

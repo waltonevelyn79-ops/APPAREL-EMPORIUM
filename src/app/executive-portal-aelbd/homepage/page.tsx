@@ -11,24 +11,25 @@ import ImagePicker from '@/components/admin/ImagePicker';
 
 type SectionID =
     | 'announcement_bar' | 'hero_slider' | 'stats_counter'
-    | 'category_grid' | 'featured_products' | 'why_choose_us'
-    | 'certifications' | 'testimonials' | 'cta_section';
+    | 'category_grid' | 'featured_products' | 'delivery_feed'
+    | 'why_choose_us' | 'certifications' | 'testimonials' | 'cta_section';
 
 const SECTION_NAMES: Record<SectionID, string> = {
-    announcement_bar: 'Announcement Bar',
-    hero_slider: 'Hero Slider',
-    stats_counter: 'Stats Counter',
-    category_grid: 'Category Grid',
-    featured_products: 'Featured Products',
-    why_choose_us: 'Why Choose Us',
-    certifications: 'Certifications',
-    testimonials: 'Testimonials',
-    cta_section: 'CTA Section'
+    announcement_bar: 'Announcement Bar (ঘোষণা বার)',
+    hero_slider: 'Hero Slider (স্লাইডার ব্যানার)',
+    stats_counter: 'Stats Counter (কোয়ালিটি ও মেট্রিক কাউন্টার)',
+    category_grid: 'Our Manufacturing Capabilities (ক্যাটাগরি গ্রিড)',
+    featured_products: 'Featured Products (ফিচার্ড প্রোডাক্টস)',
+    delivery_feed: 'Recent Deliveries & Production (লাইভ ডেলিভারি ফিড)',
+    why_choose_us: 'Why Partner With Us (কর্পোরেট সুবিধা)',
+    certifications: 'Certifications Standards (সার্টিফিকেটসমূহ)',
+    testimonials: 'Buyer Testimonials (বায়ারদের রিভিউ)',
+    cta_section: 'CTA Section (অর্ডার রিকোয়েস্ট ব্যানার)'
 };
 
 const DEFAULT_ORDER: SectionID[] = [
     'hero_slider', 'stats_counter', 'category_grid', 'featured_products',
-    'why_choose_us', 'certifications', 'testimonials', 'cta_section'
+    'delivery_feed', 'why_choose_us', 'certifications', 'testimonials', 'cta_section'
 ];
 
 /* ─────────────────────────────────────────────────────────────
@@ -37,6 +38,10 @@ const DEFAULT_ORDER: SectionID[] = [
 interface HeadingField { key: string; label: string; placeholder: string; hint?: string }
 
 const HEADING_FIELDS: HeadingField[] = [
+    // Delivery Feed
+    { key: 'delivery_feed_eyebrow', label: 'Recent Deliveries — Eyebrow Tag', placeholder: 'LIVE UPDATES', hint: 'Small tag above the heading.' },
+    { key: 'delivery_feed_heading', label: 'Recent Deliveries — Main Heading', placeholder: 'Recent Deliveries & Production' },
+    { key: 'delivery_feed_subheading', label: 'Recent Deliveries — Subheading Description', placeholder: 'Real-time updates on active orders, recent shipments and completed deliveries to our global buyers.', hint: 'Description below the heading.' },
     // Certifications
     { key: 'certifications_label', label: 'Certifications — Eyebrow Label', placeholder: 'Compliance & Production Standards', hint: 'Small uppercase label above the main heading.' },
     { key: 'certifications_heading', label: 'Certifications — Main Heading', placeholder: 'Engineered to the Standards of Leading Global Apparel Brands' },
@@ -86,7 +91,18 @@ export default function HomepageBuilderPage() {
             if (data.settings) {
                 const map = data.settings;
                 setSettingsData(map);
-                if (map['homepage_sections_order']) setOrder(JSON.parse(map['homepage_sections_order']));
+                if (map['homepage_sections_order']) {
+                    try {
+                        const parsedOrder: SectionID[] = JSON.parse(map['homepage_sections_order']);
+                        const mergedOrder = [...parsedOrder];
+                        DEFAULT_ORDER.forEach(sec => {
+                            if (!mergedOrder.includes(sec)) mergedOrder.push(sec);
+                        });
+                        setOrder(mergedOrder);
+                    } catch (e) {
+                        setOrder(DEFAULT_ORDER);
+                    }
+                }
                 if (map['homepage_sections_visibility']) setVisibility(JSON.parse(map['homepage_sections_visibility']));
                 if (map['homepage_section_headings']) setHeadings(JSON.parse(map['homepage_section_headings']));
             }
@@ -107,12 +123,12 @@ export default function HomepageBuilderPage() {
         };
         if (extraKey && extraVal !== undefined) payload[extraKey] = extraVal;
         try {
-            await Promise.all(
-                Object.entries(payload).map(([k, v]) =>
-                    fetch('/api/settings', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ key: k, value: v, group: 'homepage' }) })
-                )
-            );
-            await fetch('/api/revalidate?path=/');
+            await fetch('/api/settings?group=homepage', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+            await fetch('/api/revalidate?path=/').catch(() => {});
         } catch (e) { console.error('Save failed', e); }
         finally { setSaving(false); setEditingSection(null); }
     };
@@ -221,8 +237,9 @@ export default function HomepageBuilderPage() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <button onClick={() => toggleVisibility('announcement_bar')}
-                                    className={`p-2 rounded-md transition ${visibility['announcement_bar'] !== false ? 'text-green-500 bg-green-50' : 'text-gray-400 bg-gray-100'}`}>
-                                    {visibility['announcement_bar'] !== false ? <Eye size={18} /> : <EyeOff size={18} />}
+                                    className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold transition ${visibility['announcement_bar'] !== false ? 'text-emerald-700 bg-emerald-100 hover:bg-emerald-200 dark:text-emerald-400 dark:bg-emerald-950/40' : 'text-rose-600 bg-rose-100 hover:bg-rose-200 dark:text-rose-400 dark:bg-rose-950/40'}`}>
+                                    {visibility['announcement_bar'] !== false ? <Eye size={15} /> : <EyeOff size={15} />}
+                                    <span>{visibility['announcement_bar'] !== false ? 'ON (চালু)' : 'OFF (বন্ধ)'}</span>
                                 </button>
                                 <button onClick={() => openEditor('announcement_bar')} className="p-2 text-primary hover:bg-primary/10 rounded-md transition border border-primary/20">
                                     <Edit2 size={16} />
@@ -246,14 +263,15 @@ export default function HomepageBuilderPage() {
                                                 <GripVertical size={20} />
                                             </div>
                                             <div>
-                                                <p className="font-bold text-gray-800 dark:text-gray-200 text-sm">{SECTION_NAMES[sectionId]}</p>
+                                                <p className="font-bold text-gray-800 dark:text-gray-200 text-sm">{SECTION_NAMES[sectionId] || sectionId}</p>
                                                 <p className="text-xs text-gray-400 font-mono">{sectionId}</p>
                                             </div>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <button onClick={() => toggleVisibility(sectionId)}
-                                                className={`p-2 rounded-md transition ${isVisible ? 'text-green-500 bg-green-50 dark:bg-green-900/20' : 'text-gray-400 bg-gray-100 dark:bg-gray-800'}`}>
-                                                {isVisible ? <Eye size={18} /> : <EyeOff size={18} />}
+                                                className={`px-3 py-1.5 rounded-lg flex items-center gap-1.5 text-xs font-semibold transition ${isVisible ? 'text-emerald-700 bg-emerald-100 hover:bg-emerald-200 dark:text-emerald-400 dark:bg-emerald-950/40' : 'text-rose-600 bg-rose-100 hover:bg-rose-200 dark:text-rose-400 dark:bg-rose-950/40'}`}>
+                                                {isVisible ? <Eye size={15} /> : <EyeOff size={15} />}
+                                                <span>{isVisible ? 'ON (চালু)' : 'OFF (বন্ধ)'}</span>
                                             </button>
                                             <button onClick={() => openEditor(sectionId)} className="p-2 text-primary hover:bg-primary/10 rounded-md transition border border-primary/20">
                                                 <Edit2 size={16} />
