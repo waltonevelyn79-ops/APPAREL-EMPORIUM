@@ -116,3 +116,16 @@ h6 {
   transform: translateZ(0);
   will-change: transform, opacity;
 }
+
+@keyframes stageFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+}
+
+.animate-stage-float {
+  animation: stageFloat 4.5s ease-in-out infinite;
+}
